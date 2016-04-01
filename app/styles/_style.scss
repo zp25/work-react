@@ -1,0 +1,56 @@
+// font-size(px): 12, 14, 16, 20, 34
+$font-light: 12px;
+$font: 14px;
+$font-bold: 16px;
+$font-bolder: 20px;
+
+$line-height: $font + 10;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, button, input, textarea, select {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+
+// clear fix
+.cf:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/**
+ * mixins
+ */
+@mixin flexbox($direction:row, $wrap:nowrap, $justify-content:flex-start, $align-items:flex-start) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+html {
+  height: 100%;
+
+  body {
+    height: 100%;
+    font-size: $font;
+    line-height: $line-height;
+  }
+}

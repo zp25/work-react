@@ -1,0 +1,8 @@
+body {
+  @include flexbox(row, nowrap, space-around, flex-start);
+
+  main {
+    flex: 0 1 1000px;
+    background-color: grey;
+  }
+}

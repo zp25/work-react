@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "__DEV__": false
+  },
+  "extends": ["airbnb", "google"]
+}
