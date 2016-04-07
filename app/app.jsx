@@ -11,7 +11,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" components={Home}>
       <IndexRoute components={Foo} />
-      <Route path="/bar" components={Bar} />
+      <Route path="bar" components={Bar} />
     </Route>
   </Router>
 ), document.querySelector('#root'));

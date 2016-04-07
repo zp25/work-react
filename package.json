@@ -2,7 +2,7 @@
   "name": "work-react",
   "version": "0.0.0",
   "description": "Work React",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "serve": "NODE_ENV=development webpack-dev-server --config webpack.config.babel.js --progress --colors --history-api-fallback",
     "dist": "webpack --config webpack.config.babel.js --progress --profile --colors",
