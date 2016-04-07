@@ -1,18 +1,18 @@
 import React from 'react';
 
 /**
- * Foo模块
+ * Bar模块
  * @param {Object} props 属性
  * @return {Object} 模块
  */
-function Foo(props) {
+function Bar(props) {
   return (
-    <div className="foo">{`${props.title}: Foo`}</div>
+    <div className="bar">{`${props.title}: Bar`}</div>
   );
 }
 
-Foo.propTypes = {
+Bar.propTypes = {
   title: React.PropTypes.string
 };
 
-export default Foo;
+export default Bar;

@@ -24,7 +24,7 @@ export default {
     main: (DEBUG ? [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
-      ] : []).concat(['./components/app']),
+      ] : []).concat(['./app']),
     html: './index.html',
     vendor: ['react'],
   },
@@ -39,7 +39,7 @@ export default {
     preLoaders: [
       {
         test: /\.jsx$/,
-        include: path.resolve(APP, 'components'),
+        include: APP,
         loader: 'eslint'
       }
     ],
@@ -61,7 +61,7 @@ export default {
       },
       {
         test: /\.jsx$/,
-        include: path.resolve(APP, 'components'),
+        include: APP,
         loader: `${DEBUG ? 'react-hot!' : ''}babel`
       },
       {
