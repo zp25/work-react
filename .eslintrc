@@ -7,5 +7,5 @@
   "globals": {
     "__DEV__": false
   },
-  "extends": ["airbnb", "google"]
+  "extends": "airbnb"
 }
