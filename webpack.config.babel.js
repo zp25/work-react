@@ -24,7 +24,7 @@ export default {
     main: (DEBUG ? [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
-      ] : []).concat(['./app']),
+      ] : []).concat(['./router']),
     html: './index.html',
     vendor: ['react'],
   },

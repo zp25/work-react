@@ -1,5 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+
+import '../styles/app';
 
 const title = __DEV__ ? 'dev' : 'pro';
 
@@ -7,7 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title
+      title,
     };
   }
 
@@ -20,14 +22,14 @@ class Home extends React.Component {
           </li>
           <li><Link to="/bar" activeClassName="active">Bar</Link></li>
         </ul>
-        {React.cloneElement(this.props.children, {title: this.state.title})}
+        {React.cloneElement(this.props.children, { title: this.state.title })}
       </div>
     );
   }
 }
 
 Home.propTypes = {
-  children: React.PropTypes.element
+  children: React.PropTypes.element,
 };
 
 export default Home;
