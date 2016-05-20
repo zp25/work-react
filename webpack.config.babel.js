@@ -4,17 +4,7 @@ import autoprefixer from 'autoprefixer'
 
 const DEBUG = process.env.NODE_ENV === 'development';
 const APP = path.resolve(__dirname, 'app');
-const AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
-];
+const AUTOPREFIXER_BROWSERS = ['last 1 version'];
 
 export default {
   target: 'web',

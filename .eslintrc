@@ -7,5 +7,12 @@
   "globals": {
     "__DEV__": false
   },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.babel.js"
+      }
+    }
+  },
   "extends": "airbnb"
 }
