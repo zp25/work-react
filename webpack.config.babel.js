@@ -14,9 +14,9 @@ export default {
     main: (DEBUG ? [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
-      ] : []).concat(['./router']),
+      ] : []).concat(['./enter']),
     html: './index.html',
-    vendor: ['react'],
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -28,7 +28,7 @@ export default {
   module: {
     preLoaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         include: APP,
         loader: 'eslint'
       }
@@ -50,7 +50,7 @@ export default {
         ]
       },
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         include: APP,
         loader: `${DEBUG ? 'react-hot!' : ''}babel`
       },
@@ -86,7 +86,7 @@ export default {
   ],
   postcss: () => {
     return [
-      autoprefixer({browsers: AUTOPREFIXER_BROWSERS})
+      autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })
     ];
   }
 };

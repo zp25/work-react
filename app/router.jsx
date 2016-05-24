@@ -1,17 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import App from './components/app';
-import Foo from './components/foo';
-import Bar from './components/bar';
+import AppContainer from './containers/appContainer';
+import FooContainer from './containers/fooContainer';
+import BarContainer from './containers/barContainer';
 
-import './styles/styles';
-
-ReactDOM.render((
+export default (
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Foo} />
-      <Route path="bar" component={Bar} />
+    <Route path="/" component={AppContainer}>
+      <IndexRoute component={FooContainer} />
+      <Route path="bar" component={BarContainer} />
     </Route>
   </Router>
-), document.querySelector('#root'));
+);
