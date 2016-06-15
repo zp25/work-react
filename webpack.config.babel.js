@@ -15,7 +15,6 @@ export default {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
       ] : []).concat(['./enter']),
-    html: './index.html',
     vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router']
   },
   output: {
@@ -34,11 +33,6 @@ export default {
       }
     ],
     loaders: [
-      {
-        test: /\.html$/,
-        include: APP,
-        loader: 'file?name=[name].[ext]'
-      },
       {
         test: /\.scss$/,
         include: path.resolve(APP, 'styles'),

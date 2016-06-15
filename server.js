@@ -6,6 +6,7 @@ var errorHandler = require('errorhandler');
 var app = express()
 
 var dist = path.resolve(__dirname, 'dist');
+var index = path.resolve(__dirname, 'index.html');
 
 /** const */
 app.set('port', process.env.PORT || 8080);
@@ -17,8 +18,8 @@ app.use(compression())
 app.use(express.static(dist));
 
 /** send all requests to index.html so browserHistory works */
-app.get('*', function (req, res) {
-  res.sendFile(path.resolve(dist, 'index.html'))
+app.get('*', function(req, res) {
+  res.sendFile(index);
 })
 
 /** error handling middleware should be loaded after the loading the routes */
