@@ -23,10 +23,7 @@ app.get('*', function(req, res) {
 })
 
 /** error handling middleware should be loaded after the loading the routes */
-if (app.get('env') === 'development') {
-  console.log('Development mode');
-  app.use(errorHandler());
-}
+app.use(errorHandler());
 
 /** engine start! */
 app.listen(app.get('port'), function() {
