@@ -61,6 +61,10 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
+      // https://facebook.github.io/react/downloads.html#npm
+      'process.env': {
+        'NODE_ENV': DEBUG ? '"development"' : '"production"',
+      },
       __DEV__: DEBUG
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
