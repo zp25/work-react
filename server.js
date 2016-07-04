@@ -1,15 +1,15 @@
-var path = require('path');
-var express = require('express');
-var compression = require('compression');
-var errorHandler = require('errorhandler');
-var dotenv = require('dotenv');
+const path = require('path');
+const express = require('express');
+const compression = require('compression');
+const errorHandler = require('errorhandler');
+const dotenv = require('dotenv');
 
 dotenv.config({ silent: true });
 
-var app = express();
+const app = express();
 
-var dist = path.resolve(__dirname, 'dist');
-var index = path.resolve(__dirname, 'index.html');
+const dist = path.resolve(__dirname, 'dist');
+const index = path.resolve(__dirname, 'index.html');
 
 /** const */
 app.set('port', process.env.PORT || 8080);
@@ -21,7 +21,7 @@ app.use(compression())
 app.use(express.static(dist));
 
 /** send all requests to index.html so browserHistory works */
-app.get('*', function(req, res) {
+app.get('*', (req, res) => {
   res.sendFile(index);
 })
 
@@ -29,6 +29,6 @@ app.get('*', function(req, res) {
 app.use(errorHandler());
 
 /** engine start! */
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+app.listen(app.get('port'), () => {
+  console.log(`Express server listening on port ${app.get('port')}`);
 });
