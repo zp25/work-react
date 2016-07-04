@@ -2,8 +2,11 @@ var path = require('path');
 var express = require('express');
 var compression = require('compression');
 var errorHandler = require('errorhandler');
+var dotenv = require('dotenv');
 
-var app = express()
+dotenv.config({ silent: true });
+
+var app = express();
 
 var dist = path.resolve(__dirname, 'dist');
 var index = path.resolve(__dirname, 'index.html');
