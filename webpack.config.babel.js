@@ -79,7 +79,8 @@ export default {
         compress: {
           warnings: false
         },
-      })
+      }),
+      new webpack.optimize.OccurenceOrderPlugin(),
     ])
   ],
   postcss: () => {
