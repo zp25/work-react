@@ -1,8 +1,8 @@
 @import 'global';
 
 .app {
-  flex: 0 1 1000px;
-  height: 100%;
+  flex: 1 1 auto;
+  @extend .page-wrap;
   padding: 10px;
 
   &.app--dev {

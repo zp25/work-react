@@ -2,14 +2,18 @@
 @import 'global';
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-html, button, input, textarea, select {
+// http://www.outlinenone.com/
+:focus {
   outline: none;
+}
+
+html, button, input, textarea, select {
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -35,5 +39,5 @@ html {
 
 :global(#root) {
   height: 100%;
-  @include flexbox(row, nowrap, space-around);
+  @include flexbox(column, nowrap, flex-start, center);
 }

@@ -6,6 +6,11 @@ $font-bolder: 20px;
 
 $line-height: $font + 10;
 
+.page-wrap {
+  width: 100%;
+  max-width: 1000px;
+}
+
 /**
  * mixins
  */
