@@ -1,6 +1,7 @@
-import path from 'path'
-import webpack from 'webpack'
-import autoprefixer from 'autoprefixer'
+import path from 'path';
+import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const DEBUG = process.env.NODE_ENV === 'development';
 const APP = path.resolve(__dirname, 'app');
@@ -8,45 +9,44 @@ const AUTOPREFIXER_BROWSERS = ['last 1 version'];
 
 export default {
   target: 'web',
-  devtool: DEBUG ? '#eval' : '#source-map',
+  devtool: DEBUG ? '#cheap-module-eval-source-map' : '#source-map',
   context: APP,
   entry: {
     main: (DEBUG ? [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
       ] : []).concat(['./enter']),
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router']
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.scss']
+    extensions: ['', '.js', '.jsx', '.css', '.scss'],
   },
   module: {
     preLoaders: [
       {
         test: /\.jsx?$/,
         include: APP,
-        loader: 'eslint'
+        loader: 'eslint',
       }
     ],
     loaders: [
       {
         test: /\.scss$/,
         include: path.resolve(APP, 'styles'),
-        loaders: [
-          'style',
+        loader: ExtractTextPlugin.extract('style', [
           'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss',
           'sass?sourceMap'
-        ]
+        ]),
       },
       {
         test: /\.jsx?$/,
         include: APP,
-        loader: `${DEBUG ? 'react-hot!' : ''}babel`
+        loader: `${DEBUG ? 'react-hot!' : ''}babel`,
       },
       {
         test: /\.(png|jpg)$/,
@@ -65,9 +65,10 @@ export default {
       'process.env': {
         'NODE_ENV': DEBUG ? '"development"' : '"production"',
       },
-      __DEV__: DEBUG
+      __DEV__: DEBUG,
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+    new ExtractTextPlugin('styles.css'),
 
     ...(DEBUG ? [
       new webpack.HotModuleReplacementPlugin()

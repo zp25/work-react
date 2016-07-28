@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import router from './router';
 
-import './styles/styles';
-
 render(
   // react-redux连接器
   <Provider store={store}>{router}</Provider>,

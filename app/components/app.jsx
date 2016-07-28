@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import '../styles/styles';
 import z from '../styles/app';
 
 class App extends React.Component {
