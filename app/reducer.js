@@ -9,7 +9,7 @@ import * as types from './actions';
  */
 function createReducer(initialState, handlers) {
   return function reducer(state = initialState, action) {
-    if (handlers.hasOwnProperty(action.type)) {
+    if ({}.hasOwnProperty.call(handlers, action.type)) {
       return handlers[action.type](state, action);
     }
 
