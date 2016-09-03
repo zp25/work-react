@@ -48,13 +48,21 @@ export default {
         include: APP,
         loader: `${DEBUG ? 'react-hot!' : ''}babel`,
       },
+      // {
+      //   test: /\.(png|jpg)$/,
+      //   include: path.resolve(APP, 'images'),
+      //   loader: 'url',
+      //   query: {
+      //     name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+      //     limit: 10000,
+      //   },
+      // },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(jpe?g|png|gif|svg|webp)$/i,
         include: path.resolve(APP, 'images'),
-        loader: 'url',
+        loader: 'file',
         query: {
           name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
-          limit: 10000,
         },
       }
     ]

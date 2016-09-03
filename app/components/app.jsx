@@ -4,6 +4,9 @@ import { Link } from 'react-router';
 import '../styles/styles';
 import z from '../styles/app';
 
+import zpWebp from '../images/zp.webp';
+import zpJpg from '../images/zp.jpg';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -59,6 +62,11 @@ class App extends React.Component {
             title: (__DEV__ ? 'dev' : 'pro'),
           })
         }
+
+        <picture className={z.picture}>
+          <source srcSet={zpWebp} type="image/webp" />
+          <img src={zpJpg} alt="zp" />
+        </picture>
       </div>
     );
   }

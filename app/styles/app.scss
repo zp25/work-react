@@ -16,4 +16,8 @@
   .active {
     color: green;
   }
+
+  .picture {
+    @include flexbox(row, nowrap, center, flex-start);
+  }
 }
