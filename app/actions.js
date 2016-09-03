@@ -1,4 +1,3 @@
-export const DEVELOPMENT = 'DEVELOPMENT';
 export const COUNTDOWN = 'COUNTDOWN';
 export const DECREMENT = 'DECREMENT';
 
@@ -41,9 +40,6 @@ function createAction(type, actionCreator, metaCreator) {
 
   return actionHandler;
 }
-
-// 是否开发环境
-export const setDev = createAction(DEVELOPMENT);
 
 // 设置倒计时
 export const setCountdown = createAction(COUNTDOWN);

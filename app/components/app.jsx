@@ -11,11 +11,6 @@ class App extends React.Component {
     this.seconds = 3;
   }
 
-  componentWillMount() {
-    // 呈现前修改开发状态
-    this.props.setDev(__DEV__);
-  }
-
   componentDidMount() {
     // 呈现后开始倒计时
     this.startContdown(this.seconds);
@@ -49,7 +44,7 @@ class App extends React.Component {
   render() {
     return (
       <div
-        className={`${z.app} ${this.props.dev ? z['app--dev'] : z['app--pro']}`}
+        className={`${z.app} ${__DEV__ ? z['app--dev'] : z['app--pro']}`}
       >
         <ul>
           <li>
@@ -61,7 +56,7 @@ class App extends React.Component {
         </ul>
         {
           React.cloneElement(this.props.children, {
-            title: (this.props.dev ? 'dev' : 'pro'),
+            title: (__DEV__ ? 'dev' : 'pro'),
           })
         }
       </div>
@@ -70,9 +65,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  dev: React.PropTypes.bool.isRequired,
   countdown: React.PropTypes.number.isRequired,
-  setDev: React.PropTypes.func.isRequired,
   setCountdown: React.PropTypes.func.isRequired,
   doDecrement: React.PropTypes.func.isRequired,
   children: React.PropTypes.element,

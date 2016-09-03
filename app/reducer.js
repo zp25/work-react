@@ -18,11 +18,6 @@ function createReducer(initialState, handlers) {
 }
 
 // coundown reducer
-const devReducer = createReducer(true, {
-  [types.DEVELOPMENT]: (state, action) => action.payload || state,
-});
-
-// coundown reducer
 const cdReducer = createReducer(60, {
   [types.COUNTDOWN]: (state, action) => action.payload || state,
   [types.DECREMENT]: state => state - 1,
@@ -30,7 +25,6 @@ const cdReducer = createReducer(60, {
 
 // combine
 const reducer = combineReducers({
-  dev: devReducer,
   countdown: cdReducer,
 });
 

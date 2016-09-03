@@ -5,8 +5,6 @@ import reducer from './reducer';
 const logger = createLogger();
 
 const initState = {
-  // 是否开发环境
-  dev: true,
   // 倒计时
   countdown: 60,
 };
