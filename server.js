@@ -18,7 +18,7 @@ app.set('port', process.env.PORT || 8080);
 app.use(compression())
 
 /** static */
-app.use(express.static(dist));
+app.use('/dist', express.static(dist));
 
 /** send all requests to index.html so browserHistory works */
 app.get('*', (req, res) => {

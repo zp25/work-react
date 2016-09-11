@@ -3,6 +3,9 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+import manifestUtils from './dist/utils-manifest.json';
+import manifestVendor from './dist/vendor-manifest.json';
+
 const DEBUG = process.env.NODE_ENV === 'development';
 const APP = path.resolve(__dirname, 'app');
 const AUTOPREFIXER_BROWSERS = ['last 1 version'];
@@ -16,13 +19,14 @@ export default {
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server'
       ] : []).concat(['./enter']),
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '/dist/'
   },
   resolve: {
+    root: [APP, path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js', '.jsx', '.css', '.scss'],
   },
   module: {
@@ -69,14 +73,18 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      // https://facebook.github.io/react/downloads.html#npm
-      'process.env': {
-        'NODE_ENV': DEBUG ? '"development"' : '"production"',
-      },
       __DEV__: DEBUG,
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new ExtractTextPlugin('styles.css'),
+
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, 'dist'),
+      manifest: manifestUtils,
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, 'dist'),
+      manifest: manifestVendor,
+    }),
 
     ...(DEBUG ? [
       new webpack.HotModuleReplacementPlugin()
@@ -89,7 +97,7 @@ export default {
           warnings: false
         },
       }),
-      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(true),
     ])
   ],
   postcss: () => {
