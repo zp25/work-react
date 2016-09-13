@@ -32,8 +32,8 @@ html {
 
   body {
     height: 100%;
-    font-size: $font;
-    line-height: $line-height;
+    font-size: fontSize();
+    line-height: 1.5;
   }
 }
 
