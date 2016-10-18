@@ -17,16 +17,17 @@ export default {
   entry: {
     main: (DEBUG ? [
         'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server'
+        'webpack/hot/only-dev-server',
       ] : []).concat(['./enter']),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/dist/',
   },
   resolve: {
-    root: [APP, path.resolve(__dirname, 'node_modules')],
+    root: [APP],
+    modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.jsx', '.css', '.scss'],
   },
   module: {
@@ -35,7 +36,7 @@ export default {
         test: /\.jsx?$/,
         include: APP,
         loader: 'eslint',
-      }
+      },
     ],
     loaders: [
       {
@@ -68,12 +69,16 @@ export default {
         query: {
           name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
         },
-      }
+      },
     ]
   },
   plugins: [
     new webpack.DefinePlugin({
       __DEV__: DEBUG,
+      // 移除开发环境插件，如redux-logger
+      'process.env': {
+        'NODE_ENV': DEBUG ? '"development"' : '"production"',
+      },
     }),
     new ExtractTextPlugin('styles.css'),
 
