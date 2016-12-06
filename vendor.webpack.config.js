@@ -20,7 +20,7 @@ module.exports = {
   },
   output: {
     path: DIST,
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     library: '[name]_[hash]',
   },
   plugins: [
