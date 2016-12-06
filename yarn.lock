@@ -848,7 +848,7 @@ babel-preset-stage-1@^6.16.0:
     babel-plugin-transform-export-extensions "^6.3.13"
     babel-preset-stage-2 "^6.16.0"
 
-babel-preset-stage-2@^6.16.0, babel-preset-stage-2@^6.18.0:
+babel-preset-stage-2@^6.16.0:
   version "6.18.0"
   resolved "http://r.cnpmjs.org/babel-preset-stage-2/download/babel-preset-stage-2-6.18.0.tgz#9eb7bf9a8e91c68260d5ba7500493caaada4b5b5"
   dependencies:
