@@ -4,7 +4,7 @@ import style from 'styles/content.scss';
 
 const Page = (props) => {
   const { title, location, countdown } = props;
-  const text = location.pathname.slice(1);
+  const text = location.pathname.slice(1).toLowerCase();
 
   return (
     <p className={style.text}>{`${title}: ${text}, ${countdown}`}</p>

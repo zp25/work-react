@@ -16,6 +16,7 @@ class App extends Component {
     super(props);
 
     this.intervals = 0;
+    this.routerChange = this.routerChange.bind(this);
   }
 
   componentDidMount() {
@@ -48,24 +49,28 @@ class App extends Component {
     }, 1000);
   }
 
+  /**
+   * 处理路径变化
+   */
+  routerChange(location, action) {
+    // you must always accept a `SYNC` action,
+    // but only put the location in state
+    if (action === 'SYNC') {
+      this.props.setRouter(location, this.props.action);
+    } else {
+      this.props.setRouter(location, action);
+    }
+  }
+
   render() {
     const isActive = pathname => location => location.pathname.toLowerCase() === pathname;
-    const routerChange = (location, action) => {
-      // you must always accept a `SYNC` action,
-      // but only put the location in state
-      if (action === 'SYNC') {
-        this.props.setRouter(location, this.props.action);
-      } else {
-        this.props.setRouter(location, action);
-      }
-    };
 
     return (
       <Router
         history={history}
         location={this.props.location}
         action={this.props.action}
-        onChange={routerChange}
+        onChange={this.routerChange}
       >
         <div className={style.app}>
           <ul className={style.nav}>
