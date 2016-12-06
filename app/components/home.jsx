@@ -1,19 +1,19 @@
 import React from 'react';
 
-import style from 'styles/bar.scss';
+import style from 'styles/content.scss';
 
-const Bar = (props) => {
+const Home = (props) => {
   const { title, countdown } = props;
 
   return (
-    <div className={style.bar}>{`${title}: Bar, ${countdown}`}</div>
+    <p className={style.text}>{`${title}: ${countdown}`}</p>
   );
 };
 
-Bar.propTypes = {
+Home.propTypes = {
   countdown: React.PropTypes.number.isRequired,
   // HOC
   title: React.PropTypes.string.isRequired,
 };
 
-export default Bar;
+export default Home;

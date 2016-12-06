@@ -1,0 +1,5 @@
+@import 'global';
+
+.text {
+  @extend .ellipsis;
+}

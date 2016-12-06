@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import propsproxy from 'containers/propsproxy';
-import Foo from 'components/foo';
+import Page from 'components/page';
 
 const mapStateToProps = store => ({
+  location: store.router.location,
   countdown: store.countdown,
 });
 
-const FooContainer = connect(
+const PageContainer = connect(
   mapStateToProps,
-)(propsproxy(Foo));
+)(propsproxy(Page));
 
-export default FooContainer;
+export default PageContainer;

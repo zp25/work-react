@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import propsproxy from 'containers/propsproxy';
-import Bar from 'components/bar';
+import Home from 'components/home';
 
 const mapStateToProps = store => ({
   countdown: store.countdown,
 });
 
-const BarContainer = connect(
+const HomeContainer = connect(
   mapStateToProps,
-)(propsproxy(Bar));
+)(propsproxy(Home));
 
-export default BarContainer;
+export default HomeContainer;

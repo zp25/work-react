@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Router from 'react-router-addons-controlled/ControlledBrowserRouter';
 // import Router from 'react-router/BrowserRouter';
-import { Link, Match } from 'react-router';
+import { Link, Match, Miss } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
-import Foo from 'containers/foo';
-import Bar from 'containers/bar';
+import Home from 'containers/home';
+import Page from 'containers/page';
 import Picture from 'components/picture';
 
 import style from 'styles/app.scss';
@@ -49,29 +49,44 @@ class App extends Component {
   }
 
   render() {
+    const isActive = pathname => location => location.pathname.toLowerCase() === pathname;
+    const routerChange = (location, action) => {
+      // you must always accept a `SYNC` action,
+      // but only put the location in state
+      if (action === 'SYNC') {
+        this.props.setRouter(location, this.props.action);
+      } else {
+        this.props.setRouter(location, action);
+      }
+    };
+
     return (
       <Router
         history={history}
         location={this.props.location}
         action={this.props.action}
-        onChange={(location, action) => {
-          // you must always accept a `SYNC` action,
-          // but only put the location in state
-          if (action === 'SYNC') {
-            this.props.setRouter(location, this.props.action);
-          } else {
-            this.props.setRouter(location, action);
-          }
-        }}
+        onChange={routerChange}
       >
         <div className={style.app}>
           <ul className={style.nav}>
-            <li><Link to="/" activeOnlyWhenExact activeClassName={style.active}>Foo</Link></li>
-            <li><Link to="/bar" activeClassName={style.active}>Bar</Link></li>
+            <li>
+              <Link to="/foo" activeClassName={style.active} isActive={isActive('/foo')}>Foo</Link>
+            </li>
+            <li>
+              <Link to="/bar" activeClassName={style.active} isActive={isActive('/bar')}>Bar</Link>
+            </li>
           </ul>
 
-          <Match pattern="/" exactly component={Foo} />
-          <Match pattern="/bar" component={Bar} />
+          <Match
+            pattern="/"
+            render={() => (
+              <div className={style.content}>
+                <Match exactly pattern="/foo" component={Page} />
+                <Match exactly pattern="/bar" component={Page} />
+                <Miss component={Home} />
+              </div>
+            )}
+          />
 
           <Picture />
         </div>
