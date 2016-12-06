@@ -1,12 +1,19 @@
 import React from 'react';
 
-const Foo = props => (
-  <div className="foo">{`${props.title}: Foo, ${props.countdown}`}</div>
-);
+import style from 'styles/foo.scss';
+
+const Foo = (props) => {
+  const { title, countdown } = props;
+
+  return (
+    <div className={style.foo}>{`${title}: Foo, ${countdown}`}</div>
+  );
+};
 
 Foo.propTypes = {
-  title: React.PropTypes.string.isRequired,
   countdown: React.PropTypes.number.isRequired,
+  // HOC
+  title: React.PropTypes.string.isRequired,
 };
 
 export default Foo;

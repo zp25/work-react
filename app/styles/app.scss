@@ -1,23 +1,16 @@
 @import 'global';
 
 .app {
-  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  @include flexbox(column);
   @extend .page-wrap;
+  background-color: color(white);
   padding: 10px;
 
-  &.app--dev {
-    background-color: #f5f5f5;
-  }
-
-  &.app--pro {
-    background-color: white;
-  }
-
-  .active {
-    color: green;
-  }
-
-  .picture {
-    @include flexbox(row, nowrap, center, flex-start);
+  .nav {
+    .active {
+      color: color(green);
+    }
   }
 }

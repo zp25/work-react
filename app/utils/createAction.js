@@ -1,5 +1,4 @@
-export const COUNTDOWN = 'COUNTDOWN';
-export const DECREMENT = 'DECREMENT';
+import 'babel-polyfill';
 
 /**
  * FSA Factory
@@ -9,7 +8,7 @@ export const DECREMENT = 'DECREMENT';
  * @param {Function} metaCreator meta数据创建函数
  * @return {Function} Action创建函数，此函数返回创建的Action
  */
-function createAction(type, actionCreator, metaCreator) {
+export default (type, actionCreator, metaCreator) => {
   const finalActionCreator = typeof actionCreator === 'function'
     ? actionCreator
     : t => t;
@@ -39,10 +38,4 @@ function createAction(type, actionCreator, metaCreator) {
   actionHandler.toString = () => type;
 
   return actionHandler;
-}
-
-// 设置倒计时
-export const setCountdown = createAction(COUNTDOWN);
-
-// 倒计时
-export const doDecrement = createAction(DECREMENT);
+};

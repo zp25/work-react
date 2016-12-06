@@ -1,15 +1,22 @@
-import path from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
 const APP = path.resolve(__dirname, 'app');
 const DIST = path.resolve(__dirname, 'dist');
 
-export default {
+module.exports = {
   target: 'web',
   context: APP,
   entry: {
-    utils: ['babel-polyfill', 'md5'],
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router'],
+    utils: ['babel-polyfill', 'history', 'redux-thunk'],
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+      'react-redux',
+      'react-router',
+      'react-router-addons-controlled',
+    ],
   },
   output: {
     path: DIST,
@@ -19,9 +26,7 @@ export default {
   plugins: [
     new webpack.DefinePlugin({
       // https://facebook.github.io/react/downloads.html#npm
-      'process.env': {
-        'NODE_ENV': '"production"',
-      },
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
 
     new webpack.DllPlugin({
@@ -31,12 +36,11 @@ export default {
 
     new webpack.optimize.UglifyJsPlugin({
       output: {
-        comments: false
+        comments: false,
       },
       compress: {
-        warnings: false
+        warnings: false,
       },
     }),
-    new webpack.optimize.OccurenceOrderPlugin()
   ],
 };
