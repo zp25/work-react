@@ -15,6 +15,24 @@ module.exports = (env) => {
   const DIST = path.resolve(__dirname, 'dist');
   const AUTOPREFIXER_BROWSERS = ['last 1 version'];
 
+  const devServer = {
+    host: process.env.HOST || 'localhost',
+    port: Number(process.env.PORT) || 8080,
+    hot: true,
+    historyApiFallback: true,
+    stats: {
+      colors: true,
+    },
+  };
+
+  const entry = {
+    main: (DEV ? [
+      'react-hot-loader/patch',
+      `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
+      'webpack/hot/only-dev-server',
+    ] : []).concat('./index'),
+  };
+
   const loaders = {
     prescript: ['eslint-loader'],
     script: ['babel-loader'],
@@ -55,6 +73,37 @@ module.exports = (env) => {
     ],
   };
 
+  const rules = [
+    {
+      enforce: 'pre',
+      test: /\.jsx?$/,
+      include: APP,
+      use: loaders.prescript,
+    },
+    {
+      test: /\.jsx?$/,
+      include: APP,
+      use: loaders.script,
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg|webp)$/i,
+      use: loaders.image,
+    },
+  ].concat(DEV ? [
+    {
+      test: /\.scss$/,
+      use: [{ loader: 'style-loader' }].concat(loaders.style),
+    }
+  ] : [
+    {
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: loaders.style,
+      }),
+    }
+  ]);
+
   const plugins = [
     new webpack.LoaderOptionsPlugin({
       minimize: !DEV,
@@ -75,7 +124,6 @@ module.exports = (env) => {
         'NODE_ENV': DEV ? JSON.stringify('development') : JSON.stringify('production'),
       },
     }),
-    new ExtractTextPlugin('styles.css'),
 
     new webpack.DllReferencePlugin({
       context: DIST,
@@ -89,6 +137,7 @@ module.exports = (env) => {
     ...(DEV ? [
       new webpack.HotModuleReplacementPlugin(),
     ] : [
+      new ExtractTextPlugin('styles.css'),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         output: {
@@ -101,27 +150,16 @@ module.exports = (env) => {
     ])
   ];
 
-  const devServer = {
-    host: process.env.HOST || 'localhost',
-    port: Number(process.env.PORT) || 8080,
-    hot: true,
-    historyApiFallback: true,
-    stats: {
-      colors: true,
-    },
+  const performance = {
+    maxAssetSize: DEV ? 2000000 : 200000,
+    maxEntrypointSize: DEV ? 4000000 : 400000,
   };
 
   return {
     target: 'web',
     devtool: DEV ? 'eval' : 'source-map',
     context: APP,
-    entry: {
-      main: (DEV ? [
-          'react-hot-loader/patch',
-          `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
-          'webpack/hot/only-dev-server',
-        ] : []).concat(['./index']),
-    },
+    entry,
     output: {
       path: DIST,
       filename: 'bundle.js',
@@ -131,33 +169,9 @@ module.exports = (env) => {
       extensions: ['.js', '.jsx', '.json'],
       modules: [APP, 'node_modules'],
     },
-    module: {
-      rules: [
-        {
-          enforce: 'pre',
-          test: /\.jsx?$/,
-          include: APP,
-          use: loaders.prescript,
-        },
-        {
-          test: /\.jsx?$/,
-          include: APP,
-          use: loaders.script,
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: loaders.style,
-          }),
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg|webp)$/i,
-          use: loaders.image,
-        },
-      ]
-    },
+    module: { rules },
     plugins,
     devServer,
+    performance,
   };
 };
