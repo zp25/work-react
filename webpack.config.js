@@ -22,6 +22,7 @@ module.exports = (env) => {
     historyApiFallback: true,
     stats: {
       colors: true,
+      maxModules: 15,
     },
   };
 
