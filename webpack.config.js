@@ -165,8 +165,7 @@ module.exports = (env) => {
       path: DIST,
       filename: 'bundle.js',
       // https://github.com/webpack/css-loader/issues/232
-      // publicPath: '/dist/',
-      publicPath: `http://${devServer.host}:${devServer.port}/dist/`,
+      publicPath: DEV ? `http://${devServer.host}:${devServer.port}/dist/` : '/dist/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
