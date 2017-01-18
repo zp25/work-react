@@ -90,20 +90,14 @@ module.exports = (env) => {
       test: /\.(jpe?g|png|gif|svg|webp)$/i,
       use: loaders.image,
     },
-  ].concat(DEV ? [
-    {
-      test: /\.scss$/,
-      use: [{ loader: 'style-loader' }].concat(loaders.style),
-    }
-  ] : [
     {
       test: /\.scss$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: loaders.style,
       }),
-    }
-  ]);
+    },
+  ];
 
   const plugins = [
     new webpack.LoaderOptionsPlugin({
@@ -135,10 +129,15 @@ module.exports = (env) => {
       manifest: manifestVendor,
     }),
 
+    new ExtractTextPlugin({
+      filename: 'styles.css',
+      allChunks: false,
+      disable: DEV,
+    }),
+
     ...(DEV ? [
       new webpack.HotModuleReplacementPlugin(),
     ] : [
-      new ExtractTextPlugin('styles.css'),
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         output: {
