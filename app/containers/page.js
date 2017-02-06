@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import Page from 'components/page';
 
 const mapStateToProps = store => ({
-  location: store.router.location,
   countdown: store.countdown,
 });
 

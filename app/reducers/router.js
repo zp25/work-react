@@ -1,12 +1,13 @@
-import createBrowserHistory from 'history/createBrowserHistory';
 import createReducer from 'utils/createReducer';
 import { NAVIGATE } from 'constants/actionTypes';
 
-const history = createBrowserHistory();
-
 const initState = {
-  location: history.location,
-  action: history.action,
+  location: {
+    pathname: '/',
+    search: '',
+    hash: '',
+  },
+  action: 'PUSH',
 };
 
 export default createReducer(initState, {

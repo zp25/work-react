@@ -32,8 +32,7 @@
     "react-dom": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-redux": "^5.0.2",
-    "react-router": "^4.0.0-beta.4",
-    "react-router-addons-controlled": "^0.0.1",
+    "react-router-dom": "^4.0.0-beta.4",
     "redux": "^3.6.0",
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
@@ -53,14 +52,14 @@
     "dotenv": "^4.0.0",
     "errorhandler": "^1.5.0",
     "eslint": "^3.15.0",
-    "eslint-config-airbnb": "^14.0.0",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "express": "^4.14.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.2",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
     "handlebars": "^4.0.6",
     "mocha": "^3.2.0",
@@ -70,8 +69,8 @@
     "shortid": "^2.2.6",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
   },
   "engines": {
     "node": ">=7.0.0"

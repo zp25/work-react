@@ -3,18 +3,15 @@ import React from 'react';
 import style from 'styles/content.scss';
 
 const Page = (props) => {
-  const { title, location, countdown } = props;
-  const text = location.pathname.slice(1).toLowerCase();
+  const { title, page, countdown } = props;
 
   return (
-    <p className={style.text}>{`${title}: ${text}, ${countdown}`}</p>
+    <p className={style.text}>{`${title}: ${page}, ${countdown}`}</p>
   );
 };
 
 Page.propTypes = {
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired,
-  }).isRequired,
+  page: React.PropTypes.string.isRequired,
   countdown: React.PropTypes.number.isRequired,
   // HOC
   title: React.PropTypes.string.isRequired,

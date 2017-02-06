@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Router from 'react-router-addons-controlled/ControlledBrowserRouter';
-// import Router from 'react-router/BrowserRouter';
-import { Link, Match, Miss } from 'react-router';
+import { Router, Link, Route, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import Home from 'containers/home';
 import Page from 'containers/page';
@@ -19,12 +17,21 @@ class App extends Component {
     this.routerChange = this.routerChange.bind(this);
   }
 
+  componentWillMount() {
+    this.initRouter();
+  }
+
   componentDidMount() {
-    // 呈现后开始倒计时
+    // 监听history变化
+    this.unlisten = history.listen(this.routerChange);
+
+    // 开始倒计时
     this.startContdown();
   }
 
   componentWillUnmount() {
+    this.unlisten();
+
     this.clearInterval();
   }
 
@@ -50,6 +57,13 @@ class App extends Component {
   }
 
   /**
+   * 初始化router
+   */
+  initRouter() {
+    this.routerChange(history.location, history.action);
+  }
+
+  /**
    * 处理路径变化
    */
   routerChange(location, action) {
@@ -63,35 +77,30 @@ class App extends Component {
   }
 
   render() {
-    const isActive = pathname => location => location.pathname.toLowerCase() === pathname;
+    const isActive = page => this.props.location.pathname.slice(1).toLowerCase() === page;
+    const renderPage = page => props => (
+      <Page {...props} page={page} />
+    );
 
     return (
-      <Router
-        history={history}
-        location={this.props.location}
-        action={this.props.action}
-        onChange={this.routerChange}
-      >
+      <Router history={history}>
         <div className={style.app}>
           <ul className={style.nav}>
             <li>
-              <Link to="/foo" activeClassName={style.active} isActive={isActive('/foo')}>Foo</Link>
+              <Link to="/foo" className={isActive('foo') && style.active}>Foo</Link>
             </li>
             <li>
-              <Link to="/bar" activeClassName={style.active} isActive={isActive('/bar')}>Bar</Link>
+              <Link to="/bar" className={isActive('bar') && style.active}>Bar</Link>
             </li>
           </ul>
 
-          <Match
-            pattern="/"
-            render={() => (
-              <div className={style.content}>
-                <Match exactly pattern="/foo" component={Page} />
-                <Match exactly pattern="/bar" component={Page} />
-                <Miss component={Home} />
-              </div>
-            )}
-          />
+          <div className={style.content}>
+            <Switch>
+              <Route exact strict path="/foo" render={renderPage('foo')} />
+              <Route exact strict path="/bar" render={renderPage('bar')} />
+              <Route component={Home} />
+            </Switch>
+          </div>
 
           <Picture />
         </div>
