@@ -92,9 +92,9 @@ module.exports = (env) => {
     },
     {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: loaders.style,
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: loaders.style,
       }),
     },
   ];
