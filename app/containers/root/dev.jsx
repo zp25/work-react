@@ -7,10 +7,10 @@ import DevTools from 'containers/devtools';
 
 import 'styles/root.scss';
 
-export default ({ store }) => (
+export default ({ store, history }) => (
   <Provider store={store}>
     <div className="dev">
-      <App />
+      <App history={history} />
       <DevTools />
     </div>
   </Provider>

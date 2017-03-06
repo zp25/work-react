@@ -7,7 +7,7 @@ const initState = {
     search: '',
     hash: '',
   },
-  action: 'PUSH',
+  action: 'POP',
 };
 
 export default createReducer(initState, {

@@ -6,8 +6,8 @@ import App from 'containers/app';
 
 import 'styles/root.scss';
 
-export default ({ store }) => (
+export default ({ store, history }) => (
   <Provider store={store}>
-    <App />
+    <App history={history} />
   </Provider>
 );
