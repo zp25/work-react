@@ -14,3 +14,4 @@ webpack 2 + redux + react router 4 + react hot loader 3
 + [Redux DevTools Log Monitor](https://github.com/gaearon/redux-devtools-log-monitor "Redux DevTools Log Monitor")
 + [Walkthrough](https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md "Walkthrough")
 + [webpack releases page](https://github.com/webpack/webpack/releases "webpack releases page")
++ [Building for Production](https://webpack.js.org/guides/production-build/ "Building for Production")
