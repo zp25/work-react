@@ -10,7 +10,7 @@ const manifestVendor = require('./dist/vendor-manifest.json');
 dotenv.config({ silent: true });
 
 module.exports = (env) => {
-  const DEV = env === 'DEVELOPMENT';
+  const DEV = env && env.development;
   const APP = path.resolve(__dirname, 'app');
   const DIST = path.resolve(__dirname, 'dist');
   const AUTOPREFIXER_BROWSERS = ['last 1 version'];
@@ -113,12 +113,6 @@ module.exports = (env) => {
         },
       },
     }),
-    new webpack.DefinePlugin({
-      // https://facebook.github.io/react/downloads.html#npm
-      'process.env': {
-        'NODE_ENV': DEV ? JSON.stringify('development') : JSON.stringify('production'),
-      },
-    }),
 
     new webpack.DllReferencePlugin({
       context: DIST,
@@ -137,6 +131,8 @@ module.exports = (env) => {
 
     ...(DEV ? [
       new webpack.HotModuleReplacementPlugin(),
+      // prints more readable module names in the browser console on HMR updates
+      new webpack.NamedModulesPlugin(),
     ] : [
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
@@ -150,14 +146,9 @@ module.exports = (env) => {
     ])
   ];
 
-  const performance = {
-    maxAssetSize: DEV ? 2000000 : 200000,
-    maxEntrypointSize: DEV ? 4000000 : 400000,
-  };
-
   return {
     target: 'web',
-    devtool: DEV ? 'eval' : 'source-map',
+    devtool: DEV ? 'eval-cheap-module-source-map' : 'source-map',
     context: APP,
     entry,
     output: {
@@ -173,6 +164,5 @@ module.exports = (env) => {
     module: { rules },
     plugins,
     devServer,
-    performance,
   };
 };
