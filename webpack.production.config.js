@@ -1,38 +1,25 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
-const dotenv = require('dotenv');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const { AUTOPREFIXER_CONFIG, VENDOR } = require('./constants');
-
-dotenv.config({ silent: true });
+const ManifestPlugin = require('./manifestPlugin');
+const {
+  AUTOPREFIXER_CONFIG,
+  HTMLMINIFIER,
+  VENDOR,
+} = require('./constants');
 
 module.exports = (env) => {
   const APP = path.resolve(__dirname, 'app');
   const DIST = path.resolve(__dirname, 'dist');
+  // const INDX = path.resolve(__dirname, 'index.html');
   const TEMP = path.resolve(__dirname, 'views/layouts/main.hbs');
 
-  const devServer = {
-    host: process.env.HOST || 'localhost',
-    port: Number(process.env.PORT) || 8080,
-    hot: true,
-    historyApiFallback: true,
-    stats: {
-      colors: true,
-      maxModules: 15,
-    },
-  };
-
   const entry = {
-    main: [
-      'react-hot-loader/patch',
-      `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
-      'webpack/hot/only-dev-server',
-      './index',
-    ],
+    main: './index',
     vendor: VENDOR,
   };
 
@@ -60,20 +47,14 @@ module.exports = (env) => {
       },
     ],
     image: [
-      // {
-      //   loader: 'url-loader',
-      //   options: {
-      //     name: DEV ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
-      //     limit: 10000,
-      //   },
-      // },
       {
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]?[sha1:hash:base64:10]',
+          name: '[path][sha1:hash:base64:10].[ext]',
         },
       },
     ],
+    template: ['handlebars-loader'],
   };
 
   const rules = [
@@ -98,13 +79,16 @@ module.exports = (env) => {
         fallback: 'style-loader',
         use: loaders.style,
       }),
-      // use: loaders.style,
+    },
+    {
+      test: /\.(hbs|handlebars)$/,
+      use: loaders.template,
     },
   ];
 
   const plugins = [
     new webpack.LoaderOptionsPlugin({
-      minimize: false,
+      minimize: true,
       debug: false,
       options: {
         context: APP,
@@ -118,39 +102,47 @@ module.exports = (env) => {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'scripts/vendor.js',
+      filename: 'scripts/vendor.[chunkhash:10].js',
     }),
     new ExtractTextPlugin({
-      filename: 'styles/styles.css',
+      filename: 'styles/styles.[contenthash:10].css',
       allChunks: false,
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      output: {
+        comments: false,
+      },
+      compress: {
+        warnings: false,
+      },
+    }),
+
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,
+      minify: HTMLMINIFIER,
     }),
     new CopyWebpackPlugin([{
       from: 'assets/',
       to: DIST,
     }], {
-      copyUnmodified: false,
+      copyUnmodified: true,
     }),
-
-    new webpack.HotModuleReplacementPlugin(),
-    // prints more readable module names in the browser console on HMR updates
-    new webpack.NamedModulesPlugin(),
+    new ManifestPlugin({
+      path: process.cwd(),
+      filename: 'manifest.json',
+    }),
   ];
 
   return {
     target: 'web',
-    devtool: 'eval-cheap-module-source-map',
+    devtool: 'source-map',
     context: APP,
     entry,
     output: {
       path: DIST,
-      filename: 'scripts/bundle.js',
-      // https://github.com/webpack/css-loader/issues/232
-      // publicPath: `http://${devServer.host}:${devServer.port}/dist/`,
-      publicPath: `http://${devServer.host}:${devServer.port}/`,
+      filename: 'scripts/bundle.[chunkhash:10].js',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -158,6 +150,5 @@ module.exports = (env) => {
     },
     module: { rules },
     plugins,
-    devServer,
   };
 };
