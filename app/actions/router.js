@@ -1,4 +1,4 @@
-import createAction from 'utils/createAction';
+import { createAction } from 'lib';
 import { NAVIGATE } from 'constants/actionTypes';
 
 // 导航
