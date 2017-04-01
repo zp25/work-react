@@ -4,6 +4,36 @@ react起始模版
 
 webpack 2 + redux + react router 4 + react hot loader 3
 
+## 目录
+app目录
+
+~~~
++-- actions
++-- assets
++-- components
+|   +-- app.jsx
++-- constants
+|   +-- actionTypes.js
++-- containers
+|   +-- root
+|   |   +-- dev.jsx
+|   |   +-- index.jsx
+|   |   +-- prod.jsx
+|   +-- app.jsx
+|   +-- devtools.jsx
++-- images
++-- lib
+|   +-- createAction.jsx
+|   +-- createReducer.jsx
+|   +-- index.jsx
++-- reducers
++-- store
++-- styles
++-- index.jsx
+~~~
+assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
+
+## 资源
 + [Webpack Configuration](https://webpack.js.org/configuration/ "Webpack Configuration")
 + [React Hot Loader 3](https://github.com/gaearon/react-hot-loader/tree/next "React Hot Loader 3")
 + [Starter Kits](https://github.com/gaearon/react-hot-loader/tree/master/docs#starter-kits "Starter Kits")
