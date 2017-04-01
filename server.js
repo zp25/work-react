@@ -9,7 +9,7 @@ dotenv.config({ silent: true });
 const app = express();
 
 const static = path.resolve(__dirname, 'dist');
-const index = path.resolve(dist, 'index.html');
+const index = path.resolve(static, 'index.html');
 
 /** const */
 app.set('port', process.env.PORT || 8080);

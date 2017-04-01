@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const ManifestPlugin = require('./manifestPlugin');
@@ -101,8 +102,8 @@ module.exports = (env) => {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'scripts/vendor.[chunkhash:10].js',
+      name: ['vendor', 'manifest'],
+      minChunks: Infinity,
     }),
     new ExtractTextPlugin({
       filename: 'styles/styles.[contenthash:10].css',
@@ -122,7 +123,9 @@ module.exports = (env) => {
       filename: 'index.html',
       template: TEMP,
       minify: HTMLMINIFIER,
+      inlineSource: 'manifest',
     }),
+    new HtmlWebpackInlineSourcePlugin(),
     new CopyWebpackPlugin([{
       from: 'assets/',
       to: DIST,
@@ -142,7 +145,8 @@ module.exports = (env) => {
     entry,
     output: {
       path: DIST,
-      filename: 'scripts/bundle.[chunkhash:10].js',
+      filename: 'scripts/[name].[chunkhash:10].js',
+      chunkFilename: 'scripts/[name].[chunkhash:10].js',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],

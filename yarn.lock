@@ -2013,9 +2013,9 @@ eslint-import-resolver-webpack@^0.8.1:
     resolve "^1.2.0"
     semver "^5.3.0"
 
-eslint-loader@^1.7.0:
-  version "1.7.0"
-  resolved "http://registry.npm.taobao.org/eslint-loader/download/eslint-loader-1.7.0.tgz#9813e77046730191ab399938732dff7960c639cb"
+eslint-loader@^1.7.1:
+  version "1.7.1"
+  resolved "http://registry.npm.taobao.org/eslint-loader/download/eslint-loader-1.7.1.tgz#50b158dd6272dcefb97e984254837f81a5802ce0"
   dependencies:
     find-cache-dir "^0.1.1"
     loader-fs-cache "^1.0.0"
@@ -2067,9 +2067,9 @@ eslint-plugin-react@^6.10.3:
     jsx-ast-utils "^1.3.4"
     object.assign "^4.0.4"
 
-eslint@^3.18.0:
-  version "3.18.0"
-  resolved "http://registry.npm.taobao.org/eslint/download/eslint-3.18.0.tgz#647e985c4ae71502d20ac62c109f66d5104c8a4b"
+eslint@^3.19.0:
+  version "3.19.0"
+  resolved "http://registry.npm.taobao.org/eslint/download/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -2292,9 +2292,9 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^0.10.1:
-  version "0.10.1"
-  resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-0.10.1.tgz#815034119891fc6441fb5a64c11bc93c22ddd842"
+file-loader@^0.11.0:
+  version "0.11.0"
+  resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-0.11.0.tgz#af018f39c44617305f1ee92f850c7a65a4331616"
   dependencies:
     loader-utils "^1.0.2"
 
@@ -2692,6 +2692,14 @@ html-minifier@^3.2.3:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "2.8.x"
+
+html-webpack-inline-source-plugin@^0.0.7:
+  version "0.0.7"
+  resolved "http://registry.npm.taobao.org/html-webpack-inline-source-plugin/download/html-webpack-inline-source-plugin-0.0.7.tgz#0f35ea7472661c934a7d4086441a4d49b7f89c58"
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    slash "^1.0.0"
+    source-map-url "^0.4.0"
 
 html-webpack-plugin@^2.28.0:
   version "2.28.0"
@@ -5032,6 +5040,10 @@ source-map-support@^0.4.2:
   resolved "http://registry.npm.taobao.org/source-map-support/download/source-map-support-0.4.11.tgz#647f939978b38535909530885303daf23279f322"
   dependencies:
     source-map "^0.5.3"
+
+source-map-url@^0.4.0:
+  version "0.4.0"
+  resolved "http://registry.npm.taobao.org/source-map-url/download/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
 
 source-map@0.5.x, source-map@^0.5.0, source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
   version "0.5.6"

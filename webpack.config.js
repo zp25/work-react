@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const dotenv = require('dotenv');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { AUTOPREFIXER_CONFIG, VENDOR } = require('./constants');
@@ -117,8 +118,8 @@ module.exports = (env) => {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'scripts/vendor.js',
+      name: ['vendor', 'manifest'],
+      minChunks: Infinity,
     }),
     new ExtractTextPlugin({
       filename: 'styles/styles.css',
@@ -127,7 +128,9 @@ module.exports = (env) => {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,
+      inlineSource: 'manifest',
     }),
+    new HtmlWebpackInlineSourcePlugin(),
     new CopyWebpackPlugin([{
       from: 'assets/',
       to: DIST,
@@ -147,9 +150,9 @@ module.exports = (env) => {
     entry,
     output: {
       path: DIST,
-      filename: 'scripts/bundle.js',
+      filename: 'scripts/[name].js',
+      chunkFilename: 'scripts/[name].js',
       // https://github.com/webpack/css-loader/issues/232
-      // publicPath: `http://${devServer.host}:${devServer.port}/dist/`,
       publicPath: `http://${devServer.host}:${devServer.port}/`,
     },
     resolve: {
