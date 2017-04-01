@@ -45,3 +45,4 @@ assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
 + [Walkthrough](https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md "Walkthrough")
 + [webpack releases page](https://github.com/webpack/webpack/releases "webpack releases page")
 + [Building for Production](https://webpack.js.org/guides/production-build/ "Building for Production")
++ [Caching](https://webpack.js.org/guides/caching/ "Caching")
