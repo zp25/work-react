@@ -16,7 +16,6 @@ const {
 module.exports = (env) => {
   const APP = path.resolve(__dirname, 'app');
   const DIST = path.resolve(__dirname, 'dist');
-  // const INDX = path.resolve(__dirname, 'index.html');
   const TEMP = path.resolve(__dirname, 'views/layouts/main.hbs');
 
   const entry = {

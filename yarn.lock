@@ -2292,9 +2292,9 @@ file-entry-cache@^2.0.0:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
 
-file-loader@^0.11.0:
-  version "0.11.0"
-  resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-0.11.0.tgz#af018f39c44617305f1ee92f850c7a65a4331616"
+file-loader@^0.11.1:
+  version "0.11.1"
+  resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-0.11.1.tgz#6b328ee1234a729e4e47d36375dd6d35c0e1db84"
   dependencies:
     loader-utils "^1.0.2"
 
@@ -5202,7 +5202,7 @@ style-loader@^0.16.1:
   dependencies:
     loader-utils "^1.0.2"
 
-supports-color@3.1.2, supports-color@^3.1.0, supports-color@^3.1.1:
+supports-color@3.1.2, supports-color@^3.1.1:
   version "3.1.2"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
@@ -5216,7 +5216,7 @@ supports-color@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.2.3:
+supports-color@^3.1.0, supports-color@^3.2.3:
   version "3.2.3"
   resolved "http://registry.npm.taobao.org/supports-color/download/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
@@ -5571,9 +5571,9 @@ webpack-sources@^0.2.3:
     source-list-map "^1.1.1"
     source-map "~0.5.3"
 
-webpack@^2.3.2:
-  version "2.3.2"
-  resolved "http://registry.npm.taobao.org/webpack/download/webpack-2.3.2.tgz#7d521e6f0777a3a58985c69425263fdfe977b458"
+webpack@^2.3.3:
+  version "2.3.3"
+  resolved "http://registry.npm.taobao.org/webpack/download/webpack-2.3.3.tgz#eecc083c18fb7bf958ea4f40b57a6640c5a0cc78"
   dependencies:
     acorn "^4.0.4"
     acorn-dynamic-import "^2.0.0"

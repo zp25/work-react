@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.development --progress",
-    "prebuild": "rimraf dist public",
+    "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --env.production -p --config webpack.production.config.js --progress",
     "serve": "node server.js",
     "test": "mocha --harmony --check-leaks"
@@ -60,7 +60,7 @@
     "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.11.0",
+    "file-loader": "^0.11.1",
     "handlebars": "^4.0.6",
     "handlebars-loader": "^1.4.0",
     "html-webpack-inline-source-plugin": "^0.0.7",
@@ -73,7 +73,7 @@
     "shortid": "^2.2.8",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.3.2",
+    "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   },
   "engines": {

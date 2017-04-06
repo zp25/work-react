@@ -99,7 +99,6 @@ module.exports = (env) => {
         fallback: 'style-loader',
         use: loaders.style,
       }),
-      // use: loaders.style,
     },
   ];
 
