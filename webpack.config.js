@@ -75,6 +75,7 @@ module.exports = (env) => {
         },
       },
     ],
+    template: ['handlebars-loader'],
   };
 
   const rules = [
@@ -99,6 +100,10 @@ module.exports = (env) => {
         fallback: 'style-loader',
         use: loaders.style,
       }),
+    },
+    {
+      test: /\.(hbs|handlebars)$/,
+      use: loaders.template,
     },
   ];
 
