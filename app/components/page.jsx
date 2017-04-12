@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import style from 'styles/content.scss';
 
@@ -11,10 +12,10 @@ const Page = (props) => {
 };
 
 Page.propTypes = {
-  page: React.PropTypes.string.isRequired,
-  countdown: React.PropTypes.number.isRequired,
+  page: PropTypes.string.isRequired,
+  countdown: PropTypes.number.isRequired,
   // HOC
-  title: React.PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Page;
