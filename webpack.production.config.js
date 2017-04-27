@@ -146,6 +146,7 @@ module.exports = (env) => {
       path: DIST,
       filename: 'scripts/[name].[chunkhash:10].js',
       chunkFilename: 'scripts/[name].[chunkhash:10].js',
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],

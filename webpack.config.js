@@ -25,6 +25,7 @@ module.exports = (env) => {
       colors: true,
       maxModules: 15,
     },
+    // disableHostCheck: true,
   };
 
   const entry = {
