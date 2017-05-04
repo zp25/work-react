@@ -101,6 +101,7 @@ module.exports = (env) => {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
+      // 单独的manifest文件，提高缓存效率
       name: ['vendor', 'manifest'],
       minChunks: Infinity,
     }),
@@ -122,9 +123,11 @@ module.exports = (env) => {
       filename: 'index.html',
       template: TEMP,
       minify: HTMLMINIFIER,
+      // manifest文件以inline方式写入html
       inlineSource: 'manifest',
     }),
     new HtmlWebpackInlineSourcePlugin(),
+
     new CopyWebpackPlugin([{
       from: 'assets/',
       to: DIST,

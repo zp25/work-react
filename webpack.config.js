@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer');
 const dotenv = require('dotenv');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const { AUTOPREFIXER_CONFIG, VENDOR } = require('./constants');
@@ -24,6 +23,10 @@ module.exports = (env) => {
     stats: {
       colors: true,
       maxModules: 15,
+      chunks: false,
+      hash: true,
+      timings: true,
+      version: true,
     },
     // disableHostCheck: true,
   };
@@ -123,8 +126,8 @@ module.exports = (env) => {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'manifest'],
-      minChunks: Infinity,
+      name: 'vendor',
+      filename: 'vendor.js',
     }),
     new ExtractTextPlugin({
       filename: 'styles/styles.css',
@@ -133,9 +136,7 @@ module.exports = (env) => {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,
-      inlineSource: 'manifest',
     }),
-    new HtmlWebpackInlineSourcePlugin(),
     new CopyWebpackPlugin([{
       from: 'assets/',
       to: DIST,
