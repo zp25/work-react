@@ -21,7 +21,8 @@
     "no-cond-assign": ["error", "except-parens"],
     "no-param-reassign": [
       "error", { "props": false }
-    ]
+    ],
+    "jsx-a11y/img-has-alt": "off"
   },
   "extends": "airbnb"
 }

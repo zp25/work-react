@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
@@ -8,7 +7,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const ManifestPlugin = require('./manifestPlugin');
 const {
-  AUTOPREFIXER_CONFIG,
   HTMLMINIFIER,
   VENDOR,
 } = require('./constants');
@@ -29,7 +27,7 @@ module.exports = (env) => {
     style: [
       {
         loader: 'css-loader',
-        query: {
+        options: {
           modules: true,
           importLoaders: 2,
           localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -38,10 +36,13 @@ module.exports = (env) => {
       },
       {
         loader: 'postcss-loader',
+        options: {
+          sourceMap: true,
+        },
       },
       {
         loader: 'sass-loader',
-        query: {
+        options: {
           sourceMap: true,
         },
       },
@@ -92,9 +93,6 @@ module.exports = (env) => {
       debug: false,
       options: {
         context: APP,
-        postcss: [
-          autoprefixer(AUTOPREFIXER_CONFIG),
-        ],
         sassLoader: {
           includePaths: ['node_modules'],
         },
