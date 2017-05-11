@@ -12,7 +12,7 @@ const static = path.resolve(__dirname, 'dist');
 const index = path.resolve(static, 'index.html');
 
 /** const */
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PROD_PORT || 8081);
 
 /** compression */
 app.use(compression())
