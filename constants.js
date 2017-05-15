@@ -13,6 +13,7 @@ const HTMLMINIFIER = {
 };
 
 const VENDOR = [
+  'prop-types',
   'react',
   'react-dom',
   'redux',

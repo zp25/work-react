@@ -18,11 +18,7 @@
     }
   },
   "rules": {
-    "no-cond-assign": ["error", "except-parens"],
-    "no-param-reassign": [
-      "error", { "props": false }
-    ],
-    "jsx-a11y/img-has-alt": "off"
+    "no-cond-assign": ["error", "except-parens"]
   },
   "extends": "airbnb"
 }
