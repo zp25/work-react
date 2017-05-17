@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -44,6 +43,14 @@ module.exports = (env) => {
     prescript: ['eslint-loader'],
     script: ['babel-loader'],
     style: [
+      {
+        loader: 'style-loader',
+        options: {
+          sourceMap: true,
+          /** @see {@link https://github.com/webpack-contrib/style-loader/pull/96} */
+          convertToAbsoluteUrls: true,
+        },
+      },
       {
         loader: 'css-loader',
         options: {
@@ -102,10 +109,7 @@ module.exports = (env) => {
     },
     {
       test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: loaders.style,
-      }),
+      use: loaders.style,
     },
     {
       test: /\.(hbs|handlebars)$/,
@@ -127,10 +131,6 @@ module.exports = (env) => {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.js',
-    }),
-    new ExtractTextPlugin({
-      filename: 'styles/styles.css',
-      allChunks: false,
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -157,8 +157,7 @@ module.exports = (env) => {
       path: DIST,
       filename: 'scripts/[name].js',
       chunkFilename: 'scripts/[name].js',
-      // https://github.com/webpack/css-loader/issues/232
-      publicPath: `http://${devServer.host}:${devServer.port}/`,
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
