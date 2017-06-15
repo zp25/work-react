@@ -1,5 +1,3 @@
-const AUTOPREFIXER_CONFIG = { browsers: ['last 1 version'] };
-
 const HTMLMINIFIER = {
   collapseWhitespace: true,
   collapseBooleanAttributes: true,
@@ -21,7 +19,6 @@ const VENDOR = [
 ];
 
 module.exports = {
-  AUTOPREFIXER_CONFIG,
   HTMLMINIFIER,
   VENDOR,
 };
