@@ -1,6 +1,5 @@
 @import 'global';
 
 .text {
-  font-size: fontSize();
-  @extend .ellipsis;
+  font-size: fontSize(bold);
 }

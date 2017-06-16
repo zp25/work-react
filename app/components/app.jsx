@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <Router history={this.props.history}>
         <div className={style.app}>
-          <ul className={style.nav}>
+          <ul className={[style.nav, style.container].join(' ')}>
             <li>
               <Link to="/foo" className={isActive('foo') ? style.active : ''}>Foo</Link>
             </li>
@@ -66,7 +66,7 @@ class App extends Component {
             </li>
           </ul>
 
-          <div className={style.content}>
+          <div className={[style.content, style.container].join(' ')}>
             <Switch>
               <Route exact strict path="/foo" render={renderPage('foo')} />
               <Route exact strict path="/bar" render={renderPage('bar')} />

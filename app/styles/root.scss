@@ -10,9 +10,9 @@
 }
 
 // http://www.outlinenone.com/
-:focus {
-  outline: none;
-}
+// :focus {
+//   outline: none;
+// }
 
 html, button, input, textarea, select {
   padding: 0;
@@ -35,26 +35,38 @@ a, img {
 }
 
 html {
-  height: 100%;
   font-size: 100px;
   // 取消移动浏览器缩放字体算法(inflation algorithm)
   text-size-adjust: none;
-  // user-select: none;
 
   body {
-    height: 100%;
     font-family: Helvetica, Tahoma, Arial, sans-serif;
     font-size: fontSize();
     line-height: 1.5;
   }
 }
 
+:global(#root) {
+  height: 100vh;
+}
+
 :global(.dev) {
   height: 100%;
 }
 
-:global(#root) {
-  height: 100%;
+:global(.ellipsis) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// http://www.cssmojo.com/latest_new_clearfix_so_far/
+:global(.cf) {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
 }
 
 // iphone5
