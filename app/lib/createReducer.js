@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 /**
  * Reducer Factory
  * @param {*} initialState - state tree特定部分的默认值

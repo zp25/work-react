@@ -128,10 +128,16 @@ module.exports = (env) => {
         },
       },
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development'),
+      },
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.js',
     }),
+
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,

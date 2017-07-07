@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 /**
  * FSA Factory
  * @see {@link https://github.com/acdlite/redux-actions/blob/master/src/createAction.js}

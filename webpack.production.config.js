@@ -103,10 +103,7 @@ module.exports = (env) => {
       name: ['vendor', 'manifest'],
       minChunks: Infinity,
     }),
-    new ExtractTextPlugin({
-      filename: 'styles/styles.[contenthash:10].css',
-      allChunks: false,
-    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       output: {
@@ -117,6 +114,10 @@ module.exports = (env) => {
       },
     }),
 
+    new ExtractTextPlugin({
+      filename: 'styles/styles.[contenthash:10].css',
+      allChunks: false,
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,
