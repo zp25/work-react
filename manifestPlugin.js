@@ -82,11 +82,18 @@ class ManifestPlugin {
         }, {}
       ));
 
+      // sort
+      const sortedManifest = Object.keys(this.manifest)
+        .sort()
+        .reduce((prev, key) => Object.assign({}, prev, {
+          [key]: this.manifest[key],
+        }), {});
+
       // output，新建一个asset
       const relPath = path.relative(compilation.options.output.path, outputPath);
       const manifest = path.join(relPath, filename);
 
-      const result = this.constructor.jsonStringifyPretty(this.manifest);
+      const result = this.constructor.jsonStringifyPretty(sortedManifest);
 
       compilation.assets[manifest] = {
         source: () => result,
