@@ -5943,7 +5943,7 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webpack-dev-middleware@^1.10.2:
+webpack-dev-middleware@^1.11.0:
   version "1.11.0"
   resolved "http://registry.npm.taobao.org/webpack-dev-middleware/download/webpack-dev-middleware-1.11.0.tgz#09691d0973a30ad1f82ac73a12e2087f0a4754f9"
   dependencies:
@@ -5952,9 +5952,9 @@ webpack-dev-middleware@^1.10.2:
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
 
-webpack-dev-server@^2.5.0:
-  version "2.5.0"
-  resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-2.5.0.tgz#4d36a728b03b8b2afa48ed302428847cea2840ad"
+webpack-dev-server@^2.5.1:
+  version "2.5.1"
+  resolved "http://registry.npm.taobao.org/webpack-dev-server/download/webpack-dev-server-2.5.1.tgz#a02e726a87bb603db5d71abb7d6d2649bf10c769"
   dependencies:
     ansi-html "0.0.7"
     bonjour "^3.5.0"
@@ -5975,7 +5975,7 @@ webpack-dev-server@^2.5.0:
     spdy "^3.4.1"
     strip-ansi "^3.0.0"
     supports-color "^3.1.1"
-    webpack-dev-middleware "^1.10.2"
+    webpack-dev-middleware "^1.11.0"
     yargs "^6.0.0"
 
 webpack-sources@^1.0.1:
@@ -6155,3 +6155,7 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zp-ui@^0.0.2:
+  version "0.0.2"
+  resolved "http://registry.npm.taobao.org/zp-ui/download/zp-ui-0.0.2.tgz#dadd02cf90b72bd23f959a2d9f7a4fefa4869d13"

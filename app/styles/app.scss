@@ -1,4 +1,5 @@
-@import 'global';
+@import 'color.map';
+@import '~zp-ui/styles/func';
 
 .app {
   min-height: 100%;
@@ -6,13 +7,16 @@
 
   .container {
     width: 100%;
-    max-width: 1000px;
+
+    @media only screen and (min-width: 1001px) {
+      & {
+        width: 95%
+      }
+    }
   }
 
   .nav {
     flex: 0 0 auto;
-    list-style-position: inside;
-    padding: 0 torem(5px);
 
     .active {
       color: color(green);

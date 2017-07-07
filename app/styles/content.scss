@@ -1,4 +1,5 @@
-@import 'global';
+@import 'color.map';
+@import '~zp-ui/styles/func';
 
 .text {
   font-size: fontSize(bold);
