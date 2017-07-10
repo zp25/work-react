@@ -46,3 +46,4 @@ assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
 + [webpack releases page](https://github.com/webpack/webpack/releases "webpack releases page")
 + [Building for Production](https://webpack.js.org/guides/production-build/ "Building for Production")
 + [Caching](https://webpack.js.org/guides/caching/ "Caching")
++ [Analysing and minimising the size of client side bundle with webpack and source-map-explorer](https://medium.com/@nimgrg/analysing-and-minimising-the-size-of-client-side-bundle-with-webpack-and-source-map-explorer-41096559beca "Analysing and minimising the size of client side bundle with webpack and source-map-explorer")
