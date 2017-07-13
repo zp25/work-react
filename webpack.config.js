@@ -1,11 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const dotenv = require('dotenv');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const manifestUtils = require('./dist/utils-manifest.json');
-const manifestVendor = require('./dist/vendor-manifest.json');
+const { HTMLMINIFIER } = require('./constants');
+
+const manifestUtils = require('./dll/utils-manifest.json');
+const manifestVendor = require('./dll/vendor-manifest.json');
 
 dotenv.config({ silent: true });
 
@@ -13,7 +17,7 @@ module.exports = (env) => {
   const DEV = env && env.development;
   const APP = path.resolve(__dirname, 'app');
   const DIST = path.resolve(__dirname, 'dist');
-  const AUTOPREFIXER_BROWSERS = ['last 1 version'];
+  const TEMP = path.resolve(__dirname, 'views/layouts/main.hbs');
 
   const devServer = {
     host: process.env.HOST || 'localhost',
@@ -23,15 +27,21 @@ module.exports = (env) => {
     stats: {
       colors: true,
       maxModules: 15,
+      chunks: false,
+      hash: true,
+      timings: true,
+      version: true,
     },
+    // disableHostCheck: true,
   };
 
   const entry = {
-    main: (DEV ? [
+    main: DEV ? [
       'react-hot-loader/patch',
       `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
       'webpack/hot/only-dev-server',
-    ] : []).concat('./index'),
+      './index',
+    ] : ['./index'],
   };
 
   const loaders = {
@@ -39,8 +49,16 @@ module.exports = (env) => {
     script: ['babel-loader'],
     style: [
       {
+        loader: 'style-loader',
+        options: {
+          sourceMap: true,
+          /** @see {@link https://github.com/webpack-contrib/style-loader/pull/96} */
+          convertToAbsoluteUrls: true,
+        },
+      },
+      {
         loader: 'css-loader',
-        query: {
+        options: {
           modules: true,
           importLoaders: 2,
           localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -49,29 +67,34 @@ module.exports = (env) => {
       },
       {
         loader: 'postcss-loader',
-      },
-      {
-        loader: 'sass-loader',
-        query: {
+        options: {
           sourceMap: true,
         },
       },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+        },
+      },
+
     ],
     image: [
       // {
       //   loader: 'url-loader',
       //   options: {
-      //     name: DEV ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+      //     name: '[path][name].[ext]?[sha1:hash:base64:10]',
       //     limit: 10000,
       //   },
       // },
       {
         loader: 'file-loader',
         options: {
-          name: DEV ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
+          name: '[path][name].[ext]?[sha1:hash:base64:10]',
         },
       },
     ],
+    template: ['handlebars-loader'],
   };
 
   const rules = [
@@ -92,10 +115,14 @@ module.exports = (env) => {
     },
     {
       test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
+      use: DEV ? loaders.style : ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: loaders.style,
+        use: loaders.style.slice(1),
       }),
+    },
+    {
+      test: /\.(hbs|handlebars)$/,
+      use: loaders.template,
     },
   ];
 
@@ -105,9 +132,6 @@ module.exports = (env) => {
       debug: false,
       options: {
         context: APP,
-        postcss: [
-          autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }),
-        ],
         sassLoader: {
           includePaths: ['node_modules'],
         },
@@ -115,18 +139,44 @@ module.exports = (env) => {
     }),
 
     new webpack.DllReferencePlugin({
-      context: DIST,
+      context: __dirname,
       manifest: manifestUtils,
     }),
     new webpack.DllReferencePlugin({
-      context: DIST,
+      context: __dirname,
       manifest: manifestVendor,
     }),
 
     new ExtractTextPlugin({
-      filename: 'styles.css',
+      filename: 'styles/styles.css',
       allChunks: false,
       disable: DEV,
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: TEMP,
+      minify: !DEV && HTMLMINIFIER,
+    }),
+    new AddAssetHtmlPlugin([
+      {
+        filepath: require.resolve('./dll/utils'),
+        outputPath: 'scripts',
+        publicPath: '/scripts',
+        includeSourcemap: true,
+      },
+      {
+        filepath: require.resolve('./dll/vendor'),
+        outputPath: 'scripts',
+        publicPath: '/scripts',
+        includeSourcemap: true,
+      },
+    ]),
+
+    new CopyWebpackPlugin([{
+      from: 'assets/',
+      to: DIST,
+    }], {
+      copyUnmodified: !DEV,
     }),
 
     ...(DEV ? [
@@ -146,16 +196,15 @@ module.exports = (env) => {
     ])
   ];
 
-  return {
+  const config = {
     target: 'web',
     devtool: DEV ? 'eval-cheap-module-source-map' : 'source-map',
     context: APP,
     entry,
     output: {
       path: DIST,
-      filename: 'bundle.js',
-      // https://github.com/webpack/css-loader/issues/232
-      publicPath: DEV ? `http://${devServer.host}:${devServer.port}/dist/` : '/dist/',
+      filename: 'scripts/bundle.js',
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -163,6 +212,7 @@ module.exports = (env) => {
     },
     module: { rules },
     plugins,
-    devServer,
   };
+
+  return DEV ? Object.assign({}, config, { devServer }) : config;
 };

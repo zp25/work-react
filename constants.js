@@ -12,6 +12,11 @@ const HTMLMINIFIER = {
   removeStyleLinkTypeAttributes: true,
 };
 
+const UTILS = [
+  'history',
+  'redux-thunk',
+];
+
 const VENDOR = [
   'react',
   'react-dom',
@@ -21,5 +26,6 @@ const VENDOR = [
 
 module.exports = {
   HTMLMINIFIER,
+  UTILS,
   VENDOR,
 };
