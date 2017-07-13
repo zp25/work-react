@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Router, Link, Route, Switch } from 'react-router-dom';
 import Home from 'containers/home';
 import Page from 'containers/page';
@@ -56,7 +57,7 @@ class App extends Component {
     return (
       <Router history={this.props.history}>
         <div className={style.app}>
-          <ul className={style.nav}>
+          <ul className={[style.nav, style.container].join(' ')}>
             <li>
               <Link to="/foo" className={isActive('foo') ? style.active : ''}>Foo</Link>
             </li>
@@ -65,7 +66,7 @@ class App extends Component {
             </li>
           </ul>
 
-          <div className={style.content}>
+          <div className={[style.content, style.container].join(' ')}>
             <Switch>
               <Route exact strict path="/foo" render={renderPage('foo')} />
               <Route exact strict path="/bar" render={renderPage('bar')} />
@@ -81,13 +82,13 @@ class App extends Component {
 }
 
 App.propTypes = {
-  history: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
   }).isRequired,
-  countdown: React.PropTypes.number.isRequired,
-  setCountdown: React.PropTypes.func.isRequired,
-  doDecrement: React.PropTypes.func.isRequired,
+  countdown: PropTypes.number.isRequired,
+  setCountdown: PropTypes.func.isRequired,
+  doDecrement: PropTypes.func.isRequired,
 };
 
 export default App;

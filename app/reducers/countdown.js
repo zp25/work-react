@@ -1,4 +1,4 @@
-import createReducer from 'utils/createReducer';
+import { createReducer } from 'lib';
 import { COUNTDOWN, DECREMENT } from 'constants/actionTypes';
 
 const initState = 0;

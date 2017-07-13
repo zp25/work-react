@@ -1,19 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import style from 'styles/content.scss';
 
 const Home = (props) => {
   const { title, countdown } = props;
+  const className = cx(style.text, 'ellipsis');
 
   return (
-    <p className={style.text}>{`${title}: ${countdown}`}</p>
+    <p className={className}>{`${title}: ${countdown}`}</p>
   );
 };
 
 Home.propTypes = {
-  countdown: React.PropTypes.number.isRequired,
+  countdown: PropTypes.number.isRequired,
   // HOC
-  title: React.PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Home;

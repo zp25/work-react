@@ -1,4 +1,4 @@
-import createReducer from 'utils/createReducer';
+import { createReducer } from 'lib';
 import { NAVIGATE } from 'constants/actionTypes';
 
 const initState = {

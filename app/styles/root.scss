@@ -1,46 +1,16 @@
 @import '~normalize.css';
-@import 'global';
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+@import 'color.map';
 
-// http://www.outlinenone.com/
-:focus {
-  outline: none;
-}
+@import '~zp-ui/styles/func';
+@import '~zp-ui/styles/root';
+@import '~zp-ui/styles/global.module';
 
-html, button, input, textarea, select {
-  padding: 0;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a:link,
-a:hover,
-a:active,
-a:visited {
-  text-decoration: none;
-}
-
-html {
-  height: 100%;
-
-  body {
-    height: 100%;
-    font-size: fontSize();
-    line-height: 1.5;
-  }
+:global(#root) {
+  height: 100vh;
+  font-size: fontSize();
 }
 
 :global(.dev) {
-  height: 100%;
-}
-
-:global(#root) {
   height: 100%;
 }

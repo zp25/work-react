@@ -8,19 +8,17 @@ dotenv.config({ silent: true });
 
 const app = express();
 
-const dist = path.resolve(__dirname, 'dist');
-const icons = path.resolve(__dirname, 'public/icons');
-const index = path.resolve(__dirname, 'public/index.html');
+const static = path.resolve(__dirname, 'dist');
+const index = path.resolve(static, 'index.html');
 
 /** const */
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PROD_PORT || 8081);
 
 /** compression */
 app.use(compression())
 
 /** static */
-app.use('/dist', express.static(dist));
-app.use('/icons', express.static(icons));
+app.use(express.static(static));
 
 /** send all requests to index.html so browserHistory works */
 app.get('*', (req, res) => {
