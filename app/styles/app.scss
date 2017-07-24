@@ -4,6 +4,7 @@
 .app {
   min-height: 100%;
   @include flexbox(column, nowrap, flex-start, center);
+  color: color(text);
 
   .container {
     width: 100%;
