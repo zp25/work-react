@@ -1,17 +1,14 @@
 {
   "presets": [
     ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "not ie < 11"]
-      },
       "modules": false,
-      "useBuiltIns": false
+      "useBuiltIns": "usage",
+      "forceAllTransforms": true
     }],
     "react",
     "stage-0"
   ],
   "plugins": [
-    "transform-runtime",
     "react-hot-loader/babel"
   ]
 }
