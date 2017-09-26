@@ -1,11 +1,14 @@
 {
   "presets": [
-    ["es2015", { "modules": false }],
+    ["env", {
+      "modules": false,
+      "useBuiltIns": "usage",
+      "forceAllTransforms": true
+    }],
     "react",
     "stage-0"
   ],
   "plugins": [
-    "transform-runtime",
     "react-hot-loader/babel"
   ]
 }
