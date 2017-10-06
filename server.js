@@ -15,7 +15,7 @@ const index = path.resolve(static, 'index.html');
 app.set('port', process.env.PROD_PORT || 8081);
 
 /** compression */
-app.use(compression())
+app.use(compression());
 
 /** static */
 app.use(express.static(static));
