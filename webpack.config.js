@@ -77,7 +77,6 @@ module.exports = (env) => {
       // {
       //   loader: 'url-loader',
       //   options: {
-      //     name: '[path][name].[ext]?[sha1:hash:base64:10]',
       //     limit: 10000,
       //   },
       // },

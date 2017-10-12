@@ -48,6 +48,12 @@ module.exports = (env) => {
       },
     ],
     image: [
+      // {
+      //   loader: 'url-loader',
+      //   options: {
+      //     limit: 10000,
+      //   },
+      // },
       {
         loader: 'file-loader',
         options: {
