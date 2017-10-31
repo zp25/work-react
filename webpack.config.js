@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const { VENDOR } = require('./constants');
 
@@ -137,6 +138,9 @@ module.exports = (env) => {
       filename: 'vendor.js',
     }),
 
+    new StyleLintPlugin({
+      syntax: 'scss',
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: TEMP,

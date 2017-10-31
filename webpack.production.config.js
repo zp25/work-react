@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const ManifestPlugin = require('./manifestPlugin');
 const {
@@ -120,6 +121,9 @@ module.exports = (env) => {
       },
     }),
 
+    new StyleLintPlugin({
+      syntax: 'scss',
+    }),
     new ExtractTextPlugin({
       filename: 'styles/styles.[contenthash:10].css',
       allChunks: false,

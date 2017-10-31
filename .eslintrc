@@ -19,10 +19,8 @@
   },
   "rules": {
     "no-cond-assign": ["error", "except-parens"],
-    "jsx-a11y/anchor-is-valid": ["warn", {
-      components: [
-        "Link"
-      ],
+    "jsx-a11y/anchor-is-valid": ["error", {
+      components: ["Link"],
       specialLink: [],
       aspects: ["invalidHref", "preferButton"]
     }]
