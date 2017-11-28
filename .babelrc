@@ -1,12 +1,12 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/env", {
       "modules": false,
       "useBuiltIns": "usage",
       "forceAllTransforms": true
     }],
-    "react",
-    "stage-0"
+    "@babel/react",
+    "@babel/stage-0"
   ],
   "plugins": [
     "react-hot-loader/babel"
