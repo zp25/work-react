@@ -107,7 +107,7 @@ module.exports = (env) => {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       // 单独的manifest文件，提高缓存效率
-      name: ['vendor', 'manifest'],
+      names: ['vendor', 'manifest'],
       minChunks: Infinity,
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
