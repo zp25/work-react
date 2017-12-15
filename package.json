@@ -17,7 +17,6 @@
   "author": "zp25",
   "license": "MIT",
   "dependencies": {
-    "@babel/polyfill": "7.0.0-beta.34",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
     "normalize.css": "^7.0.0",
@@ -36,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.34",
+    "@babel/polyfill": "7.0.0-beta.34",
     "@babel/preset-env": "7.0.0-beta.34",
     "@babel/preset-react": "7.0.0-beta.34",
     "@babel/preset-stage-0": "7.0.0-beta.34",
