@@ -129,6 +129,7 @@ module.exports = (env) => {
       allChunks: false,
     }),
     new HtmlWebpackPlugin({
+      title: 'Template',
       filename: 'index.html',
       template: TEMP,
       minify: HTMLMINIFIER,

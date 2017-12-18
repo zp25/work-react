@@ -135,13 +135,14 @@ module.exports = (env) => {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.js',
+      filename: 'scripts/vendor.js',
     }),
 
     new StyleLintPlugin({
       syntax: 'scss',
     }),
     new HtmlWebpackPlugin({
+      title: 'Template',
       filename: 'index.html',
       template: TEMP,
     }),
