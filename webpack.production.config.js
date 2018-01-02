@@ -167,5 +167,11 @@ module.exports = (env) => {
     },
     module: { rules },
     plugins,
+    stats: {
+      // Examine all modules
+      maxModules: Infinity,
+      // Display bailout reasons
+      optimizationBailout: true,
+    },
   };
 };

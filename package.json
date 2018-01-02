@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.development --progress",
     "prebuild": "rimraf dist/*",
-    "build": "cross-env NODE_ENV=production webpack --env.production -p --config webpack.production.config.js --progress --display-optimization-bailout",
+    "build": "cross-env NODE_ENV=production webpack --env.production -p --config webpack.production.config.js --progress",
     "serve": "node server.js",
     "test": "mocha --harmony --check-leaks"
   },
