@@ -1,7 +1,7 @@
 {
   "name": "work-react",
   "version": "0.0.0",
-  "description": "Work React",
+  "description": "React starter kit",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.development --progress",
@@ -28,7 +28,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
-    "redux-devtools-dock-monitor": "^1.1.2",
+    "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-thunk": "^2.2.0",
     "zp-ui": "^0.1.8"
@@ -63,7 +63,7 @@
     "handlebars-loader": "^1.6.0",
     "html-webpack-inline-source-plugin": "^0.0.9",
     "html-webpack-plugin": "^2.30.1",
-    "mocha": "^4.0.1",
+    "mocha": "^4.1.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.9",
     "rimraf": "^2.6.2",
