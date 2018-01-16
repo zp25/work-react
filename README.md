@@ -2,7 +2,7 @@
 
 react起始模版
 
-webpack 2 + redux + react router 4 + react hot loader 3
+webpack + redux + react router 4 + react hot loader 4
 
 ## 目录
 app目录
