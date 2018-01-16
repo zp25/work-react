@@ -2,12 +2,16 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
+// import { hot, setConfig } from 'react-hot-loader';
+import { hot } from 'react-hot-loader';
 import App from 'containers/app';
 import DevTools from 'containers/devtools';
 
 import 'styles/root.scss';
 
-export default ({ store, history }) => (
+// setConfig({ logLevel: 'debug' });
+
+const Root = ({ store, history }) => (
   <Provider store={store}>
     <div className="dev">
       <App history={history} />
@@ -15,3 +19,5 @@ export default ({ store, history }) => (
     </div>
   </Provider>
 );
+
+export default hot(module)(Root);

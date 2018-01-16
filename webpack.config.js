@@ -32,7 +32,6 @@ module.exports = (env) => {
 
   const entry = {
     main: [
-      'react-hot-loader/patch',
       `webpack-dev-server/client?http://${devServer.host}:${devServer.port}`,
       'webpack/hot/only-dev-server',
       './index',
