@@ -2,15 +2,16 @@
 @import '~zp-ui/styles/func';
 
 .app {
-  min-height: 100%;
   @include flexbox(column, nowrap, flex-start, center);
+
+  min-height: 100%;
 
   .container {
     width: 100%;
 
     @media only screen and (min-width: 1001px) {
       & {
-        width: 95%
+        width: 95%;
       }
     }
   }

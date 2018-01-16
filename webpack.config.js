@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const { HTMLMINIFIER } = require('./constants');
 
@@ -151,6 +152,9 @@ module.exports = (env) => {
       filename: 'styles/styles.css',
       allChunks: false,
       disable: DEV,
+    }),
+    new StyleLintPlugin({
+      syntax: 'scss',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
