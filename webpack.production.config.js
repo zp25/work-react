@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const InlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const SriPlugin = require('webpack-subresource-integrity');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -128,6 +129,7 @@ module.exports = (env) => {
       filename: 'styles/styles.[contenthash:10].css',
       allChunks: false,
     }),
+
     new HtmlWebpackPlugin({
       title: 'Template',
       filename: 'index.html',
@@ -136,7 +138,11 @@ module.exports = (env) => {
       // manifest文件以inline方式写入html
       inlineSource: 'manifest',
     }),
-    new HtmlWebpackInlineSourcePlugin(),
+    new InlineSourcePlugin(),
+    new SriPlugin({
+      enabled: true,
+      hashFuncNames: ['sha384', 'sha512'],
+    }),
 
     new CopyWebpackPlugin([{
       from: 'assets/',
@@ -160,6 +166,8 @@ module.exports = (env) => {
       filename: 'scripts/[name].[chunkhash:10].js',
       chunkFilename: 'scripts/[name].[chunkhash:10].js',
       publicPath: '/',
+      // sri
+      crossOriginLoading: 'anonymous',
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
