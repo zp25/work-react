@@ -11,14 +11,20 @@ const app = express();
 const static = path.resolve(__dirname, 'dist');
 const index = path.resolve(static, 'index.html');
 
-/** const */
 app.set('port', process.env.PROD_PORT || 8081);
 
-/** compression */
+// Use Helmet
+app.disable('x-powered-by');
+
+// middleware
 app.use(compression());
 
-/** static */
-app.use(express.static(static));
+app.use(express.static(static, {
+  // SRI
+  setHeaders: (res) => {
+    res.set('Cache-Control', 'no-transform');
+  },
+}));
 
 /** send all requests to index.html so browserHistory works */
 app.get('*', (req, res) => {
