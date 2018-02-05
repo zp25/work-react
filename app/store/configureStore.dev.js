@@ -1,4 +1,8 @@
-import { applyMiddleware, createStore, compose } from 'redux';
+import {
+  applyMiddleware,
+  createStore,
+  compose,
+} from 'redux';
 import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
 import DevTools from 'containers/devtools';

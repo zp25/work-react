@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-// import { hot, setConfig } from 'react-hot-loader';
-import { hot } from 'react-hot-loader';
+import {
+  hot,
+  // setConfig,
+} from 'react-hot-loader';
 import App from 'containers/app';
 import DevTools from 'containers/devtools';
 
