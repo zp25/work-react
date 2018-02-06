@@ -12,7 +12,6 @@ const initState = {
     location: history.location,
     action: history.action,
   },
-  countdown: 0,
 };
 
 const store = configureStore(initState);

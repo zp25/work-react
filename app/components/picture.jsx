@@ -7,7 +7,7 @@ import zpJpg from 'images/zp.jpg';
 const Picture = () => (
   <picture className={style.picture}>
     <source srcSet={zpWebp} type="image/webp" />
-    <img src={zpJpg} alt="zp" />
+    <img className={style.fallback} src={zpJpg} alt="zp" />
   </picture>
 );
 

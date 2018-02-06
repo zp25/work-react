@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Page from 'components/page';
 
-const mapStateToProps = store => ({
-  countdown: store.countdown,
+const mapStateToProps = state => ({
+  countdown: state.countdown,
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (

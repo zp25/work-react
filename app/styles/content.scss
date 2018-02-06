@@ -2,5 +2,7 @@
 @import '~zp-ui/styles/func';
 
 .text {
+  @extend %ellipsis;
+
   font-size: fontSize(bold);
 }

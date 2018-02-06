@@ -1,8 +1,8 @@
 import setRouter from './router';
-import { setCountdown, doDecrement } from './countdown';
+import { setCountdown, decrement } from './countdown';
 
 export {
   setRouter,
   setCountdown,
-  doDecrement,
+  decrement,
 };

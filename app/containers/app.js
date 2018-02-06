@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import App from 'components/app';
-import { setCountdown, doDecrement } from 'actions';
+import { setCountdown, decrement } from 'actions';
 
-const mapStateToProps = store => ({
-  location: store.router.location,
-  countdown: store.countdown,
+const mapStateToProps = state => ({
+  location: state.router.location,
+  countdown: state.countdown,
 });
 
 const mapDispatchToProps = dispatch => ({
   setCountdown: second => dispatch(setCountdown(second)),
-  doDecrement: () => dispatch(doDecrement()),
+  decrement: () => dispatch(decrement()),
 });
 
 const AppContainer = connect(

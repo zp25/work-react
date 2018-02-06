@@ -5,4 +5,4 @@ import { COUNTDOWN, DECREMENT } from 'constants/actionTypes';
 export const setCountdown = createAction(COUNTDOWN);
 
 // 倒计时
-export const doDecrement = createAction(DECREMENT);
+export const decrement = createAction(DECREMENT);
