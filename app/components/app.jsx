@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Router, Link, Route, Switch } from 'react-router-dom';
+import {
+  Router,
+  Link,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import cx from 'classnames';
 import Home from 'containers/home';
 import Page from 'containers/page';
 import Picture from 'components/picture';
@@ -43,33 +49,71 @@ class App extends Component {
       if (this.props.countdown <= 1) {
         this.clearInterval();
       } else {
-        this.props.doDecrement();
+        this.props.decrement();
       }
     }, 1000);
   }
 
+  /**
+   * 判断给定page是否为当前显示页面
+   * @param {string} page - 页面名称
+   * @return {Boolean}
+   */
+  isActive(page) {
+    const { pathname } = this.props.location;
+
+    return pathname.slice(1).toLowerCase() === page;
+  }
+
   render() {
-    const isActive = page => this.props.location.pathname.slice(1).toLowerCase() === page;
-    const renderPage = page => props => (
-      <Page {...props} page={page} />
-    );
+    const routes = [
+      {
+        id: 1,
+        path: '/foo',
+        exact: true,
+        strict: true,
+        main: () => <Page />,
+      },
+      {
+        id: 2,
+        path: '/bar',
+        exact: true,
+        strict: true,
+        main: () => <Page />,
+      },
+    ];
 
     return (
       <Router history={this.props.history}>
         <div className={style.app}>
-          <ul className={[style.nav, style.container].join(' ')}>
+          <ul className={cx(style.nav, style.container)}>
             <li>
-              <Link to="/foo" className={isActive('foo') ? style.active : ''}>Foo</Link>
+              <Link to="/foo" className={cx({ [style.active]: this.isActive('foo') })}>Foo</Link>
             </li>
             <li>
-              <Link to="/bar" className={isActive('bar') ? style.active : ''}>Bar</Link>
+              <Link to="/bar" className={cx({ [style.active]: this.isActive('bar') })}>Bar</Link>
             </li>
           </ul>
 
-          <div className={[style.content, style.container].join(' ')}>
+          <div className={cx(style.content, style.container)}>
             <Switch>
-              <Route exact strict path="/foo" render={renderPage('foo')} />
-              <Route exact strict path="/bar" render={renderPage('bar')} />
+              {
+                routes.map((route) => {
+                  const {
+                    id,
+                    main,
+                    ...rest
+                  } = route;
+
+                  return (
+                    <Route
+                      key={id}
+                      render={main}
+                      {...rest}
+                    />
+                  );
+                })
+              }
               <Route component={Home} />
             </Switch>
           </div>
@@ -88,7 +132,7 @@ App.propTypes = {
   }).isRequired,
   countdown: PropTypes.number.isRequired,
   setCountdown: PropTypes.func.isRequired,
-  doDecrement: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
 };
 
 export default App;

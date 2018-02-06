@@ -1,22 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import style from 'styles/content.scss';
 
-const Page = (props) => {
-  const { title, page, countdown } = props;
-  const className = cx(style.text, 'ellipsis');
+const Page = (props, context) => {
+  const { title, countdown } = props;
+  const {
+    location: {
+      pathname,
+    },
+  } = context.router.history;
 
   return (
-    <p className={className}>{`${title}: ${page}, ${countdown}`}</p>
+    <p className={style.text}>{`${title}: ${pathname}, ${countdown}`}</p>
   );
 };
 
+Page.contextTypes = {
+  router: PropTypes.shape({
+    history: PropTypes.object,
+  }),
+};
+
 Page.propTypes = {
-  page: PropTypes.string.isRequired,
   countdown: PropTypes.number.isRequired,
-  // HOC
   title: PropTypes.string.isRequired,
 };
 
