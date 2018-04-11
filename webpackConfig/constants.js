@@ -1,4 +1,10 @@
-const HTMLMINIFIER = {
+const path = require('path');
+
+exports.SRC = path.resolve(__dirname, '../app');
+exports.DIST = path.resolve(__dirname, '../dist');
+exports.TEMP = path.resolve(__dirname, '../views/layouts/main.hbs');
+
+exports.HTMLMINIFIER = {
   collapseWhitespace: true,
   collapseBooleanAttributes: true,
   minifyCSS: true,
@@ -10,16 +16,4 @@ const HTMLMINIFIER = {
   removeRedundantAttributes: true,
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
-};
-
-const VENDOR = [
-  'react',
-  'react-dom',
-  'redux',
-  'react-redux',
-];
-
-module.exports = {
-  HTMLMINIFIER,
-  VENDOR,
 };

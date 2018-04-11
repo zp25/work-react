@@ -1,8 +1,9 @@
 {
-  "main.js": "main.dcb1725f32.js",
-  "manifest.js": "manifest.ded85bd249.js",
-  "styles.css": "styles.0b13cb0946.css",
-  "vendor.js": "vendor.b65f7d6ec0.js",
-  "zp.jpg": "3lOYmt4__K.jpg",
-  "zp.webp": "9LD1onD-In.webp"
+  "main.js": "main.1af9bb2ac6.js",
+  "runtime~main.js": "runtime~main.c60f37b975.js",
+  "styles.css": "styles.e605748e9f.css",
+  "styles.js": "styles.e605748e9f.js",
+  "vendors~main.js": "vendors~main.fd8b3815b0.js",
+  "zp.jpg": "f3s1cDFyxz.jpg",
+  "zp.webp": "7nWkQRgZgq.webp"
 }
