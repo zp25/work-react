@@ -25,11 +25,6 @@ module.exports = ({ dev }) => {
     new StyleLintPlugin({
       syntax: 'scss',
     }),
-    new MiniCssExtractPlugin({
-      filename: dev ?
-        'styles/[name].css' :
-        'styles/[name].[chunkhash:10].css',
-    }),
 
     new HtmlWebpackPlugin({
       title: 'Template',
@@ -50,6 +45,12 @@ module.exports = ({ dev }) => {
   ];
 
   const prodPlugins = [
+    new MiniCssExtractPlugin({
+      filename: dev ?
+        'styles/[name].css' :
+        'styles/[name].[contenthash:10].css',
+    }),
+
     new SriPlugin({
       enabled: true,
       hashFuncNames: ['sha384', 'sha512'],

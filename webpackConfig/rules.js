@@ -2,16 +2,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { SRC } = require('./constants');
 
 module.exports = ({ dev }) => {
-  // const styleLoader = [
-  //   {
-  //     loader: 'style-loader',
-  //     options: {
-  //       sourceMap: true,
-  //       // @see {@link https://github.com/webpack-contrib/style-loader/pull/96}
-  //       convertToAbsoluteUrls: true,
-  //     },
-  //   },
-  // ];
+  const styleLoader = [
+    {
+      loader: 'style-loader',
+      options: {
+        sourceMap: true,
+        // @see {@link https://github.com/webpack-contrib/style-loader/pull/96}
+        convertToAbsoluteUrls: true,
+      },
+    },
+  ];
 
   const imageLoader = [
     {
@@ -64,7 +64,7 @@ module.exports = ({ dev }) => {
     {
       test: /\.scss$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        ...(dev ? styleLoader : [MiniCssExtractPlugin.loader]),
         {
           loader: 'css-loader',
           options: {

@@ -31,8 +31,10 @@ app.get('*', (req, res) => {
   res.sendFile(index);
 })
 
-/** error handling middleware should be loaded after the loading the routes */
-app.use(errorHandler());
+if (app.get('env') === 'development') {
+  console.log('Development mode');
+  app.use(errorHandler());
+}
 
 /** engine start! */
 app.listen(app.get('port'), () => {
