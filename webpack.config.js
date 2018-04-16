@@ -1,9 +1,12 @@
+const dotenv = require('dotenv');
 const {
   rules,
   plugins,
   optimization,
 } = require('./webpackConfig');
 const { SRC, DIST } = require('./webpackConfig/constants');
+
+dotenv.config({ silent: true });
 
 module.exports = {
   target: 'web',
