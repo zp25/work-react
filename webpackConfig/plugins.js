@@ -22,9 +22,7 @@ module.exports = ({ dev }) => {
         },
       },
     }),
-    new StyleLintPlugin({
-      syntax: 'scss',
-    }),
+    new StyleLintPlugin(),
 
     new HtmlWebpackPlugin({
       title: 'Template',
