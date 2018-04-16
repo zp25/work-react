@@ -8,6 +8,7 @@
     "order/properties-alphabetical-order": null,
     "scss/dollar-variable-pattern": ["^[_]?[a-z]+([a-z0-9-]+[a-z0-9]+)?$", {
       "ignore": "global"
-    }]
+    }],
+    "selector-max-id": 1
   }
 }
