@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const dotenv = require('dotenv');
 const ManifestPlugin = require('../manifestPlugin');
 const {
   SRC,
@@ -11,6 +13,8 @@ const {
   TEMP,
   HTMLMINIFIER,
 } = require('./constants');
+
+dotenv.config({ silent: true });
 
 module.exports = ({ dev }) => {
   const plugins = [
@@ -53,6 +57,10 @@ module.exports = ({ dev }) => {
     new SriPlugin({
       enabled: true,
       hashFuncNames: ['sha384', 'sha512'],
+    }),
+
+    new BundleAnalyzerPlugin({
+      analyzerPort: process.env.PROD_PORT || 3001,
     }),
 
     new ManifestPlugin({
