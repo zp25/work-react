@@ -15,6 +15,7 @@ const {
 module.exports = ({ dev }) => {
   const plugins = [
     new webpack.LoaderOptionsPlugin({
+      debug: dev,
       options: {
         context: SRC,
         sassLoader: {

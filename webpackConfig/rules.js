@@ -13,28 +13,6 @@ module.exports = ({ dev }) => {
     },
   ];
 
-  const imageLoader = [
-    {
-      loader: 'image-webpack-loader',
-      options: {
-        mozjpeg: {
-          progressive: true,
-          quality: 65,
-        },
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: '65-90',
-          speed: 4,
-        },
-        webp: {
-          quality: 75,
-        },
-      },
-    },
-  ];
-
   return [
     {
       enforce: 'pre',
@@ -58,7 +36,23 @@ module.exports = ({ dev }) => {
               '[path][sha1:hash:base64:10].[ext]',
           },
         },
-        ...(dev ? [] : imageLoader)
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            bypassOnDebug: true,
+            mozjpeg: {
+              progressive: true,
+              quality: 80,
+            },
+            optipng: {
+              enabled: false,
+            },
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
+            },
+          },
+        },
       ],
     },
     {
