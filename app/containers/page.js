@@ -1,8 +1,17 @@
 import { connect } from 'react-redux';
 import Page from 'components/page';
+import { setModal } from 'actions';
 
 const mapStateToProps = state => ({
   countdown: state.countdown,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setModal: message => dispatch(setModal({
+    active: true,
+    dialog: 'message',
+    message: message.toString(),
+  })),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
@@ -13,7 +22,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
 
 const PageContainer = connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
   mergeProps,
 )(Page);
 

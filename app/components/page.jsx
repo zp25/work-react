@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import style from 'styles/content.scss';
 
 const Page = (props, context) => {
-  const { title, countdown } = props;
+  const {
+    title,
+    countdown,
+    setModal,
+  } = props;
   const {
     location: {
       pathname,
@@ -12,7 +16,16 @@ const Page = (props, context) => {
   } = context.router.history;
 
   return (
-    <p className={style.text}>{`${title}: ${pathname}, ${countdown}`}</p>
+    <Fragment>
+      <p className={style.text}>{`${title}: ${pathname}, ${countdown}`}</p>
+      <button
+        type="button"
+        className={style.btn}
+        onClick={() => { setModal('点击mask关闭'); }}
+      >
+        Message
+      </button>
+    </Fragment>
   );
 };
 
@@ -25,6 +38,7 @@ Page.contextTypes = {
 Page.propTypes = {
   countdown: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  setModal: PropTypes.func.isRequired,
 };
 
 export default Page;

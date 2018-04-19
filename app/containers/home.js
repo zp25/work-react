@@ -1,8 +1,18 @@
 import { connect } from 'react-redux';
 import Home from 'components/home';
+import { setModal, clearModal } from 'actions';
 
 const mapStateToProps = state => ({
   countdown: state.countdown,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setModal: () => dispatch(setModal({
+    active: true,
+    dialog: 'loading',
+    message: '',
+  })),
+  closeModal: () => dispatch(clearModal()),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
@@ -11,9 +21,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 
+
 const HomeContainer = connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
   mergeProps,
 )(Home);
 

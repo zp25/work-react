@@ -1,8 +1,11 @@
-import setRouter from './router';
 import { setCountdown, decrement } from './countdown';
+import { setModal, clearModal } from './modal';
+import setRouter from './router';
 
 export {
-  setRouter,
   setCountdown,
   decrement,
+  setModal,
+  clearModal,
+  setRouter,
 };

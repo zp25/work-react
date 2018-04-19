@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import router from './router';
 import countdown from './countdown';
+import modal from './modal';
+import router from './router';
 
 const reducer = combineReducers({
-  router,
   countdown,
+  modal,
+  router,
 });
 
 export default reducer;

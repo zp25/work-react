@@ -10,6 +10,8 @@ import cx from 'classnames';
 import Home from 'containers/home';
 import Page from 'containers/page';
 import Picture from 'components/picture';
+import Portal from 'components/portal';
+import Modal from 'components/utils/modal';
 
 import style from 'styles/app.scss';
 
@@ -66,6 +68,12 @@ class App extends Component {
   }
 
   render() {
+    const {
+      history,
+      modal,
+      closeModal,
+    } = this.props;
+
     const routes = [
       {
         id: 1,
@@ -84,7 +92,7 @@ class App extends Component {
     ];
 
     return (
-      <Router history={this.props.history}>
+      <Router history={history}>
         <div className={style.app}>
           <ul className={cx(style.nav, style.container)}>
             <li>
@@ -119,6 +127,18 @@ class App extends Component {
           </div>
 
           <Picture />
+
+          {
+            modal.active && (
+              <Portal>
+                <Modal
+                  dialog={modal.dialog}
+                  message={modal.message}
+                  close={modal.dialog === 'loading' ? null : closeModal}
+                />
+              </Portal>
+            )
+          }
         </div>
       </Router>
     );
@@ -131,8 +151,15 @@ App.propTypes = {
     pathname: PropTypes.string,
   }).isRequired,
   countdown: PropTypes.number.isRequired,
+  modal: PropTypes.shape({
+    active: PropTypes.bool,
+    dialog: PropTypes.string,
+    message: PropTypes.string,
+  }).isRequired,
+  // methods
   setCountdown: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default App;
