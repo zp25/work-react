@@ -1,3 +1,4 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { SRC } = require('./constants');
 
@@ -72,6 +73,9 @@ module.exports = ({ dev }) => {
           loader: 'postcss-loader',
           options: {
             sourceMap: true,
+            config: {
+              path: path.resolve(__dirname, '../postcss.config.js'),
+            },
           },
         },
         {

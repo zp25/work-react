@@ -23,7 +23,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json', '.scss'],
     modules: [SRC, 'node_modules'],
   },
   module: { rules },
