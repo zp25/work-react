@@ -1,12 +1,14 @@
 {
   "presets": [
-    ["@babel/env", {
+    ["@babel/preset-env", {
       "modules": false,
       "useBuiltIns": "usage",
       "forceAllTransforms": true
     }],
-    "@babel/react",
-    "@babel/stage-0"
+    "@babel/preset-react",
+    ["@babel/preset-stage-2", {
+      "decoratorsLegacy": true
+    }]
   ],
   "plugins": [
     "react-hot-loader/babel"

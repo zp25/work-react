@@ -1,11 +1,10 @@
-@import 'color.map';
 @import '~zp-ui/styles/func';
 
 .app {
   @include flexbox(column, nowrap, flex-start, center);
 
   min-height: 100%;
-  color: color(text);
+  color: var(--text, #222);
 
   .container {
     width: 100%;
@@ -21,7 +20,7 @@
     flex: 0 0 auto;
 
     .active {
-      color: color(green);
+      color: var(--green, #008000);
     }
   }
 
