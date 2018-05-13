@@ -1,0 +1,36 @@
+@import '~zp-ui/styles/func';
+@import '~zp-ui/styles/btn';
+
+.page {
+  .text {
+    @extend %ellipsis;
+
+    font-size: fontSize(bold);
+  }
+}
+
+// transition
+:global {
+  .fade-appear,
+  .fade-enter {
+    opacity: 0.01;
+  }
+
+  .fade-enter-active,
+  .fade-appear-active {
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+
+  .fade-exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    transition: opacity 0.1s;
+    opacity: 0.01;
+  }
+}

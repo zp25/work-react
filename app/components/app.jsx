@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import {
   Router,
   Link,
-  Route,
-  Switch,
 } from 'react-router-dom';
 import cx from 'classnames';
-import Home from 'containers/home';
-import Page from 'containers/page';
 import Picture from 'components/picture';
 import Portal from 'components/portal';
+import Routes from 'components/routes';
 import Modal from 'components/utils/modal';
 
 import style from 'styles/app.scss';
@@ -74,23 +71,6 @@ class App extends Component {
       closeModal,
     } = this.props;
 
-    const routes = [
-      {
-        id: 1,
-        path: '/foo',
-        exact: true,
-        strict: true,
-        main: () => <Page />,
-      },
-      {
-        id: 2,
-        path: '/bar',
-        exact: true,
-        strict: true,
-        main: () => <Page />,
-      },
-    ];
-
     return (
       <Router history={history}>
         <div className={style.app}>
@@ -104,26 +84,7 @@ class App extends Component {
           </ul>
 
           <div className={cx(style.content, style.container)}>
-            <Switch>
-              {
-                routes.map((route) => {
-                  const {
-                    id,
-                    main,
-                    ...rest
-                  } = route;
-
-                  return (
-                    <Route
-                      key={id}
-                      render={main}
-                      {...rest}
-                    />
-                  );
-                })
-              }
-              <Route component={Home} />
-            </Switch>
+            <Routes />
           </div>
 
           <Picture />

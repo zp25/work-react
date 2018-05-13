@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from 'styles/content.scss';
+import style from 'styles/page.scss';
 
 const Home = (props) => {
   const {
@@ -12,7 +12,7 @@ const Home = (props) => {
   } = props;
 
   return (
-    <Fragment>
+    <div className={style.page}>
       <p className={style.text}>{`${title}: ${countdown}`}</p>
       <button
         type="button"
@@ -27,7 +27,7 @@ const Home = (props) => {
       >
         Loading
       </button>
-    </Fragment>
+    </div>
   );
 };
 

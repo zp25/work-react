@@ -5,6 +5,7 @@
 
   min-height: 100%;
   color: var(--text, #222);
+  padding: 0 torem(5px);
 
   .container {
     width: 100%;
@@ -25,7 +26,9 @@
   }
 
   .content {
+    // page fade-exit定位
+    position: relative;
     flex: 0 0 auto;
-    padding: 0 torem(5px) torem(10px);
+    padding-bottom: torem(10px);
   }
 }
