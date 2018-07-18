@@ -33,6 +33,18 @@ app目录
 ~~~
 assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
 
+## libpng issues
+image-webpack-loader依赖libpng，缺少会报错，<https://github.com/tcoopman/image-webpack-loader/issues/142>
+
+~~~bash
+# osx
+brew install libpng
+
+# ubuntu
+sudo apt-get install libpng16-dev
+~~~
+安装依赖
+
 ## 资源
 + [Webpack Configuration](https://webpack.js.org/configuration/ "Webpack Configuration")
 + [webpack releases page](https://github.com/webpack/webpack/releases "webpack releases page")
