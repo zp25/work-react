@@ -47,7 +47,9 @@ const Modal = (props) => {
 
         {
           dialog === 'message' && (
-            <p className={style.message}>{message}</p>
+            <p className={style.message}>
+              {message}
+            </p>
           )
         }
       </div>

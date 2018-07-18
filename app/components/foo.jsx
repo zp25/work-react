@@ -15,13 +15,15 @@ const Foo = (props) => {
 
   return (
     <div className={style.page}>
-      <p className={style.text}>{`${title}: ${path}, ${countdown}`}</p>
+      <p className={style.text}>
+        {`${title}: ${path}, ${countdown}`}
+      </p>
       <button
         type="button"
         className={style.btn}
         onClick={() => { setModal('点击mask关闭'); }}
       >
-        Message
+        {'Message'}
       </button>
     </div>
   );

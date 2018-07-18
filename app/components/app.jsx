@@ -38,17 +38,25 @@ class App extends Component {
       this.intervals = NaN;
     }
 
-    this.props.setCountdown(0);
+    const { setCountdown } = this.props;
+    setCountdown(0);
   }
 
   startContdown(second = 10) {
-    this.props.setCountdown(second);
+    const {
+      setCountdown,
+      decrement,
+    } = this.props;
+
+    setCountdown(second);
 
     this.setInterval(() => {
-      if (this.props.countdown <= 1) {
+      const { countdown } = this.props;
+
+      if (countdown <= 1) {
         this.clearInterval();
       } else {
-        this.props.decrement();
+        decrement();
       }
     }, 1000);
   }
@@ -59,7 +67,7 @@ class App extends Component {
    * @return {Boolean}
    */
   isActive(page) {
-    const { pathname } = this.props.location;
+    const { location: { pathname } } = this.props;
 
     return pathname.slice(1).toLowerCase() === page;
   }
@@ -76,10 +84,14 @@ class App extends Component {
         <div className={style.app}>
           <ul className={cx(style.nav, style.container)}>
             <li>
-              <Link to="/foo" className={cx({ [style.active]: this.isActive('foo') })}>Foo</Link>
+              <Link to="/foo" className={cx({ [style.active]: this.isActive('foo') })}>
+                {'Foo'}
+              </Link>
             </li>
             <li>
-              <Link to="/bar" className={cx({ [style.active]: this.isActive('bar') })}>Bar</Link>
+              <Link to="/bar" className={cx({ [style.active]: this.isActive('bar') })}>
+                {'Bar'}
+              </Link>
             </li>
           </ul>
 

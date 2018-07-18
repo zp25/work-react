@@ -13,7 +13,9 @@ const Home = (props) => {
 
   return (
     <div className={style.page}>
-      <p className={style.text}>{`${title}: ${countdown}`}</p>
+      <p className={style.text}>
+        {`${title}: ${countdown}`}
+      </p>
       <button
         type="button"
         className={style.btn}
@@ -25,7 +27,7 @@ const Home = (props) => {
           }, 1500);
         }}
       >
-        Loading
+        {'Loading'}
       </button>
     </div>
   );
