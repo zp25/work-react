@@ -41,23 +41,6 @@ module.exports = ({ dev }) => {
               '[path][sha1:hash:base64:10].[ext]',
           },
         },
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            bypassOnDebug: true,
-            mozjpeg: {
-              progressive: true,
-              quality: 80,
-            },
-            optipng: {
-              enabled: false,
-            },
-            pngquant: {
-              quality: '65-90',
-              speed: 4,
-            },
-          },
-        },
       ],
     },
     {
