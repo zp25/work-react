@@ -1,4 +1,5 @@
 module.exports = ({ dev }) => ({
+  // concatenateModules: true,
   splitChunks: {
     chunks: 'all',
     cacheGroups: {

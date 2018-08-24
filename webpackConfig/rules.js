@@ -22,7 +22,13 @@ module.exports = ({ dev }) => {
     {
       test: /\.jsx?$/,
       include: SRC,
-      use: ['babel-loader'],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          // default cache directory: ./node_modules/.cache/babel-loader/
+          cacheDirectory: true,
+        },
+      },
     },
     {
       test: /\.(jpe?g|png|gif|svg|webp)$/i,
