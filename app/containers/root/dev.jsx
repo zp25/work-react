@@ -1,6 +1,6 @@
 /* eslint react/prop-types: off */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import {
   hot,
@@ -15,10 +15,10 @@ import 'styles/root.scss';
 
 const Root = ({ store, history }) => (
   <Provider store={store}>
-    <div className="dev">
+    <Fragment>
       <App history={history} />
       <DevTools />
-    </div>
+    </Fragment>
   </Provider>
 );
 
