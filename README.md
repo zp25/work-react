@@ -15,12 +15,12 @@ app目录
 +-- constants
 |   +-- actionTypes.js
 +-- containers
+|   +-- devtools
 |   +-- root
 |   |   +-- dev.jsx
 |   |   +-- index.jsx
 |   |   +-- prod.jsx
 |   +-- app.jsx
-|   +-- devtools.jsx
 +-- images
 +-- lib
 |   +-- createAction.jsx
