@@ -24,16 +24,16 @@ class ManifestPlugin {
     return JSON.stringify(json, null, 2);
   }
 
-  constructor(options) {
+  constructor(options = {}) {
     const init = {
       path: '',
       filename: 'manifest.json',
       ignore: ['.map'],
     };
 
-    this.options = typeof options === 'object' ?
-      Object.assign({}, init, options) :
-      Object.assign({}, init, { filename: options.toString() });
+    this.options = typeof options === 'object' ? (
+      Object.assign({}, init, options)
+    ) : init;
 
     // module assets文件名完全修改，需记录原文件名
     this.assets = {};
@@ -41,24 +41,34 @@ class ManifestPlugin {
   }
 
   apply(compiler) {
-    // Compilation creation completed
-    compiler.plugin('compilation', (compilation) => {
-      // An asset from a module was added to the compilation
-      compilation.plugin('module-asset', (module, file) => {
-        this.assets = Object.assign({}, this.assets, {
-          [file]: path.basename(module.userRequest),
-        });
+    // Runs a plugin after a compilation has been created.
+    compiler.hooks.compilation.tap('ManifestPlugin', (compilation) => {
+      // An asset from a module was added to the compilation.
+      compilation.hooks.moduleAsset.tap('ManifestPlugin', (module, filename) => {
+        const { userRequest } = module;
+
+        if (userRequest) {
+          this.assets = Object.assign({}, this.assets, {
+            [filename]: path.basename(userRequest),
+          });
+        }
       });
     });
 
-    // Before writing emitted assets to output dir
-    compiler.plugin('emit', (compilation, cb) => {
-      const { path: outputPath, filename, ignore } = this.options;
+    // Before emitting assets to output dir
+    compiler.hooks.emit.tapAsync('ManifestPlugin', (compilation, cb) => {
+      const {
+        path: outputPath,
+        filename,
+        ignore,
+      } = this.options;
       const stats = compilation.getStats().toJson();
 
       // chunks
       compilation.chunks.forEach((chunk) => {
-        this.manifest = Object.assign({}, this.manifest, chunk.files.reduce(
+        const { files } = chunk;
+
+        this.manifest = Object.assign({}, this.manifest, files.reduce(
           (prev, file) => {
             if (ignore.includes(path.extname(file))) {
               return prev;
@@ -74,11 +84,16 @@ class ManifestPlugin {
       // module assets
       this.manifest =  Object.assign({}, this.manifest, stats.assets.reduce(
         (prev, asset) => {
-          const name = this.assets[asset.name];
+          const { name: dstName } = asset;
+          const srcName = this.assets[dstName];
 
-          return name ? Object.assign({}, prev, {
-            [name]: path.basename(asset.name),
-          }) : prev;
+          if (srcName) {
+            return Object.assign({}, prev, {
+              [srcName]: path.basename(dstName),
+            });
+          }
+
+          return prev;
         }, {}
       ));
 
