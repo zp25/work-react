@@ -44,7 +44,7 @@ module.exports = ({ dev }) => {
       ],
     },
     {
-      test: /\.scss$/,
+      test: /\.(scss|css)$/,
       use: [
         ...(dev ? [styleLoader] : [MiniCssExtractPlugin.loader]),
         {

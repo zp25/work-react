@@ -10,6 +10,7 @@ import App from 'containers/app';
 import DevTools from 'containers/devtools';
 
 import 'styles/root.scss';
+import 'normalize.css/normalize.css';
 
 // setConfig({ logLevel: 'debug' });
 
