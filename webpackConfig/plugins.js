@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -35,12 +37,16 @@ module.exports = ({ dev }) => {
       template: TEMP,
       minify: !dev && HTMLMINIFIER,
     }),
-    new CopyWebpackPlugin([{
-      from: 'assets/',
-      to: DIST,
-    }], {
-      copyUnmodified: !dev,
-    }),
+    ...(
+      fs.existsSync(path.resolve(SRC, 'assets/')) ? [
+        new CopyWebpackPlugin([{
+          from: 'assets/',
+          to: DIST,
+        }], {
+          copyUnmodified: !dev,
+        }),
+      ] : []
+    )
   ];
 
   const devPlugins = [

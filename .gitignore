@@ -4,6 +4,7 @@ dll/
 node_modules/
 npm-debug.log
 yarn-error.log
+stats.json
 .DS_Store
 .env
 
