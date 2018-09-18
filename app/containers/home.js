@@ -21,7 +21,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 
-
 const HomeContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
