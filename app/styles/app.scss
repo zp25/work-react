@@ -22,6 +22,10 @@
 
     .active {
       color: var(--green, #008000);
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 

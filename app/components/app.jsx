@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   Router,
-  Link,
+  NavLink,
 } from 'react-router-dom';
 import cx from 'classnames';
 import Picture from 'components/picture';
@@ -61,17 +61,6 @@ class App extends Component {
     }, 1000);
   }
 
-  /**
-   * 判断给定page是否为当前显示页面
-   * @param {string} page - 页面名称
-   * @return {Boolean}
-   */
-  isActive(page) {
-    const { location: { pathname } } = this.props;
-
-    return pathname.slice(1).toLowerCase() === page;
-  }
-
   render() {
     const {
       history,
@@ -84,14 +73,14 @@ class App extends Component {
         <div className={style.app}>
           <ul className={cx(style.nav, style.container)}>
             <li>
-              <Link to="/foo" className={cx({ [style.active]: this.isActive('foo') })}>
+              <NavLink to="/foo" activeClassName={style.active} exact strict>
                 {'Foo'}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/bar" className={cx({ [style.active]: this.isActive('bar') })}>
+              <NavLink to="/bar" activeClassName={style.active} exact strict>
                 {'Bar'}
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
@@ -120,9 +109,6 @@ class App extends Component {
 
 App.propTypes = {
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }).isRequired,
   countdown: PropTypes.number.isRequired,
   modal: PropTypes.shape({
     active: PropTypes.bool,

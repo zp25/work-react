@@ -7,7 +7,6 @@ import {
 } from 'actions';
 
 const mapStateToProps = state => ({
-  location: state.router.location,
   countdown: state.countdown,
   modal: state.modal,
 });
