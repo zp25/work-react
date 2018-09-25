@@ -55,9 +55,7 @@ module.exports = ({ dev }) => {
 
   const prodPlugins = [
     new MiniCssExtractPlugin({
-      filename: dev ?
-        'styles/[name].css' :
-        'styles/[name].[contenthash:10].css',
+      filename: 'styles/[name].[contenthash:10].css',
     }),
 
     new SriPlugin({
@@ -75,7 +73,11 @@ module.exports = ({ dev }) => {
     }),
   ];
 
-  return dev ?
-    plugins.concat(devPlugins) :
-    plugins.concat(prodPlugins);
+  if (dev) {
+    plugins.push(...devPlugins);
+  } else {
+    plugins.push(...prodPlugins);
+  }
+
+  return plugins;
 };
