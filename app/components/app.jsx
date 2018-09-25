@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Router,
-  NavLink,
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 import Picture from 'components/picture';
 import Portal from 'components/portal';
 import Routes from 'components/routes';
 import Modal from 'components/utils/modal';
 
+import 'styles/root.scss';
+import 'normalize.css/normalize.css';
 import style from 'styles/app.scss';
 
 class App extends Component {
@@ -63,52 +62,48 @@ class App extends Component {
 
   render() {
     const {
-      history,
       modal,
       closeModal,
     } = this.props;
 
     return (
-      <Router history={history}>
-        <div className={style.app}>
-          <ul className={cx(style.nav, style.container)}>
-            <li>
-              <NavLink to="/foo" activeClassName={style.active} exact strict>
-                {'Foo'}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/bar" activeClassName={style.active} exact strict>
-                {'Bar'}
-              </NavLink>
-            </li>
-          </ul>
+      <div className={style.app}>
+        <ul className={cx(style.nav, style.container)}>
+          <li>
+            <NavLink to="/foo" activeClassName={style.active} exact strict>
+              {'Foo'}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/bar" activeClassName={style.active} exact strict>
+              {'Bar'}
+            </NavLink>
+          </li>
+        </ul>
 
-          <div className={cx(style.content, style.container)}>
-            <Routes />
-          </div>
-
-          <Picture />
-
-          {
-            modal.active && (
-              <Portal>
-                <Modal
-                  dialog={modal.dialog}
-                  message={modal.message}
-                  close={modal.dialog === 'loading' ? null : closeModal}
-                />
-              </Portal>
-            )
-          }
+        <div className={cx(style.content, style.container)}>
+          <Routes />
         </div>
-      </Router>
+
+        <Picture />
+
+        {
+          modal.active && (
+            <Portal>
+              <Modal
+                dialog={modal.dialog}
+                message={modal.message}
+                close={modal.dialog === 'loading' ? null : closeModal}
+              />
+            </Portal>
+          )
+        }
+      </div>
     );
   }
 }
 
 App.propTypes = {
-  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   countdown: PropTypes.number.isRequired,
   modal: PropTypes.shape({
     active: PropTypes.bool,

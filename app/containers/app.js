@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import App from 'components/app';
 import {
   setCountdown,
@@ -22,4 +23,4 @@ const AppContainer = connect(
   mapDispatchToProps,
 )(App);
 
-export default AppContainer;
+export default withRouter(AppContainer);

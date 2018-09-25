@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import style from 'styles/page.scss';
 
-const Foo = (props) => {
+const Page = (props) => {
   const {
     match: {
-      path,
+      params: { page },
     },
     title,
     countdown,
@@ -16,7 +16,7 @@ const Foo = (props) => {
   return (
     <div className={style.page}>
       <p className={style.text}>
-        {`${title}: ${path}, ${countdown}`}
+        {`${title}: ${page}, ${countdown}`}
       </p>
       <button
         type="button"
@@ -29,14 +29,16 @@ const Foo = (props) => {
   );
 };
 
-Foo.propTypes = {
+Page.propTypes = {
   countdown: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   setModal: PropTypes.func.isRequired,
   // ownProps
   match: PropTypes.shape({
-    path: PropTypes.string,
+    params: PropTypes.shape({
+      page: PropTypes.string,
+    }),
   }).isRequired,
 };
 
-export default Foo;
+export default Page;

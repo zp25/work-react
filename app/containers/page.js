@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Bar from 'components/bar';
+import Page from 'components/page';
 import { setModal } from 'actions';
 
 const mapStateToProps = state => ({
@@ -20,10 +20,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 
-const BarContainer = connect(
+const PageContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps,
-)(Bar);
+)(Page);
 
-export default BarContainer;
+export default PageContainer;
