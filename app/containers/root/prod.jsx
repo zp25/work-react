@@ -2,13 +2,13 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from 'containers/app';
 
-import 'styles/root.scss';
-import 'normalize.css/normalize.css';
-
-export default ({ store, history }) => (
+export default ({ store }) => (
   <Provider store={store}>
-    <App history={history} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 );

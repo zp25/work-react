@@ -18,12 +18,11 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.6",
-    "history": "^4.7.2",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-hot-loader": "4.3.8",
+    "react-hot-loader": "4.3.11",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.4.0",
@@ -82,14 +81,14 @@
     "stylelint": "^9.5.0",
     "stylelint-config-sass-guidelines": "^5.2.0",
     "stylelint-webpack-plugin": "^0.10.5",
-    "webpack": "^4.19.1",
+    "webpack": "^4.20.1",
     "webpack-bundle-analyzer": "^3.0.2",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9",
     "webpack-subresource-integrity": "^1.1.0-rc.6"
   },
   "engines": {
-    "node": ">=8.11.4"
+    "node": ">=8.12.0"
   },
   "config": {
     "commitizen": {

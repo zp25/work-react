@@ -2,6 +2,7 @@
 
 import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import {
   hot,
   // setConfig,
@@ -9,15 +10,14 @@ import {
 import App from 'containers/app';
 import DevTools from 'containers/devtools';
 
-import 'styles/root.scss';
-import 'normalize.css/normalize.css';
-
 // setConfig({ logLevel: 'debug' });
 
-const Root = ({ store, history }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
     <Fragment>
-      <App history={history} />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
       <DevTools />
     </Fragment>
   </Provider>
