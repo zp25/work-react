@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const dotenv = require('dotenv');
-const ManifestPlugin = require('../manifestPlugin');
+const ManifestPlugin = require('../webpackPlugins/manifestPlugin');
 const {
   SRC,
   DIST,
