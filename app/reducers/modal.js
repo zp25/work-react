@@ -1,4 +1,4 @@
-import { createReducer } from 'lib';
+import { createReducer } from 'zp-lib/index';
 import { SET_MODAL, CLEAR_MODAL } from 'constants/actionTypes';
 
 const initState = {

@@ -1,4 +1,4 @@
-import { createAction } from 'lib';
+import { createAction } from 'zp-lib/index';
 import { COUNTDOWN, DECREMENT } from 'constants/actionTypes';
 
 // 设置倒计时

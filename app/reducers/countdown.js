@@ -1,4 +1,4 @@
-import { createReducer } from 'lib';
+import { createReducer } from 'zp-lib/index';
 import { COUNTDOWN, DECREMENT } from 'constants/actionTypes';
 
 const initState = 0;
