@@ -22,10 +22,6 @@ app目录
 |   |   +-- prod.jsx
 |   +-- app.jsx
 +-- images
-+-- lib
-|   +-- createAction.jsx
-|   +-- createReducer.jsx
-|   +-- index.jsx
 +-- reducers
 +-- store
 +-- styles
