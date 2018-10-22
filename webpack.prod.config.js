@@ -5,7 +5,7 @@ const {
 } = require('./webpackConfig');
 const { SRC, DIST } = require('./webpackConfig/constants');
 
-module.exports = {
+module.exports = env => ({
   target: 'web',
   mode: 'production',
   devtool: 'source-map',
@@ -25,13 +25,13 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.scss'],
     modules: [SRC, 'node_modules'],
   },
-  module: { rules },
-  plugins,
-  optimization,
+  module: { rules: rules(env) },
+  plugins: plugins(env),
+  optimization: optimization(env),
   stats: {
     // Examine all modules
     maxModules: Infinity,
     // Display bailout reasons
     optimizationBailout: true,
   },
-};
+});

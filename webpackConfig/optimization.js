@@ -1,4 +1,4 @@
-module.exports = ({ dev }) => ({
+module.exports = dev => (env = {}) => ({
   // concatenateModules: true,
   splitChunks: {
     chunks: 'all',

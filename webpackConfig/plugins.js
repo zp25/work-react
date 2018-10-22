@@ -18,7 +18,9 @@ const {
 
 dotenv.config({ silent: true });
 
-module.exports = ({ dev }) => {
+module.exports = dev => (env = {}) => {
+  const { quiet } = env;
+
   const plugins = [
     new webpack.LoaderOptionsPlugin({
       debug: dev,
@@ -63,9 +65,11 @@ module.exports = ({ dev }) => {
       hashFuncNames: ['sha384', 'sha512'],
     }),
 
-    new BundleAnalyzerPlugin({
-      analyzerPort: process.env.PROD_PORT || 3001,
-    }),
+    ...(quiet ? [] : [
+      new BundleAnalyzerPlugin({
+        analyzerPort: process.env.PROD_PORT || 3001,
+      }),
+    ]),
 
     new ManifestPlugin({
       path: process.cwd(),

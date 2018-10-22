@@ -8,7 +8,7 @@ const { SRC, DIST } = require('./webpackConfig/constants');
 
 dotenv.config({ silent: true });
 
-module.exports = {
+module.exports = env => ({
   target: 'web',
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
@@ -26,9 +26,9 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json', '.scss'],
     modules: [SRC, 'node_modules'],
   },
-  module: { rules },
-  plugins,
-  optimization,
+  module: { rules: rules(env) },
+  plugins: plugins(env),
+  optimization: optimization(env),
   devServer: {
     host: process.env.HOST || 'localhost',
     port: Number(process.env.PORT) || 8080,
@@ -46,4 +46,4 @@ module.exports = {
     open: true,
     // disableHostCheck: true,
   },
-};
+});

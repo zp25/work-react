@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { SRC } = require('./constants');
 
-module.exports = ({ dev }) => {
+module.exports = dev => (env = {}) => {
   const styleLoader = {
     loader: 'style-loader',
     options: {
