@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
   Object.assign({}, ownProps, stateProps, dispatchProps, {
-    title: process.env.NODE_ENV === 'production' ? 'prod' : 'dev',
+    env: process.env.NODE_ENV === 'production' ? 'prod' : 'dev',
   })
 );
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Helmet from 'components/utils/helmet';
 
 import style from 'styles/page.scss';
 
@@ -8,15 +9,19 @@ const Page = (props) => {
     match: {
       params: { page },
     },
-    title,
+    env,
     countdown,
     setModal,
   } = props;
 
   return (
     <div className={style.page}>
+      <Helmet>
+        <title>{page}</title>
+      </Helmet>
+
       <p className={style.text}>
-        {`${title}: ${page}, ${countdown}`}
+        {`${env}: ${page}, ${countdown}`}
       </p>
       <button
         type="button"
@@ -31,7 +36,7 @@ const Page = (props) => {
 
 Page.propTypes = {
   countdown: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  env: PropTypes.string.isRequired,
   setModal: PropTypes.func.isRequired,
   // ownProps
   match: PropTypes.shape({
