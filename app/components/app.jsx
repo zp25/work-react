@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Loadable from 'react-loadable';
 import cx from 'classnames';
-import Picture from 'components/picture';
+
 import Portal from 'components/portal';
 import Routes from 'components/routes';
 import Modal from 'components/utils/modal';
+import LazyLoading from 'components/utils/lazyLoading';
 
 import 'styles/root.scss';
 import 'normalize.css/normalize.css';
 import style from 'styles/app.scss';
+
+// lazyload picture component
+const LazyPicture = Loadable({
+  loader: () => import(/* webpackChunkName: "picture" */ 'components/picture'),
+  render(loaded, props) {
+    const { default: Picture } = loaded;
+
+    return (
+      <Picture {...props} />
+    );
+  },
+  loading: LazyLoading,
+  // Avoiding Flash Of Loading Component
+  delay: 200, // 200ms
+  timeout: 10000, // 10s
+});
 
 class App extends Component {
   constructor(props) {
@@ -85,7 +103,7 @@ class App extends Component {
           <Routes />
         </div>
 
-        <Picture />
+        <LazyPicture />
 
         {
           modal.active && (
