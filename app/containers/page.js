@@ -1,12 +1,30 @@
 import { connect } from 'react-redux';
 import Page from 'components/page';
-import { setModal } from 'actions';
+import {
+  asyncStart,
+  getData,
+  setModal,
+} from 'actions';
 
-const mapStateToProps = state => ({
-  countdown: state.countdown,
+const mapStateToProps = ({
+  asyncTask,
+  countdown,
+  data: {
+    loading,
+    error,
+    data,
+  },
+}) => ({
+  asyncTask,
+  loading,
+  error,
+  data,
+  countdown,
 });
 
 const mapDispatchToProps = dispatch => ({
+  asyncStart: () => dispatch(asyncStart()),
+  getData: () => dispatch(getData()),
   setModal: message => dispatch(setModal({
     active: true,
     dialog: 'message',

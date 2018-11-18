@@ -4,9 +4,13 @@ import {
   compose,
 } from 'redux';
 import { persistState } from 'redux-devtools';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import DevTools from 'containers/devtools';
+import rootSaga from 'sagas';
 import reducer from '../reducers';
+
+const sagaMiddleware = createSagaMiddleware();
 
 // persist debug sessions
 const getDebugSessionKey = () => {
@@ -16,13 +20,17 @@ const getDebugSessionKey = () => {
 
 const enhancer = compose(
   // applyMiddleware必须在DevTools.instrument之前
-  applyMiddleware(thunk),
+  applyMiddleware(
+    thunk,
+    sagaMiddleware,
+  ),
   DevTools.instrument(),
   persistState(getDebugSessionKey()),
 );
 
-export default (initState) => {
-  const store = createStore(reducer, initState, enhancer);
+export default () => {
+  const store = createStore(reducer, enhancer);
+  sagaMiddleware.run(rootSaga);
 
   // Hot reload reducers
   if (module.hot) {

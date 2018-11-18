@@ -1,6 +1,8 @@
 @import '~zp-ui/styles/func';
 
 .page {
+  @include flexbox(column, nowrap, flex-start, flex-start);
+
   .text {
     @extend %ellipsis;
 
@@ -21,6 +23,7 @@
   padding: torem(6px) torem(12px);
   border: 1px solid var(--lightgrey, #d3d3d3);
   border-radius: torem(3px);
+  margin: torem(6px) 0;
   touch-action: manipulation;
   user-select: none;
   cursor: pointer;

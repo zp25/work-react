@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from 'containers/root';
 import configureStore from 'store/configureStore';
 
-const initState = {};
-const store = configureStore(initState);
+const store = configureStore();
 
 ReactDOM.render(
   <Root store={store} />,
