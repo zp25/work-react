@@ -11,8 +11,12 @@ const Helmet = ({ children }) => (
   </RootHelmet>
 );
 
+Helmet.defaultProps = {
+  children: null,
+};
+
 Helmet.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element,
 };
 
 export default Helmet;
