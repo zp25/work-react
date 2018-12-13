@@ -1,6 +1,14 @@
 import { createAction } from 'zp-lib/index';
-import { ASYNC_START, ASYNC_DONE } from 'constants/actionTypes';
 
-export const asyncStart = createAction(ASYNC_START);
+/* ****** Types ****** */
+const ASYNC_START = 'ASYNC_START';
+const ASYNC_DONE = 'ASYNC_DONE';
 
-export const asyncDone = createAction(ASYNC_DONE);
+/* ** ActionCreators ** */
+const asyncStart = createAction(ASYNC_START);
+const asyncDone = createAction(ASYNC_DONE);
+
+export {
+  asyncStart,
+  asyncDone,
+};

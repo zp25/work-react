@@ -1,23 +1,23 @@
 import React from 'react';
 import cx from 'classnames';
 
-import style from 'styles/utils/modal.scss';
+import style from './style.scss';
 
 const arr = [...new Array(12).keys()].map(d => ({
   id: d + 1,
 }));
 
-const Loading = () => (
-  <div className={style.loading}>
+const Spinner = () => (
+  <div className={style['sk-circle']}>
     {
       arr.map(d => (
         <span
           key={d.id}
-          className={cx(style.loading__circle, style[`loading__circle--${d.id}`])}
+          className={cx(style[`sk-circle${d.id}`], style['sk-child'])}
         />
       ))
     }
   </div>
 );
 
-export default Loading;
+export default Spinner;

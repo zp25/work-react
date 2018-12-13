@@ -11,18 +11,20 @@ app目录
 +-- actions
 +-- assets
 +-- components
-|   +-- app.jsx
+|   +-- app
+|   +-- routes.jsx
 +-- constants
-|   +-- actionTypes.js
+|   +-- apis.js
 +-- containers
 |   +-- devtools
 |   +-- root
 |   |   +-- dev.jsx
 |   |   +-- index.jsx
 |   |   +-- prod.jsx
-|   +-- app.jsx
+|   +-- app.js
 +-- images
 +-- reducers
++-- sagas
 +-- store
 +-- styles
 +-- index.jsx

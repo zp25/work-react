@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import Page from 'components/page';
 import {
   asyncStart,
+  clearData,
   getData,
-  setModal,
 } from 'actions';
 
 const mapStateToProps = ({
   asyncTask,
-  countdown,
   data: {
     loading,
     error,
@@ -19,17 +18,12 @@ const mapStateToProps = ({
   loading,
   error,
   data,
-  countdown,
 });
 
 const mapDispatchToProps = dispatch => ({
   asyncStart: () => dispatch(asyncStart()),
+  clearData: () => dispatch(clearData()),
   getData: () => dispatch(getData()),
-  setModal: message => dispatch(setModal({
-    active: true,
-    dialog: 'message',
-    message: message.toString(),
-  })),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (

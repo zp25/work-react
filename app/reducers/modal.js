@@ -1,13 +1,12 @@
 import { createReducer } from 'zp-lib/index';
-import { SET_MODAL, CLEAR_MODAL } from 'constants/actionTypes';
+import {
+  setModal,
+  clearModal,
+} from 'actions/modal';
 
-const initState = {
-  active: false,
-  dialog: 'loading',
-  message: '',
-};
+const initState = false;
 
 export default createReducer(initState, {
-  [SET_MODAL]: (state, action) => Object.assign({}, state, action.payload),
-  [CLEAR_MODAL]: () => Object.assign({}, initState),
+  [setModal]: (state, { payload }) => !!payload,
+  [clearModal]: () => false,
 });

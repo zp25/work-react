@@ -1,0 +1,6 @@
+@import '~zp-ui/styles/func';
+@import '~zp-ui/styles/modal';
+
+.modal {
+  @include flexbox(column, nowrap, center, center);
+}

@@ -1,6 +1,8 @@
 import { delay } from 'redux-saga';
 import { put, takeLatest } from 'redux-saga/effects';
-import { ASYNC_START } from 'constants/actionTypes';
+import {
+  asyncStart,
+} from 'actions/asyncTask';
 import { asyncDone } from 'actions';
 
 function* done() {
@@ -9,5 +11,5 @@ function* done() {
 }
 
 export default function* watchAsyncStart() {
-  yield takeLatest(ASYNC_START, done);
+  yield takeLatest(asyncStart.toString(), done);
 }

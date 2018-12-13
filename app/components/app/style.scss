@@ -35,4 +35,41 @@
     flex: 0 0 auto;
     padding-bottom: torem(10px);
   }
+
+  .picture {
+    flex: 1 1 auto;
+  }
+}
+
+.modal {
+  font-size: fontSize(18px);
+  line-height: 2;
+  background-color: var(--lightgrey);
+  padding: 0 torem(20px);
+}
+
+// transition
+:global {
+  .fade-appear,
+  .fade-enter {
+    opacity: 0.01;
+  }
+
+  .fade-enter-active,
+  .fade-appear-active {
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+
+  .fade-exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    transition: opacity 0.1s;
+    opacity: 0.01;
+  }
 }
