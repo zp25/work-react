@@ -7,7 +7,7 @@ module.exports = dev => (env = {}) => ({
         name: 'styles',
         test: /\.scss$/,
         chunks: 'all',
-        enforce: true
+        enforce: true,
       },
     },
   },

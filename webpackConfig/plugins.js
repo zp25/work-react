@@ -34,7 +34,6 @@ module.exports = dev => (env = {}) => {
     new StyleLintPlugin(),
 
     new HtmlWebpackPlugin({
-      title: 'Template',
       filename: 'index.html',
       template: TEMP,
       minify: !dev && HTMLMINIFIER,

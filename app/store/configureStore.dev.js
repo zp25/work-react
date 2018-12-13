@@ -3,7 +3,7 @@ import {
   createStore,
   compose,
 } from 'redux';
-import { persistState } from 'redux-devtools';
+import { persistState } from 'redux-devtools'; // eslint-disable-line import/no-extraneous-dependencies
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import DevTools from 'containers/devtools';

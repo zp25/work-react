@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import {
+import { // eslint-disable-line import/no-extraneous-dependencies
   hot,
   // setConfig,
 } from 'react-hot-loader';

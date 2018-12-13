@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
+
 import React from 'react';
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
