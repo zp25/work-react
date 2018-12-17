@@ -7,6 +7,10 @@ import {
   getData,
 } from './data';
 import {
+  setErrorLoadPicture,
+  clearErrorLoadPicture,
+} from './errorLoadPicture';
+import {
   setModal,
   clearModal,
 } from './modal';
@@ -16,6 +20,8 @@ export {
   asyncDone,
   clearData,
   getData,
+  setErrorLoadPicture,
+  clearErrorLoadPicture,
   setModal,
   clearModal,
 };

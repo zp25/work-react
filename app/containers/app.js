@@ -1,15 +1,21 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import App from 'components/app';
-import { clearModal } from 'actions';
+import {
+  setErrorLoadPicture,
+  clearModal,
+} from 'actions';
 
 const mapStateToProps = ({
+  errorLoadPicture,
   modal,
 }) => ({
+  errorLoadPicture,
   modal,
 });
 
 const mapDispatchToProps = dispatch => ({
+  setErrorLoadPicture: err => dispatch(setErrorLoadPicture(err)),
   closeModal: () => dispatch(clearModal()),
 });
 
