@@ -37,8 +37,8 @@ module.exports = dev => (env = {}) => {
           loader: 'file-loader',
           options: {
             name: dev ?
-              '[path][name].[ext]?[sha1:hash:base64:10]' :
-              '[path][sha1:hash:base64:10].[ext]',
+              '[path][name].[ext]?[sha256:hash:base64:7]' :
+              '[path][sha256:hash:base64:7].[ext]',
           },
         },
       ],
