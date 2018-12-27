@@ -1,4 +1,4 @@
-module.exports = dev => (env = {}) => ({
+module.exports = dev => (env = {}) => ({ // eslint-disable-line no-unused-vars
   // concatenateModules: true,
   splitChunks: {
     chunks: 'all',

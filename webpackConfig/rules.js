@@ -1,8 +1,10 @@
+/* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
+
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { SRC } = require('./constants');
 
-module.exports = dev => (env = {}) => {
+module.exports = dev => (env = {}) => { // eslint-disable-line no-unused-vars
   const styleLoader = {
     loader: 'style-loader',
     options: {
@@ -36,9 +38,9 @@ module.exports = dev => (env = {}) => {
         {
           loader: 'file-loader',
           options: {
-            name: dev ?
-              '[path][name].[ext]?[sha256:hash:base64:7]' :
-              '[path][sha256:hash:base64:7].[ext]',
+            name: dev
+              ? '[path][name].[ext]?[sha256:hash:base64:7]'
+              : '[path][sha256:hash:base64:7].[ext]',
           },
         },
       ],

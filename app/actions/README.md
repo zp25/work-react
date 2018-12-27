@@ -1,4 +1,5 @@
 # actions
+
 FSA
 
 ~~~javascript
@@ -9,6 +10,7 @@ FSA
   }
 }
 ~~~
+
 basic
 
 ~~~javascript
@@ -18,6 +20,7 @@ basic
   error: true
 }
 ~~~
+
 error
 
 ~~~javascript
@@ -31,9 +34,11 @@ error
   }
 }
 ~~~
+
 meta
 
 ## action types
+
 部分规则
 
 + SET: 添加／更新所有
@@ -65,6 +70,7 @@ const reducer = (state = '', { type, payload }) => {
   }
 };
 ~~~
+
 示例
 
 + [Flux Standard Action](https://github.com/redux-utilities/flux-standard-action "Flux Standard Action")

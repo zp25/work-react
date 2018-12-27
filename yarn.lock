@@ -2979,10 +2979,10 @@ eslint-visitor-keys@^1.0.0:
   resolved "http://registry.npm.taobao.org/eslint-visitor-keys/download/eslint-visitor-keys-1.0.0.tgz#3f3180fb2e291017716acb4c9d6d5b5c34a6a81d"
   integrity sha1-PzGA+y4pEBdxastMnW1bXDSmqB0=
 
-eslint@^5.11.0:
-  version "5.11.0"
-  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.11.0.tgz#51a0e70f137a425fe044cd48273b96f28a774b1f"
-  integrity sha1-UaDnDxN6Ql/gRM1IJzuW8op3Sx8=
+eslint@^5.11.1:
+  version "5.11.1"
+  resolved "http://registry.npm.taobao.org/eslint/download/eslint-5.11.1.tgz#8deda83db9f354bf9d3f53f9677af7e0e13eadda"
+  integrity sha1-je2oPbnzVL+dP1P5Z3r34OE+rdo=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.5.3"
@@ -4698,10 +4698,10 @@ json-schema@0.2.3:
   resolved "http://registry.npm.taobao.org/json-schema/download/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
-json-server@^0.14.1:
-  version "0.14.1"
-  resolved "http://registry.npm.taobao.org/json-server/download/json-server-0.14.1.tgz#931fa84d46b2251387285425655851b047d208be"
-  integrity sha1-kx+oTUayJROHKFQlZVhRsEfSCL4=
+json-server@^0.14.2:
+  version "0.14.2"
+  resolved "http://registry.npm.taobao.org/json-server/download/json-server-0.14.2.tgz#05774285ca458c0f76de0e8eb9c05ee1abf76953"
+  integrity sha1-BXdChcpFjA923g6OucBe4av3aVM=
   dependencies:
     body-parser "^1.18.3"
     chalk "^2.4.1"

@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
+
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -47,7 +49,7 @@ module.exports = dev => (env = {}) => {
           copyUnmodified: !dev,
         }),
       ] : []
-    )
+    ),
   ];
 
   const devPlugins = [

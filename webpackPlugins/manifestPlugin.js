@@ -77,12 +77,13 @@ class ManifestPlugin {
             const name = this.constructor.originalFilename(file);
 
             return Object.assign({}, prev, { [name]: path.basename(file) });
-          }, {}
+          },
+          {},
         ));
       });
 
       // module assets
-      this.manifest =  Object.assign({}, this.manifest, stats.assets.reduce(
+      this.manifest = Object.assign({}, this.manifest, stats.assets.reduce(
         (prev, asset) => {
           const { name: dstName } = asset;
           const srcName = this.assets[dstName];
@@ -94,7 +95,8 @@ class ManifestPlugin {
           }
 
           return prev;
-        }, {}
+        },
+        {},
       ));
 
       // sort

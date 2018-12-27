@@ -5,33 +5,34 @@ react起始模版
 webpack@4 + redux + react-router@4 + react-hot-loader@4
 
 ## 目录
+
 app目录
 
-~~~
-+-- actions
-+-- assets
-+-- components
-|   +-- app
-|   +-- routes.jsx
-+-- constants
-|   +-- apis.js
-+-- containers
-|   +-- devtools
-|   +-- root
-|   |   +-- dev.jsx
-|   |   +-- index.jsx
-|   |   +-- prod.jsx
-|   +-- app.js
-+-- images
-+-- reducers
-+-- sagas
-+-- store
-+-- styles
-+-- index.jsx
-~~~
+    +-- actions
+    +-- assets
+    +-- components
+    |   +-- app
+    |   +-- routes.jsx
+    +-- constants
+    |   +-- apis.js
+    +-- containers
+    |   +-- devtools
+    |   +-- root
+    |   |   +-- dev.jsx
+    |   |   +-- index.jsx
+    |   |   +-- prod.jsx
+    |   +-- app.js
+    +-- images
+    +-- reducers
+    +-- sagas
+    +-- store
+    +-- styles
+    +-- index.jsx
+
 assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
 
 ## libpng issues
+
 image-webpack-loader依赖libpng，缺少会报错，<https://github.com/tcoopman/image-webpack-loader/issues/142>
 
 ~~~bash
@@ -41,9 +42,11 @@ brew install libpng
 # ubuntu
 sudo apt-get install libpng16-dev
 ~~~
+
 安装依赖
 
 ## 资源
+
 + [Webpack Configuration](https://webpack.js.org/configuration/ "Webpack Configuration")
 + [webpack releases page](https://github.com/webpack/webpack/releases "webpack releases page")
 + [React Hot Loader](https://github.com/gaearon/react-hot-loader/tree/next "React Hot Loader")
