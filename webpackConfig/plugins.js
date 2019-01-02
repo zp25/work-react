@@ -36,7 +36,7 @@ module.exports = dev => (env = {}) => {
     new StyleLintPlugin(),
 
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: 'index.html', // 需要可配置
       template: TEMP,
       minify: !dev && HTMLMINIFIER,
     }),
