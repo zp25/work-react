@@ -36,7 +36,7 @@ module.exports = dev => (env = {}) => {
     new StyleLintPlugin(),
 
     new HtmlWebpackPlugin({
-      filename: 'index.html', // 需要可配置
+      filename: process.env.INDEX || 'index.html',
       template: TEMP,
       minify: !dev && HTMLMINIFIER,
     }),
@@ -68,7 +68,7 @@ module.exports = dev => (env = {}) => {
 
     ...(quiet ? [] : [
       new BundleAnalyzerPlugin({
-        analyzerPort: process.env.PROD_PORT || 3001,
+        analyzerPort: process.env.ANALYZER_PORT || 3001,
       }),
     ]),
 

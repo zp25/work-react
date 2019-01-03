@@ -31,6 +31,24 @@ app目录
 
 assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
 
+## env
+
+.env文件配置
+
+~~~
+# devserver
+HOST=localhost
+PORT=8080
+
+# webpack-bundle-analyzer监听端口
+ANALYZER_PORT=3001
+
+# html文件名
+INDEX=index.html
+~~~
+
+serve配置在serve.json
+
 ## libpng issues
 
 image-webpack-loader依赖libpng，缺少会报错，<https://github.com/tcoopman/image-webpack-loader/issues/142>

@@ -34,7 +34,15 @@ module.exports = env => ({
     port: Number(process.env.PORT) || 8080,
     inline: true,
     hot: true,
-    historyApiFallback: true,
+    // historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /./,
+          to: `/${process.env.INDEX || 'index.html'}`,
+        },
+      ],
+    },
     stats: {
       colors: true,
       chunks: false,
