@@ -1,5 +1,8 @@
-import { delay } from 'redux-saga';
-import { put, takeLatest } from 'redux-saga/effects';
+import {
+  put,
+  takeLatest,
+  delay,
+} from 'redux-saga/effects';
 import {
   asyncStart,
 } from 'actions/asyncTask';
