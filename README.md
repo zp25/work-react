@@ -9,7 +9,6 @@ webpack@4 + redux + react-router@4 + react-hot-loader@4
 app目录
 
     +-- actions
-    +-- assets
     +-- components
     |   +-- app
     |   +-- routes.jsx
@@ -29,7 +28,7 @@ app目录
     +-- styles
     +-- index.jsx
 
-assets目录存放其他资源，使用copy-webpack-plugin复制到dist目录
+public目录存放html模板(handlebars)和不需要经模块系统处理的资源(使用copy-webpack-plugin复制到dist目录)
 
 ## env
 

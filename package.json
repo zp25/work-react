@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "prebuild": "rimraf dist/*",
+    "clean": "rimraf dist/*",
+    "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.prod.config.js --progress",
-    "prebuild:quiet": "rimraf dist/*",
+    "prebuild:quiet": "npm run clean",
     "build:quiet": "cross-env NODE_ENV=production webpack --env.quiet -p --config webpack.prod.config.js --json > stats.json",
     "analyze": "webpack-bundle-analyzer -p 3001 stats.json dist/",
     "serve": "serve -l 8081",

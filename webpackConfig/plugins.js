@@ -1,6 +1,5 @@
 /* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
 
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -13,6 +12,7 @@ const dotenv = require('dotenv');
 const ManifestPlugin = require('../webpackPlugins/manifestPlugin');
 const {
   SRC,
+  PUBLIC,
   DIST,
   TEMP,
   HTMLMINIFIER,
@@ -40,16 +40,13 @@ module.exports = dev => (env = {}) => {
       template: TEMP,
       minify: !dev && HTMLMINIFIER,
     }),
-    ...(
-      fs.existsSync(path.resolve(SRC, 'assets/')) ? [
-        new CopyWebpackPlugin([{
-          from: 'assets/',
-          to: DIST,
-        }], {
-          copyUnmodified: !dev,
-        }),
-      ] : []
-    ),
+    new CopyWebpackPlugin([{
+      from: PUBLIC,
+      to: DIST,
+      ignore: ['*.hbs'],
+    }], {
+      copyUnmodified: !dev,
+    }),
   ];
 
   const devPlugins = [

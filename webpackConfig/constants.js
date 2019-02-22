@@ -1,8 +1,11 @@
 const path = require('path');
 
+const public = path.resolve(__dirname, '../public')
+
 exports.SRC = path.resolve(__dirname, '../app');
+exports.PUBLIC = public;
 exports.DIST = path.resolve(__dirname, '../dist');
-exports.TEMP = path.resolve(__dirname, '../views/layouts/main.hbs');
+exports.TEMP = path.resolve(public, 'index.hbs');
 
 exports.HTMLMINIFIER = {
   collapseWhitespace: true,
