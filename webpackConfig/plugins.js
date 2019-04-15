@@ -44,6 +44,7 @@ module.exports = dev => (env = {}) => {
       from: PUBLIC,
       to: DIST,
       ignore: ['*.hbs'],
+      flatten: true,
     }], {
       copyUnmodified: !dev,
     }),
