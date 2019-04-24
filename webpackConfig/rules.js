@@ -23,7 +23,10 @@ module.exports = dev => (env = {}) => { // eslint-disable-line no-unused-vars
     },
     {
       test: /\.jsx?$/,
-      include: SRC,
+      include: [
+        SRC,
+        path.resolve(__dirname, '../node_modules/zp-lib'),
+      ],
       use: {
         loader: 'babel-loader',
         options: {

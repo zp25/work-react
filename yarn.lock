@@ -3009,10 +3009,10 @@ eslint-module-utils@^2.4.0:
     debug "^2.6.8"
     pkg-dir "^2.0.0"
 
-eslint-plugin-import@^2.17.1:
-  version "2.17.1"
-  resolved "http://registry.npm.taobao.org/eslint-plugin-import/download/eslint-plugin-import-2.17.1.tgz#b888feb4d9b3ee155113c8dccdd4bec5db33bdf4"
-  integrity sha1-uIj+tNmz7hVRE8jczdS+xdszvfQ=
+eslint-plugin-import@^2.17.2:
+  version "2.17.2"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-import/download/eslint-plugin-import-2.17.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-import%2Fdownload%2Feslint-plugin-import-2.17.2.tgz#d227d5c6dc67eca71eb590d2bb62fb38d86e9fcb"
+  integrity sha1-0ifVxtxn7KcetZDSu2L7ONhun8s=
   dependencies:
     array-includes "^3.0.3"
     contains-path "^0.1.0"
@@ -3711,10 +3711,10 @@ get-stdin@^4.0.1:
   resolved "http://registry.npm.taobao.org/get-stdin/download/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
   integrity sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4=
 
-get-stdin@^6.0.0:
-  version "6.0.0"
-  resolved "http://registry.npm.taobao.org/get-stdin/download/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
-  integrity sha1-ngm/cSs2CrkiXoEgSPcf3pyJZXs=
+get-stdin@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npm.taobao.org/get-stdin/download/get-stdin-7.0.0.tgz#8d5de98f15171a125c5e516643c7a6d0ea8a96f6"
+  integrity sha1-jV3pjxUXGhJcXlFmQ8em0OqKlvY=
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -4397,7 +4397,7 @@ interpret@^1.0.0, interpret@^1.1.0:
   resolved "http://registry.npm.taobao.org/interpret/download/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
   integrity sha1-1QYaYiS+WOgIOYX1AU2EQ1lXYpY=
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.1.0, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/invariant/download/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -4880,7 +4880,7 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "http://registry.npm.taobao.org/json-stable-stringify-without-jsonify/download/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "http://registry.npm.taobao.org/json-stringify-safe/download/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
@@ -6592,13 +6592,13 @@ postcss-selector-parser@^6.0.0:
     indexes-of "^1.0.1"
     uniq "^1.0.1"
 
-postcss-sorting@^4.1.0:
-  version "4.1.0"
-  resolved "http://registry.npm.taobao.org/postcss-sorting/download/postcss-sorting-4.1.0.tgz#a107f0bf3852977fa64e4442bc340c88d5aacdb3"
-  integrity sha1-oQfwvzhSl3+mTkRCvDQMiNWqzbM=
+postcss-sorting@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/postcss-sorting/download/postcss-sorting-5.0.0.tgz#4e4ce0a554c17d78d4287f08f792db8992bf62b5"
+  integrity sha1-TkzgpVTBfXjUKH8I95LbiZK/YrU=
   dependencies:
-    lodash "^4.17.4"
-    postcss "^7.0.0"
+    lodash "^4.17.11"
+    postcss "^7.0.14"
 
 postcss-syntax@^0.36.2:
   version "0.36.2"
@@ -6978,15 +6978,14 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-transition-group@^2.9.0:
-  version "2.9.0"
-  resolved "http://registry.npm.taobao.org/react-transition-group/download/react-transition-group-2.9.0.tgz#df9cdb025796211151a436c69a8f3b97b5b07c8d"
-  integrity sha1-35zbAleWIRFRpDbGmo87l7WwfI0=
+react-transition-group@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/react-transition-group/download/react-transition-group-4.0.0.tgz#1d82b20d78aa09eac6268ceef0349307146942c6"
+  integrity sha1-HYKyDXiqCerGJozu8DSTBxRpQsY=
   dependencies:
     dom-helpers "^3.4.0"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
-    react-lifecycles-compat "^3.0.4"
 
 react@^16.8.6:
   version "16.8.6"
@@ -7141,6 +7140,14 @@ redux-devtools@^3.5.0:
     lodash "^4.2.0"
     prop-types "^15.5.7"
     redux-devtools-instrument "^1.9.0"
+
+redux-immutable-state-invariant@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/redux-immutable-state-invariant/download/redux-immutable-state-invariant-2.1.0.tgz#308fd3cc7415a0e7f11f51ec997b6379c7055ce1"
+  integrity sha1-MI/TzHQVoOfxH1HsmXtjeccFXOE=
+  dependencies:
+    invariant "^2.1.0"
+    json-stringify-safe "^5.0.1"
 
 redux-saga@^1.0.2:
   version "1.0.2"
@@ -7419,6 +7426,11 @@ resolve-from@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/resolve-from/download/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
   integrity sha1-SrzYUq0y3Xuqv+m0DgCjbbXzkuY=
+
+resolve-from@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/resolve-from/download/resolve-from-5.0.0.tgz#c35225843df8f776df21c57557bc087e9dfdfc69"
+  integrity sha1-w1IlhD3493bfIcV1V7wIfp39/Gk=
 
 resolve-pathname@^2.2.0:
   version "2.2.0"
@@ -8170,22 +8182,22 @@ style-search@^0.1.0:
   resolved "http://registry.npm.taobao.org/style-search/download/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
 
-stylelint-config-sass-guidelines@^5.4.0:
-  version "5.4.0"
-  resolved "http://registry.npm.taobao.org/stylelint-config-sass-guidelines/download/stylelint-config-sass-guidelines-5.4.0.tgz#82f02ab6231f10564105d4fc192ca6cc75fede36"
-  integrity sha1-gvAqtiMfEFZBBdT8GSymzHX+3jY=
+stylelint-config-sass-guidelines@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npm.taobao.org/stylelint-config-sass-guidelines/download/stylelint-config-sass-guidelines-6.0.0.tgz#e81a5452a52be2578dbb570a56dde1216514b6b6"
+  integrity sha1-6BpUUqUr4leNu1cKVt3hIWUUtrY=
   dependencies:
-    stylelint-order ">=1.0.0"
+    stylelint-order "^3.0.0"
     stylelint-scss "^3.4.0"
 
-stylelint-order@>=1.0.0:
-  version "2.2.1"
-  resolved "http://registry.npm.taobao.org/stylelint-order/download/stylelint-order-2.2.1.tgz#cd2d4a0d81d91c705f1d275a58487e5ad5aa5828"
-  integrity sha1-zS1KDYHZHHBfHSdaWEh+WtWqWCg=
+stylelint-order@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npm.taobao.org/stylelint-order/download/stylelint-order-3.0.0.tgz#ec44afb93a3183dcf8c91540d4486de776250506"
+  integrity sha1-7ESvuToxg9z4yRVA1Eht53YlBQY=
   dependencies:
-    lodash "^4.17.10"
-    postcss "^7.0.2"
-    postcss-sorting "^4.1.0"
+    lodash "^4.17.11"
+    postcss "^7.0.14"
+    postcss-sorting "^5.0.0"
 
 stylelint-scss@^3.4.0:
   version "3.5.4"
@@ -8208,10 +8220,10 @@ stylelint-webpack-plugin@^0.10.5:
     object-assign "^4.1.0"
     ramda "^0.25.0"
 
-stylelint@^10.0.0:
-  version "10.0.0"
-  resolved "http://registry.npm.taobao.org/stylelint/download/stylelint-10.0.0.tgz#5e7ad496d1a66671c068df327429133e2baf3264"
-  integrity sha1-XnrUltGmZnHAaN8ydCkTPiuvMmQ=
+stylelint@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.npm.taobao.org/stylelint/download/stylelint-10.0.1.tgz#f85cd9755e905d826023d67df62b32716fa6dfb4"
+  integrity sha1-+FzZdV6QXYJgI9Z99isycW+m37Q=
   dependencies:
     autoprefixer "^9.5.1"
     balanced-match "^1.0.0"
@@ -8220,7 +8232,7 @@ stylelint@^10.0.0:
     debug "^4.1.1"
     execall "^1.0.0"
     file-entry-cache "^5.0.1"
-    get-stdin "^6.0.0"
+    get-stdin "^7.0.0"
     global-modules "^2.0.0"
     globby "^9.2.0"
     globjoin "^0.1.4"
@@ -8251,7 +8263,7 @@ stylelint@^10.0.0:
     postcss-selector-parser "^3.1.0"
     postcss-syntax "^0.36.2"
     postcss-value-parser "^3.3.1"
-    resolve-from "^4.0.0"
+    resolve-from "^5.0.0"
     signal-exit "^3.0.2"
     slash "^2.0.0"
     specificity "^0.4.1"
@@ -8961,10 +8973,10 @@ webpack-bundle-analyzer@^3.3.2:
     opener "^1.5.1"
     ws "^6.0.0"
 
-webpack-cli@^3.3.0:
-  version "3.3.0"
-  resolved "http://registry.npm.taobao.org/webpack-cli/download/webpack-cli-3.3.0.tgz#55c8a74cae1e88117f9dda3a801c7272e93ca318"
-  integrity sha1-VcinTK4eiBF/ndo6gBxycuk8oxg=
+webpack-cli@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/webpack-cli/download/webpack-cli-3.3.1.tgz#98b0499c7138ba9ece8898bd99c4f007db59909d"
+  integrity sha1-mLBJnHE4up7OiJi9mcTwB9tZkJ0=
   dependencies:
     chalk "^2.4.1"
     cross-spawn "^6.0.5"
@@ -9273,14 +9285,14 @@ yargs@^7.0.0:
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
 
-zp-lib@^0.1.2, zp-lib@^0.1.6:
-  version "0.1.6"
-  resolved "http://registry.npm.taobao.org/zp-lib/download/zp-lib-0.1.6.tgz#3c440212cd766d70e5853548a2a2db6a6581a7f0"
-  integrity sha1-PEQCEs12bXDlhTVIoqLbamWBp/A=
+zp-lib@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.npm.taobao.org/zp-lib/download/zp-lib-0.1.7.tgz#6d9522ea0a1c10c0512922a4279c82e48288f8df"
+  integrity sha1-bZUi6gocEMBRKSKkJ5yC5IKI+N8=
 
-zp-ui@^0.5.2:
-  version "0.5.2"
-  resolved "http://registry.npm.taobao.org/zp-ui/download/zp-ui-0.5.2.tgz#78d3bffe3ea966ea67464de40ca0af36757aa962"
-  integrity sha1-eNO//j6pZupnRk3kDKCvNnV6qWI=
+zp-ui@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.npm.taobao.org/zp-ui/download/zp-ui-0.6.0.tgz#20e31f637cfa48bc13110ad317414004441a66aa"
+  integrity sha1-IOMfY3z6SLwTEQrTF0FABEQaZqo=
   dependencies:
-    zp-lib "^0.1.2"
+    zp-lib "^0.1.7"

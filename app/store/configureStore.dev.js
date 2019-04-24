@@ -1,3 +1,5 @@
+/* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
+
 import {
   applyMiddleware,
   createStore,
@@ -7,6 +9,7 @@ import { persistState } from 'redux-devtools'; // eslint-disable-line import/no-
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import DevTools from 'containers/devtools';
+import immutableStateInvariant from 'redux-immutable-state-invariant';
 import rootSaga from 'sagas';
 import reducer from '../reducers';
 
@@ -21,6 +24,7 @@ const getDebugSessionKey = () => {
 const enhancer = compose(
   // applyMiddleware必须在DevTools.instrument之前
   applyMiddleware(
+    immutableStateInvariant(),
     thunk,
     sagaMiddleware,
   ),

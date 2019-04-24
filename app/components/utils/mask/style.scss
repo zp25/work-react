@@ -1,6 +1,16 @@
 @import '~zp-ui/styles/func';
-@import '~zp-ui/styles/modal';
 
 .modal {
-  @include flexbox(column, nowrap, center, center);
+  display: none;
+
+  &.modal--active {
+    @include flexbox(column, nowrap, center, center);
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(1, 1, 1, 0.5);
+  }
 }

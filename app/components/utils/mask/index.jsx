@@ -14,7 +14,6 @@ const Mask = ({
   <div
     className={cx(
       style.modal,
-      style['modal--mask'],
       style['modal--active'],
       className,
     )}

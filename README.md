@@ -79,3 +79,4 @@ sudo apt-get install libpng16-dev
 + [Analysing and minimising the size of client side bundle with webpack and source-map-explorer](https://medium.com/@nimgrg/analysing-and-minimising-the-size-of-client-side-bundle-with-webpack-and-source-map-explorer-41096559beca "Analysing and minimising the size of client side bundle with webpack and source-map-explorer")
 + [HTML Webpack Plugin](https://github.com/jantimon/html-webpack-plugin "HTML Webpack Plugin")
 + [webpack 4: released today!!](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4 "webpack 4: released today!!")
++ [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant "redux-immutable-state-invariant")
