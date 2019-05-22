@@ -1,16 +1,11 @@
-/* eslint react/prop-types: off */
+/* eslint react/prop-types: off, import/no-extraneous-dependencies: off */
 
 import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { // eslint-disable-line import/no-extraneous-dependencies
-  hot,
-  // setConfig,
-} from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import App from 'containers/app';
 import DevTools from 'containers/devtools';
-
-// setConfig({ logLevel: 'debug' });
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -23,4 +18,4 @@ const Root = ({ store }) => (
   </Provider>
 );
 
-export default hot(module)(Root);
+export default hot(Root);

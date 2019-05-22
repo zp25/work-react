@@ -25,6 +25,9 @@ module.exports = env => ({
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.scss'],
     modules: [SRC, 'node_modules'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   module: { rules: rules(env) },
   plugins: plugins(env),

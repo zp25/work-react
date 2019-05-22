@@ -16,8 +16,6 @@ import Spinner from 'components/utils/spinner';
 import zpWebp from 'images/zp.webp';
 import zpJpg from 'images/zp.jpg';
 
-import 'styles/root.scss';
-import 'normalize.css/normalize.css';
 import style from './style.scss';
 
 import Links from './links';

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Root from 'containers/root';
 import configureStore from 'store/configureStore';
 
+import '../node_modules/normalize.css/normalize.css';
+
 const store = configureStore();
 
 ReactDOM.render(
