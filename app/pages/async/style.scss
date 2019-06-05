@@ -1,11 +1,11 @@
 @import '~zp-ui/styles/func';
 
-.home {
+.async {
   @include flexbox(column, nowrap, flex-start, flex-start);
 
   .text {
     @extend %ellipsis;
 
-    font-size: fontSize(bold);
+    font-size: torem(16px);
   }
 }

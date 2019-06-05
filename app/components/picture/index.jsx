@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import style from './style.scss';
 
-const Picture = ({
+const Picture = memo(({
   className,
   srcSet: {
     src: srcSet,
@@ -31,7 +31,7 @@ const Picture = ({
       ))
     }
   </picture>
-);
+));
 
 Picture.defaultProps = {
   className: '',

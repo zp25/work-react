@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'components/utils/helmet';
-import Button from 'components/utils/button';
+import Helmet from 'components/helmet';
+import Button from 'components/button';
 
 import style from './style.scss';
 
-class Page extends Component {
+class Async extends Component {
   componentWillUnmount() {
     const { clearData } = this.props;
 
@@ -14,16 +14,13 @@ class Page extends Component {
 
   render() {
     const {
-      match: {
-        params: { page },
-      },
       env,
       asyncTask,
       loading,
       error,
       data,
       asyncStart,
-      getData,
+      reqData,
     } = this.props;
 
     let hint = '';
@@ -41,18 +38,18 @@ class Page extends Component {
     }
 
     return (
-      <div className={style.page}>
+      <div className={style.async}>
         <Helmet>
-          <title>{page}</title>
+          <title>异步</title>
         </Helmet>
 
-        <p className={style.text}>
-          {`${env}: ${page}`}
-        </p>
+        <p className={style.text}>{env}</p>
 
         <Button
           type="button"
-          onClick={getData}
+          onClick={() => {
+            reqData({ foo: 'Foo', bar: 'Bar' });
+          }}
         >
           {'Fetch Data'}
         </Button>
@@ -72,11 +69,12 @@ class Page extends Component {
   }
 }
 
-Page.defaultProps = {
+Async.defaultProps = {
   data: null,
 };
 
-Page.propTypes = {
+Async.propTypes = {
+  env: PropTypes.string.isRequired,
   asyncTask: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
@@ -84,16 +82,9 @@ Page.propTypes = {
     PropTypes.object,
     PropTypes.instanceOf(Error),
   ]),
-  env: PropTypes.string.isRequired,
   asyncStart: PropTypes.func.isRequired,
+  reqData: PropTypes.func.isRequired,
   clearData: PropTypes.func.isRequired,
-  getData: PropTypes.func.isRequired,
-  // ownProps
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      page: PropTypes.string,
-    }),
-  }).isRequired,
 };
 
-export default Page;
+export default Async;

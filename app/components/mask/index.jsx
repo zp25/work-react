@@ -1,12 +1,12 @@
 /* eslint jsx-a11y/click-events-have-key-events: 0, jsx-a11y/no-static-element-interactions: 0 */
 
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import style from './style.scss';
 
-const Mask = ({
+const Mask = memo(({
   className,
   children,
   onClick,
@@ -21,7 +21,7 @@ const Mask = ({
   >
     {children}
   </div>
-);
+));
 
 Mask.defaultProps = {
   className: '',

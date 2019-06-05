@@ -7,7 +7,6 @@ import {
 } from 'redux';
 import { persistState } from 'redux-devtools'; // eslint-disable-line import/no-extraneous-dependencies
 import createSagaMiddleware from 'redux-saga';
-import thunk from 'redux-thunk';
 import DevTools from 'containers/devtools';
 import immutableStateInvariant from 'redux-immutable-state-invariant';
 import rootSaga from 'sagas';
@@ -25,15 +24,14 @@ const enhancer = compose(
   // applyMiddleware必须在DevTools.instrument之前
   applyMiddleware(
     immutableStateInvariant(),
-    thunk,
     sagaMiddleware,
   ),
   DevTools.instrument(),
   persistState(getDebugSessionKey()),
 );
 
-export default () => {
-  const store = createStore(reducer, enhancer);
+export default (preloadedState = {}) => {
+  const store = createStore(reducer, preloadedState, enhancer);
   sagaMiddleware.run(rootSaga);
 
   // Hot reload reducers

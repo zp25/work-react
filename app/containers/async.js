@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import Page from 'components/page';
+import Async from 'pages/async';
 import {
   asyncStart,
+  reqData,
   clearData,
-  getData,
 } from 'actions';
 
 const mapStateToProps = ({
@@ -22,8 +22,8 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => ({
   asyncStart: () => dispatch(asyncStart()),
+  reqData: data => dispatch(reqData(data)),
   clearData: () => dispatch(clearData()),
-  getData: () => dispatch(getData()),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
@@ -32,10 +32,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 
-const PageContainer = connect(
+const AsyncContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps,
-)(Page);
+)(Async);
 
-export default PageContainer;
+export default AsyncContainer;

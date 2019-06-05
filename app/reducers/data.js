@@ -1,4 +1,4 @@
-import { createReducer } from 'zp-lib/index';
+import createReducer from 'zp-lib/src/createReducer';
 import {
   reqData,
   resData,
@@ -13,7 +13,11 @@ const initState = {
 };
 
 export default createReducer(initState, {
-  [reqData]: () => Object.assign({}, initState, { loading: true }),
+  [reqData]: (state, { payload }) => ({
+    loading: true,
+    error: false,
+    data: payload,
+  }),
   [resData]: (state, { payload }) => ({
     loading: false,
     error: false,

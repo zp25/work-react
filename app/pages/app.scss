@@ -1,0 +1,48 @@
+@import '~zp-ui/styles/func';
+@import '~zp-ui/styles/root';
+
+html {
+  height: 100vh;
+}
+
+body {
+  height: 100%;
+}
+
+:global(#root) {
+  @include flexbox(column, nowrap, flex-start, center);
+
+  height: 100%;
+  font-size: torem(14px);
+}
+
+:root {
+  --lightgrey: #f5f5f5;
+  --text: #222;
+}
+
+.app {
+  @include flexbox(column, nowrap, flex-start, stretch);
+
+  width: 98%;
+  min-height: 100%;
+  color: var(--text, #222);
+
+  .nav {
+    flex: 0 0 auto;
+
+    .active {
+      color: var(--green, #008000);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1001px) {
+  .app {
+    width: 95%;
+  }
+}

@@ -1,4 +1,4 @@
-import { createAction } from 'zp-lib/index';
+import createAction from 'zp-lib/src/createAction';
 
 /* ****** Types ****** */
 const SET_MODAL = 'SET_MODAL';

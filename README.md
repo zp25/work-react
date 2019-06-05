@@ -2,7 +2,7 @@
 
 react起始模版
 
-webpack@4 + redux + react-router@4 + react-hot-loader@4
+webpack@4 + redux + react-router@5 + react-hot-loader@4
 
 ## 目录
 
@@ -10,10 +10,6 @@ app目录
 
     +-- actions
     +-- components
-    |   +-- app
-    |   +-- routes.jsx
-    +-- constants
-    |   +-- apis.js
     +-- containers
     |   +-- devtools
     |   +-- root
@@ -22,11 +18,15 @@ app目录
     |   |   +-- prod.jsx
     |   +-- app.js
     +-- images
+    +-- pages
+    |   +-- app.jsx
+    |   +-- app.scss
     +-- reducers
     +-- sagas
     +-- store
-    +-- styles
+    +-- apis.js
     +-- index.jsx
+    +-- routes.js
 
 public目录存放html模板(handlebars)和不需要经模块系统处理的资源(使用copy-webpack-plugin复制到dist目录)
 

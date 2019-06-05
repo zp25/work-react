@@ -1,15 +1,15 @@
 import {
+  delay,
   put,
   takeLatest,
-  delay,
 } from 'redux-saga/effects';
 import {
   asyncStart,
+  asyncDone,
 } from 'actions/asyncTask';
-import { asyncDone } from 'actions';
 
 function* done() {
-  yield delay(600);
+  yield delay(1000);
   yield put(asyncDone());
 }
 

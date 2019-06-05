@@ -1,10 +1,7 @@
+import { asyncStart } from './asyncTask';
 import {
-  asyncStart,
-  asyncDone,
-} from './asyncTask';
-import {
+  reqData,
   clearData,
-  getData,
 } from './data';
 import {
   setErrorLoadPicture,
@@ -15,11 +12,13 @@ import {
   clearModal,
 } from './modal';
 
+/**
+ * 仅components可执行actions
+ */
 export {
   asyncStart,
-  asyncDone,
+  reqData,
   clearData,
-  getData,
   setErrorLoadPicture,
   clearErrorLoadPicture,
   setModal,

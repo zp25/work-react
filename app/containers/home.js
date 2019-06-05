@@ -1,12 +1,23 @@
 import { connect } from 'react-redux';
-import Home from 'components/home';
-import { setModal } from 'actions';
+import Home from 'pages/home';
+import {
+  setErrorLoadPicture,
+  setModal,
+  clearModal,
+} from 'actions';
 
-// const mapStateToProps = state => ({
-// });
+const mapStateToProps = ({
+  errorLoadPicture,
+  modal,
+}) => ({
+  errorLoadPicture,
+  modal,
+});
 
 const mapDispatchToProps = dispatch => ({
+  setErrorLoadPicture: err => dispatch(setErrorLoadPicture(err)),
   openModal: () => dispatch(setModal(true)),
+  closeModal: () => dispatch(clearModal()),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
@@ -16,7 +27,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
 );
 
 const HomeContainer = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
   mergeProps,
 )(Home);

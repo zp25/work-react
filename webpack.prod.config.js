@@ -22,7 +22,7 @@ module.exports = env => ({
     crossOriginLoading: 'anonymous',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.scss'],
+    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json'],
     modules: [SRC, 'node_modules'],
   },
   module: { rules: rules(env) },

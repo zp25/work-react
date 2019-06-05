@@ -23,7 +23,7 @@ module.exports = env => ({
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.scss'],
+    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json'],
     modules: [SRC, 'node_modules'],
     alias: {
       'react-dom': '@hot-loader/react-dom',

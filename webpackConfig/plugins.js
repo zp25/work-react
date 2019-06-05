@@ -21,7 +21,10 @@ const {
 dotenv.config({ silent: true });
 
 module.exports = dev => (env = {}) => {
-  const { quiet } = env;
+  const {
+    mock,
+    quiet,
+  } = env;
 
   const plugins = [
     new webpack.LoaderOptionsPlugin({
@@ -51,6 +54,11 @@ module.exports = dev => (env = {}) => {
   ];
 
   const devPlugins = [
+    new webpack.DefinePlugin({
+      "process.env": {
+        'MOCK': mock,
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ];
 

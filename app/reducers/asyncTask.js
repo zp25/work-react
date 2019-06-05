@@ -1,4 +1,4 @@
-import { createReducer } from 'zp-lib/index';
+import createReducer from 'zp-lib/src/createReducer';
 import {
   asyncStart,
   asyncDone,

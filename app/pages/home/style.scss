@@ -1,0 +1,19 @@
+@import '~zp-ui/styles/func';
+
+.home {
+  @include flexbox(column, nowrap, flex-start, flex-start);
+
+  .text {
+    @extend %ellipsis;
+
+    font-size: torem(16px);
+  }
+}
+
+.modal {
+  font-size: torem(18px);
+  line-height: 2;
+  background-color: var(--lightgrey);
+  padding: 0 torem(20px);
+  user-select: none;
+}

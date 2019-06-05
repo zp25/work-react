@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import style from './style.scss';
 
-const Button = ({
-  type,
+const Button = memo(({
   className,
   children,
   onClick,
   ...props
 }) => (
-  <button // eslint-disable-line react/button-has-type
-    type={type}
+  <button
+    type="button"
     className={cx(style.button, className)}
     onClick={onClick}
     {...props}
   >
     {children}
   </button>
-);
+));
 
 Button.defaultProps = {
-  type: 'button',
   className: '',
   children: '',
   onClick: null,
 };
 
 Button.propTypes = {
-  type: PropTypes.string,
   className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
