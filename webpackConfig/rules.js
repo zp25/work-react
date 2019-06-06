@@ -49,6 +49,17 @@ module.exports = dev => (env = {}) => { // eslint-disable-line no-unused-vars
       ],
     },
     {
+      test: /\.(ttf|otf|eot|woff2?)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
+          },
+        },
+      ],
+    },
+    {
       test: /\.(scss|css)$/,
       use: [
         ...(dev ? [styleLoader] : [MiniCssExtractPlugin.loader]),
