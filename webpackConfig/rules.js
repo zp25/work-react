@@ -66,9 +66,10 @@ module.exports = dev => (env = {}) => { // eslint-disable-line no-unused-vars
         {
           loader: 'css-loader',
           options: {
-            modules: true,
+            modules: {
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
             importLoaders: 2,
-            localIdentName: '[name]__[local]___[hash:base64:5]',
             sourceMap: true,
           },
         },
