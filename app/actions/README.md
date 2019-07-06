@@ -73,4 +73,37 @@ const reducer = (state = '', { type, payload }) => {
 
 示例
 
+## 其他
+
+将actions分为3类
+
++ 普通action，例如操作全局状态(token, modal等)
++ 表单，文件名以form开头，通常包含操作
+  + set，更新/替换整个表单
+  + update，通过field区分表单项
+  + clear，清除表单
++ 异步，常用于fetch，通常包含操作
+  + req发送请求
+  + res请求相应
+  + err发生错误
+
+fetch通常使用数据结构
+
+~~~javascript
+{
+  loading: false,
+  error: false,
+  data: null,
+}
+~~~
+
+其中data建议只有两种类型
+
++ PropTypes.instanceOf(Error)
++ 与fetch响应数据相同类型
+
+不建议req时将请求数据存储在data，因为造成类型混乱，且req时请求数据应该可以从别的状态中获取；req时如何更新data依照需求处理，可以初始化，或保留原数据等待res更新
+
+若出现较复杂操作，例如增删改已有数据，可将data单独存储，使用普通action操作，fetch文件以req开头区分普通action，数据结构中的data主要用于记录err
+
 + [Flux Standard Action](https://github.com/redux-utilities/flux-standard-action "Flux Standard Action")
