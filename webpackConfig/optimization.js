@@ -1,8 +1,27 @@
-module.exports = dev => (env = {}) => ({ // eslint-disable-line no-unused-vars
-  // concatenateModules: true,
+/* eslint import/no-extraneous-dependencies: 0 */
+
+/**
+ * production only
+ */
+
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+module.exports = (env = {}) => ({ // eslint-disable-line no-unused-vars
+  concatenateModules: true,
+  minimizer: [
+    new TerserPlugin({
+      // Enable cache and multi-process parallel running
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+    }),
+    new OptimizeCssAssetsPlugin(),
+  ],
   splitChunks: {
     chunks: 'all',
     cacheGroups: {
+      // Extracting all CSS in a single file
       styles: {
         name: 'styles',
         test: /\.scss$/,

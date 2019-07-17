@@ -2,7 +2,6 @@ const dotenv = require('dotenv');
 const {
   rules,
   plugins,
-  optimization,
 } = require('./webpackConfig');
 const { SRC, DIST } = require('./webpackConfig/constants');
 
@@ -31,7 +30,6 @@ module.exports = env => ({
   },
   module: { rules: rules(env) },
   plugins: plugins(env),
-  optimization: optimization(env),
   devServer: {
     host: process.env.HOST || 'localhost',
     port: Number(process.env.PORT) || 8080,

@@ -1,14 +1,14 @@
-/* eslint import/no-extraneous-dependencies: ["error", { "peerDependencies": true }] */
+/* eslint import/no-extraneous-dependencies: 0 */
 
-const path = require('path');
 const webpack = require('webpack');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const SriPlugin = require('webpack-subresource-integrity');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const SriPlugin = require('webpack-subresource-integrity');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const dotenv = require('dotenv');
+
 const ManifestPlugin = require('../webpackPlugins/manifestPlugin');
 const {
   SRC,
@@ -20,11 +20,9 @@ const {
 
 dotenv.config({ silent: true });
 
-module.exports = dev => (env = {}) => {
-  const {
-    mock,
-    quiet,
-  } = env;
+module.exports = (env = {}) => {
+  const dev = process.env.NODE_ENV !== 'production';
+  const { quiet } = env;
 
   const plugins = [
     new webpack.LoaderOptionsPlugin({
@@ -54,11 +52,11 @@ module.exports = dev => (env = {}) => {
   ];
 
   const devPlugins = [
-    new webpack.DefinePlugin({
-      "process.env": {
-        'MOCK': mock,
-      },
-    }),
+    // new webpack.DefinePlugin({
+    //   "process.env": {
+    //     'MOCK': mock,
+    //   },
+    // }),
     new webpack.HotModuleReplacementPlugin(),
   ];
 
