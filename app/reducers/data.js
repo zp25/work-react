@@ -9,14 +9,14 @@ import {
 const initState = {
   loading: false,
   error: false,
-  data: null,
+  data: '',
 };
 
 export default createReducer(initState, {
-  [reqData]: (state, { payload }) => ({
+  [reqData]: () => ({
     loading: true,
     error: false,
-    data: payload,
+    data: '',
   }),
   [resData]: (state, { payload }) => ({
     loading: false,

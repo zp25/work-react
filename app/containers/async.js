@@ -1,41 +1,48 @@
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import Async from 'pages/async';
 import {
-  asyncStart,
   reqData,
   clearData,
 } from 'actions';
 
-const mapStateToProps = ({
-  asyncTask,
-  data: {
+const hintSelector = createSelector(
+  state => state.data,
+  ({
     loading,
     error,
     data,
+  }) => {
+    if (loading) {
+      return 'loading';
+    }
+
+    if (error) {
+      const { message } = data;
+
+      return message;
+    }
+
+    if (typeof data === 'object') {
+      return Object.values(data).join(', ');
+    }
+
+    return data.toString();
   },
-}) => ({
-  asyncTask,
-  loading,
-  error,
-  data,
+);
+
+const mapStateToProps = state => ({
+  hint: hintSelector(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  asyncStart: () => dispatch(asyncStart()),
   reqData: data => dispatch(reqData(data)),
   clearData: () => dispatch(clearData()),
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => (
-  Object.assign({}, ownProps, stateProps, dispatchProps, {
-    env: process.env.NODE_ENV === 'production' ? 'prod' : 'dev',
-  })
-);
-
 const AsyncContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps,
 )(Async);
 
 export default AsyncContainer;

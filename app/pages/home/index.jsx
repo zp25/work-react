@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Helmet from 'components/helmet';
 import Button from 'components/button';
 import Mask from 'components/mask';
 import Portal from 'components/portal';
@@ -40,7 +41,6 @@ ErrorLoadPicture.propTypes = {
 };
 
 const Home = ({
-  env,
   modal,
   errorLoadPicture,
   setErrorLoadPicture,
@@ -48,7 +48,9 @@ const Home = ({
   closeModal,
 }) => (
   <div className={style.home}>
-    <p className={style.text}>{env}</p>
+    <Helmet>
+      <title>首页</title>
+    </Helmet>
 
     <Button
       type="button"
@@ -87,7 +89,6 @@ Home.defaultProps = {
 };
 
 Home.propTypes = {
-  env: PropTypes.string.isRequired,
   modal: PropTypes.bool.isRequired,
   errorLoadPicture: PropTypes.instanceOf(Error),
   setErrorLoadPicture: PropTypes.func.isRequired,

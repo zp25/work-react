@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import PropTypes from 'prop-types';
 import {
   NavLink,
   Route,
@@ -35,11 +36,15 @@ const Links = () => (
   </ul>
 );
 
-const App = () => (
+const App = ({
+  env,
+}) => (
   <div className={style.app}>
     <Helmet />
 
     <Links />
+
+    <p className={style.text}>{env}</p>
 
     <Suspense fallback={<Spinner />}>
       <Switch>
@@ -62,5 +67,9 @@ const App = () => (
     </Suspense>
   </div>
 );
+
+App.propTypes = {
+  env: PropTypes.string.isRequired,
+};
 
 export default App;

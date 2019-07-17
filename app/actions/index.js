@@ -1,4 +1,3 @@
-import { asyncStart } from './asyncTask';
 import {
   reqData,
   clearData,
@@ -16,7 +15,6 @@ import {
  * 仅components可执行actions
  */
 export {
-  asyncStart,
   reqData,
   clearData,
   setErrorLoadPicture,

@@ -20,16 +20,9 @@ const mapDispatchToProps = dispatch => ({
   closeModal: () => dispatch(clearModal()),
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => (
-  Object.assign({}, ownProps, stateProps, dispatchProps, {
-    env: process.env.NODE_ENV === 'production' ? 'prod' : 'dev',
-  })
-);
-
 const HomeContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps,
 )(Home);
 
 export default HomeContainer;

@@ -3,7 +3,7 @@
 .button {
   display: inline-block;
   color: var(--black, #151513);
-  font-size: fontSize();
+  font-size: torem(16px);
   font-weight: normal;
   line-height: 1.5;
   text-align: center;

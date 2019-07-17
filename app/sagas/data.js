@@ -1,34 +1,30 @@
 import {
-  call,
+  // call,
   delay,
   put,
   takeLeading,
 } from 'redux-saga/effects';
-import api from 'zp-lib/src/api';
+// import api from 'zp-lib/src/api';
 import {
   reqData,
   resData,
   errData,
 } from 'actions/data';
 
-import { API_DATA } from '../apis';
+// import { API_DATA } from '../apis';
 
 function* fetchData(action) {
-  const { payload: body } = action;
+  const { payload } = action;
 
   try {
-    let result = {};
+    // const result = yield call(api.post, API_DATA, {
+    //   body: payload,
+    //   mode: 'cors',
+    // });
 
-    if (process.env.MOCK) {
-      result = yield delay(1000, body);
-    } else {
-      result = yield call(api.post, API_DATA, {
-        body,
-        mode: 'cors',
-      });
-    }
+    yield delay(1000);
 
-    yield put(resData(result));
+    yield put(resData(payload));
   } catch (err) {
     yield put(errData(err));
   }

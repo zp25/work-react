@@ -2,10 +2,4 @@
 
 .async {
   @include flexbox(column, nowrap, flex-start, flex-start);
-
-  .text {
-    @extend %ellipsis;
-
-    font-size: torem(16px);
-  }
 }
