@@ -1,6 +1,8 @@
+/* eslint import/no-extraneous-dependencies: 0 */
+
 const path = require('path');
 
-const pub = path.resolve(__dirname, '../public')
+const pub = path.resolve(__dirname, '../public');
 
 exports.SRC = path.resolve(__dirname, '../app');
 exports.PUBLIC = pub;

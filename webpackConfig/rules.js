@@ -5,9 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { SRC } = require('./constants');
 
-module.exports = (env = {}) => { // eslint-disable-line no-unused-vars
-  const dev = process.env.NODE_ENV !== 'production';
-
+module.exports = ({ dev }) => {
   /**
    * loaderOptions
    */
@@ -15,14 +13,9 @@ module.exports = (env = {}) => { // eslint-disable-line no-unused-vars
     styleLoader,
     miniCssLoader,
   } = {
-    styleLoader: {
-      loader: 'style-loader',
-      options: {
-        sourceMap: dev,
-        // @see {@link https://github.com/webpack-contrib/style-loader/pull/96}
-        convertToAbsoluteUrls: true,
-      },
-    },
+    // The loader automatically inject source maps when previous loader emit them
+    // @link https://github.com/webpack-contrib/style-loader/pull/96
+    styleLoader: 'style-loader',
     miniCssLoader: {
       loader: MiniCssExtractPlugin.loader,
       options: {

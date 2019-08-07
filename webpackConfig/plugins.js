@@ -1,7 +1,6 @@
 /* eslint import/no-extraneous-dependencies: 0 */
 
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -9,7 +8,6 @@ const SriPlugin = require('webpack-subresource-integrity');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const dotenv = require('dotenv');
 
-const ManifestPlugin = require('../webpackPlugins/manifestPlugin');
 const {
   SRC,
   PUBLIC,
@@ -20,10 +18,7 @@ const {
 
 dotenv.config();
 
-module.exports = (env = {}) => {
-  const dev = process.env.NODE_ENV !== 'production';
-  const { quiet } = env;
-
+module.exports = ({ dev }) => {
   const plugins = [
     new webpack.LoaderOptionsPlugin({
       debug: dev,
@@ -52,11 +47,11 @@ module.exports = (env = {}) => {
   ];
 
   const devPlugins = [
-    // new webpack.DefinePlugin({
-    //   "process.env": {
-    //     'MOCK': mock,
-    //   },
-    // }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
   ];
 
@@ -68,17 +63,6 @@ module.exports = (env = {}) => {
     new SriPlugin({
       enabled: true,
       hashFuncNames: ['sha384', 'sha512'],
-    }),
-
-    ...(quiet ? [] : [
-      new BundleAnalyzerPlugin({
-        analyzerPort: process.env.ANALYZER_PORT || 3001,
-      }),
-    ]),
-
-    new ManifestPlugin({
-      path: process.cwd(),
-      filename: 'manifest.json',
     }),
   ];
 

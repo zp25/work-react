@@ -39,9 +39,6 @@ public目录存放html模板(handlebars)和不需要经模块系统处理的资�
 HOST=localhost
 PORT=8080
 
-# webpack-bundle-analyzer监听端口
-ANALYZER_PORT=3001
-
 # html文件名
 INDEX=index.html
 ~~~
