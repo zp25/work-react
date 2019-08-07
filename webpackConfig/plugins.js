@@ -18,7 +18,7 @@ const {
   HTMLMINIFIER,
 } = require('./constants');
 
-dotenv.config({ silent: true });
+dotenv.config();
 
 module.exports = (env = {}) => {
   const dev = process.env.NODE_ENV !== 'production';

@@ -1,11 +1,11 @@
 const path = require('path');
 
-const public = path.resolve(__dirname, '../public')
+const pub = path.resolve(__dirname, '../public')
 
 exports.SRC = path.resolve(__dirname, '../app');
-exports.PUBLIC = public;
+exports.PUBLIC = pub;
 exports.DIST = path.resolve(__dirname, '../dist');
-exports.TEMP = path.resolve(public, 'index.hbs');
+exports.TEMP = path.resolve(pub, 'index.hbs');
 
 exports.HTMLMINIFIER = {
   collapseWhitespace: true,
