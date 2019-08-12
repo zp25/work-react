@@ -28,5 +28,5 @@ export default createReducer(initState, {
     error: true,
     data: payload,
   }),
-  [clearData]: () => Object.assign({}, initState),
+  [clearData]: () => ({ ...initState }),
 });

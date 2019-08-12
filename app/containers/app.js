@@ -13,9 +13,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
-  Object.assign({}, ownProps, stateProps, dispatchProps, {
+  {
+    ...ownProps,
+    ...stateProps,
+    ...dispatchProps,
     env: process.env.NODE_ENV === 'production' ? 'prod' : 'dev',
-  })
+  }
 );
 
 const AppContainer = connect(

@@ -21,13 +21,17 @@
     }
   },
   "rules": {
+    "arrow-parens": ["error", "as-needed", { "requireForBlockBody": true }],
     "no-cond-assign": ["error", "except-parens"],
+    "no-mixed-operators": ["error", { "allowSamePrecedence": true }],
     "no-param-reassign": ["error", { "props": false }],
     "jsx-a11y/anchor-is-valid": ["error", {
       "components": ["Link"],
       "specialLink": [],
       "aspects": ["invalidHref", "preferButton"]
-    }]
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-fragments": "off"
   },
   "extends": "airbnb"
 }
