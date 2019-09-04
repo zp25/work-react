@@ -2,7 +2,7 @@ import createReducer from 'zp-lib/src/createReducer';
 import {
   setErrorLoadPicture,
   clearErrorLoadPicture,
-} from 'actions/errorLoadPicture';
+} from '@/actions/errorLoadPicture';
 
 const initState = null;
 

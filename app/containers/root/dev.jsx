@@ -4,8 +4,8 @@ import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
-import App from 'containers/app';
-import DevTools from 'containers/devtools';
+import App from '@/containers/app';
+import DevTools from '@/containers/devtools';
 
 const Root = ({ store }) => (
   <Provider store={store}>

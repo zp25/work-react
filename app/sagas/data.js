@@ -9,7 +9,7 @@ import {
   reqData,
   resData,
   errData,
-} from 'actions/data';
+} from '@/actions/data';
 
 // import { API_DATA } from '../apis';
 

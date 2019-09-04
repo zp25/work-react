@@ -6,13 +6,12 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Helmet from 'components/helmet';
-import Spinner from 'components/spinner';
+import routes from '@/routes';
+import Helmet from '@/components/helmet';
+import Spinner from '@/components/spinner';
 
 import 'normalize.css/normalize.css';
 import style from './app.scss';
-
-import routes from '../routes';
 
 const Links = () => (
   <ul className={style.nav}>

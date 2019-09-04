@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import Home from 'pages/home';
+import Home from '@/pages/home';
 import {
   setErrorLoadPicture,
   setModal,
   clearModal,
-} from 'actions';
+} from '@/actions';
 
 const mapStateToProps = ({
   errorLoadPicture,

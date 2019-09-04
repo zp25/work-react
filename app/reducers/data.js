@@ -4,7 +4,7 @@ import {
   resData,
   errData,
   clearData,
-} from 'actions/data';
+} from '@/actions/data';
 
 const initState = {
   loading: false,

@@ -5,12 +5,12 @@ import {
   createStore,
   compose,
 } from 'redux';
-import { persistState } from 'redux-devtools'; // eslint-disable-line import/no-extraneous-dependencies
+import { persistState } from 'redux-devtools';
 import createSagaMiddleware from 'redux-saga';
-import DevTools from 'containers/devtools';
 import immutableStateInvariant from 'redux-immutable-state-invariant';
-import rootSaga from 'sagas';
-import reducer from '../reducers';
+import DevTools from '@/containers/devtools';
+import rootSaga from '@/sagas';
+import reducer from '@/reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 

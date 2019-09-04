@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import Async from 'pages/async';
+import Async from '@/pages/async';
 import {
   reqData,
   clearData,
-} from 'actions';
+} from '@/actions';
 
 const hintSelector = createSelector(
   state => state.data,

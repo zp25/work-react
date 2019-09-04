@@ -26,6 +26,9 @@ module.exports = (customopts = {}) => {
     resolve: {
       extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json'],
       modules: [SRC, 'node_modules'],
+      alias: {
+        '@': SRC,
+      },
     },
     module: { rules: rules({ dev }) },
     plugins: plugins({ dev }),

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Helmet from 'components/helmet';
-import Button from 'components/button';
-import Mask from 'components/mask';
-import Portal from 'components/portal';
-import Picture from 'components/picture';
-import ErrorBoundary from 'components/errorBoundary';
+import Helmet from '@/components/helmet';
+import Button from '@/components/button';
+import Mask from '@/components/mask';
+import Portal from '@/components/portal';
+import Picture from '@/components/picture';
+import ErrorBoundary from '@/components/errorBoundary';
 
-import zpWebp from 'images/zp.webp';
-import zpJpg from 'images/zp.jpg';
+import zpWebp from '@/images/zp.webp';
+import zpJpg from '@/images/zp.jpg';
 
 import style from './style.scss';
 

@@ -2,7 +2,7 @@ import { createReducer } from 'zp-lib/index';
 import {
   setModal,
   clearModal,
-} from 'actions/modal';
+} from '@/actions/modal';
 
 const initState = false;
 
