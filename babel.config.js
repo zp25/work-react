@@ -14,6 +14,8 @@ module.exports = (api) => {
   ];
 
   const plugins = [
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-syntax-import-meta',
     '@babel/plugin-proposal-class-properties',
     [
       '@babel/plugin-proposal-decorators',
