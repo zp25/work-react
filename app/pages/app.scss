@@ -43,6 +43,7 @@ body {
   .text {
     @extend %ellipsis;
 
+    flex: 0 0 auto;
     font-size: torem(16px);
   }
 }
