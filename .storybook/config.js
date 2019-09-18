@@ -1,7 +1,7 @@
 import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 
-import '../node_modules/normalize.css/normalize.css';
+import 'normalize.css/normalize.css';
 import style from '../app/pages/app.scss';
 
 const AppDecorator = storyFn => <div className={style.app}>{storyFn()}</div>;

@@ -9,7 +9,6 @@ module.exports = (env = {}) => {
   const { quiet } = env;
 
   return config({
-    devtool: 'source-map',
     plugins: [
       ...(quiet ? [] : [
         new BundleAnalyzerPlugin({ analyzerPort: 3001 }),

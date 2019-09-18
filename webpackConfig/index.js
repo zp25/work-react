@@ -36,6 +36,7 @@ module.exports = (customopts = {}) => {
 
   const devopts = {
     mode: 'development',
+    devtool: 'cheap-module-eval-source-map',
     output: {
       filename: 'scripts/[name].js',
       chunkFilename: 'scripts/[name].js',
@@ -69,6 +70,7 @@ module.exports = (customopts = {}) => {
 
   const prodopts = {
     mode: 'production',
+    devtool: 'source-map',
     output: {
       filename: 'scripts/[name].[chunkhash:10].js',
       chunkFilename: 'scripts/[name].[chunkhash:10].js',
