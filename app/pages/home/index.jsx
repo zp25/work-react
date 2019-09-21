@@ -11,7 +11,7 @@ import ErrorBoundary from '@/components/errorBoundary';
 import zpWebp from '@/images/zp.webp';
 import zpJpg from '@/images/zp.jpg';
 
-import style from './style.scss';
+import style from './style.module.scss';
 
 const picture = {
   srcSet: {

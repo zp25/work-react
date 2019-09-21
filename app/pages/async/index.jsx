@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Helmet from '@/components/helmet';
 import Button from '@/components/button';
 
-import style from './style.scss';
+import style from './style.module.scss';
 
 class Async extends Component {
   componentWillUnmount() {

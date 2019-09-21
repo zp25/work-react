@@ -11,15 +11,49 @@ module.exports = ({ dev }) => {
    */
   const {
     styleLoader,
-    miniCssLoader,
+    cssLoader,
+    cssModuleLoader,
+    postCssLoader,
+    sassLoader,
   } = {
     // The loader automatically inject source maps when previous loader emit them
     // @link https://github.com/webpack-contrib/style-loader/pull/96
-    styleLoader: 'style-loader',
-    miniCssLoader: {
+    styleLoader: dev ? 'style-loader' : {
       loader: MiniCssExtractPlugin.loader,
       options: {
-        hmr: dev,
+        hmr: false,
+      },
+    },
+    cssLoader: {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 2,
+        sourceMap: dev,
+      },
+    },
+    cssModuleLoader: {
+      loader: 'css-loader',
+      options: {
+        modules: {
+          localIdentName: '[name]_[local]__[hash:base64:5]',
+        },
+        importLoaders: 2,
+        sourceMap: dev,
+      },
+    },
+    postCssLoader: {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: dev,
+        config: {
+          path: path.resolve(__dirname, '../postcss.config.js'),
+        },
+      },
+    },
+    sassLoader: {
+      loader: 'sass-loader',
+      options: {
+        sourceMap: dev,
       },
     },
   };
@@ -64,51 +98,47 @@ module.exports = ({ dev }) => {
         {
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]',
+            name: 'fonts/[name].[hash:8].[ext]',
           },
         },
       ],
     },
     {
-      test: /\.mp3$/i,
+      test: /\.(mp3|mp4|webm)$/i,
       use: [
         {
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]',
+            name: 'media/[name].[hash:8].[ext]',
           },
         },
       ],
     },
     {
-      test: /\.(scss|css)$/,
+      test: /\.css$/,
       use: [
-        ...(dev ? [styleLoader] : [miniCssLoader]),
-        {
-          loader: 'css-loader',
-          options: {
-            modules: {
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-            },
-            importLoaders: 2,
-            sourceMap: dev,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: dev,
-            config: {
-              path: path.resolve(__dirname, '../postcss.config.js'),
-            },
-          },
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: dev,
-          },
-        },
+        styleLoader,
+        cssLoader,
+        postCssLoader,
+      ],
+    },
+    {
+      test: /\.(scss|sass)$/,
+      exclude: /\.module\.(scss|sass)$/,
+      use: [
+        styleLoader,
+        cssLoader,
+        postCssLoader,
+        sassLoader,
+      ],
+    },
+    {
+      test: /\.module\.(scss|sass)$/,
+      use: [
+        styleLoader,
+        cssModuleLoader,
+        postCssLoader,
+        sassLoader,
       ],
     },
     {

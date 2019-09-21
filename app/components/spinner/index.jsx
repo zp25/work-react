@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import cx from 'classnames';
 
-import style from './style.scss';
+import style from './style.module.scss';
 
 const arr = [...new Array(12).keys()].map(d => ({
   id: d + 1,
