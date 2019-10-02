@@ -56,7 +56,7 @@ const Home = ({
       type="button"
       onClick={openModal}
     >
-      {'Modal'}
+      Modal
     </Button>
 
     <ErrorBoundary

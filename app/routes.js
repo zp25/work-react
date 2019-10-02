@@ -9,7 +9,7 @@ const routes = [
     exact: true,
     strict: true,
     component: lazy(() => pMinDelay(
-      import(/* webpackChunkName: "home" */ 'containers/home'),
+      import(/* webpackChunkName: "home" */ '@/containers/home'),
       600,
     )),
   },
@@ -20,7 +20,7 @@ const routes = [
     exact: true,
     strict: true,
     component: lazy(() => pMinDelay(
-      import(/* webpackChunkName: "async" */ 'containers/async'),
+      import(/* webpackChunkName: "async" */ '@/containers/async'),
       600,
     )),
   },

@@ -7,11 +7,16 @@ const { SRC, DIST } = require('./constants');
 const optimization = require('./optimization');
 const plugins = require('./plugins');
 const rules = require('./rules');
+const devServer = require('./devServer');
 
 dotenv.config();
 
 module.exports = (customopts = {}) => {
   const dev = process.env.NODE_ENV === 'development';
+
+  const host = process.env.HOST || 'localhost';
+  const port = process.env.PORT || 8080;
+  const index = process.env.INDEX || 'index.html';
 
   const opts = {
     target: 'web',
@@ -31,7 +36,7 @@ module.exports = (customopts = {}) => {
       },
     },
     module: { rules: rules({ dev }) },
-    plugins: plugins({ dev }),
+    plugins: plugins({ dev, index }),
   };
 
   const devopts = {
@@ -41,31 +46,7 @@ module.exports = (customopts = {}) => {
       filename: 'scripts/[name].js',
       chunkFilename: 'scripts/[name].js',
     },
-    devServer: {
-      host: process.env.HOST || 'localhost',
-      port: Number(process.env.PORT) || 8080,
-      inline: true,
-      hot: true,
-      // historyApiFallback: true,
-      historyApiFallback: {
-        rewrites: [
-          {
-            from: /./,
-            to: `/${process.env.INDEX || 'index.html'}`,
-          },
-        ],
-      },
-      stats: {
-        colors: true,
-        chunks: false,
-        modules: false,
-        hash: true,
-        timings: true,
-        version: true,
-      },
-      open: true,
-      // disableHostCheck: true,
-    },
+    devServer: devServer({ host, port, index }),
   };
 
   const prodopts = {

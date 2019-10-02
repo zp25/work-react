@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const dotenv = require('dotenv');
 
 const {
   SRC,
@@ -16,9 +15,7 @@ const {
   HTMLMINIFIER,
 } = require('./constants');
 
-dotenv.config();
-
-module.exports = ({ dev }) => {
+module.exports = ({ dev, index }) => {
   const plugins = [
     new webpack.LoaderOptionsPlugin({
       debug: dev,
@@ -32,7 +29,7 @@ module.exports = ({ dev }) => {
     new StyleLintPlugin(),
 
     new HtmlWebpackPlugin({
-      filename: process.env.INDEX || 'index.html',
+      filename: index,
       template: TEMP,
       minify: !dev && HTMLMINIFIER,
     }),

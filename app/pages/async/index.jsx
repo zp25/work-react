@@ -31,7 +31,7 @@ class Async extends Component {
             reqData({ foo: 'Foo', bar: 'Bar' });
           }}
         >
-          {'Fetch Data'}
+          Fetch Data
         </Button>
 
         <p className={style.text}>{hint}</p>
