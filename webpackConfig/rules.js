@@ -70,6 +70,7 @@ module.exports = ({ dev }) => {
       include: [
         SRC,
         path.resolve(__dirname, '../node_modules/zp-lib'),
+        path.resolve(__dirname, '../node_modules/work-storybook'),
       ],
       use: {
         loader: 'babel-loader',

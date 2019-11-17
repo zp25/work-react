@@ -6,9 +6,9 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Spinner from 'work-storybook/src/spinner';
 import routes from '@/routes';
 import Helmet from '@/components/helmet';
-import Spinner from '@/components/spinner';
 
 import 'normalize.css/normalize.css';
 import style from './app.module.scss';
